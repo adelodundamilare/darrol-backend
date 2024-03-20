@@ -1,8 +1,8 @@
-import { Role } from '@prisma/client';
+import { EnumRole } from '@/prisma/generated/client';
 
 const allRoles = {
-  [Role.USER]: [],
-  [Role.ADMIN]: ['getUsers', 'manageUsers']
+  [EnumRole.USER]: [],
+  [EnumRole.ADMIN]: ['getUsers', 'manageUsers']
 };
 
 export const roles = Object.keys(allRoles);

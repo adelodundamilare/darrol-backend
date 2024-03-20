@@ -3,7 +3,7 @@ import httpStatus from 'http-status';
 import ApiError from '../utils/ApiError';
 import { roleRights } from '../config/roles';
 import { NextFunction, Request, Response } from 'express';
-import { User } from '@prisma/client';
+import { User } from '@/prisma/generated/client';
 
 const verifyCallback =
   (

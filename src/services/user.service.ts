@@ -1,4 +1,4 @@
-import { User, Role, Prisma } from '@prisma/client';
+import { User, EnumRole, Prisma, EnumGender } from '@/prisma/generated/client';
 import httpStatus from 'http-status';
 import prisma from '../client';
 import ApiError from '../utils/ApiError';
@@ -12,8 +12,11 @@ import { encryptPassword } from '../utils/encryption';
 const createUser = async (
   email: string,
   password: string,
-  name?: string,
-  role: Role = Role.USER
+  name: string,
+  phone?: string,
+  gender?: EnumGender,
+  age?: number,
+  role: EnumRole = EnumRole.USER
 ): Promise<User> => {
   if (await getUserByEmail(email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
@@ -22,6 +25,9 @@ const createUser = async (
     data: {
       email,
       name,
+      phone,
+      gender,
+      age,
       password: await encryptPassword(password),
       role
     }
