@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// schema.prisma
+
+// Define the User model
+model User {
+  id              Int            @id @default(autoincrement())
+  name            String
+  email           String         @unique
+  phone           String?
+  password        String
+  gender          EnumGender?
+  age             Int?
+  role            EnumRole       @default(USER)
+  isEmailVerified Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  Token           Token[]
+  hairStyle       EnumHairStyle?
+  familyMembers   FamilyMember[]
+  books           Book[]
+  events          Event[]
+}
+
+// Define the FamilyMember model
+model FamilyMember {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now()) // Added createdAt field
+  updatedAt DateTime @updatedAt // Added updatedAt field
+  user      User?    @relation(fields: [userId], references: [id]) // One-to-one relationship
+  userId    Int?     @unique
+}
+
+// Define the Gender enum
+enum EnumGender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+// Define the HairStyle enum
+enum EnumHairStyle {
+  LIGHT
+  DARK
+}
+
+model Token {
+  id          Int       @id @default(autoincrement())
+  token       String
+  type        TokenType
+  expires     DateTime
+  blacklisted Boolean
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String
+  date        DateTime
+  createdBy   User?    @relation(fields: [createdById], references: [id])
+  createdById Int?
+}
+
+model Book {
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       DateTime
+  description String
+  createdAt   DateTime @default(now()) // Added createdAt field
+  updatedAt   DateTime @updatedAt // Added updatedAt field
+  User        User?    @relation(fields: [userId], references: [id])
+  userId      Int?
+}
+
+enum EnumRole {
+  USER
+  ADMIN
+}
+
+enum TokenType {
+  ACCESS
+  REFRESH
+  RESET_PASSWORD
+  VERIFY_EMAIL
+}
+
+enum GenderType {
+  MALE
+  FEMALE
+  OTHER
+}
