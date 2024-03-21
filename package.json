@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Darrol App Backend",
   "main": "src/index.ts",
-  "type": "module",
   "scripts": {
-    "start": "node -r tsconfig-paths/register build/src/index.js",
+    "start": "cross-env NODE_ENV=production node -r tsconfig-paths/register build/src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon -e ts,js --exec ts-node -r tsconfig-paths/register src/index.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
