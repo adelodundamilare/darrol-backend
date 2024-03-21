@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "node src/index.ts",
+    "start": "node -r tsconfig-paths/register src/index.ts",
     "dev": "cross-env NODE_ENV=development nodemon -e ts,js --exec ts-node -r tsconfig-paths/register src/index.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -14,7 +14,7 @@
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "prepare": "husky install",
-    "build": "tsc --build --verbose tsconfig.build.json && tsc-alias -p tsconfig.json"
+    "build": "tsc && tsc-alias"
   },
   "author": "Damilare",
   "license": "ISC",
