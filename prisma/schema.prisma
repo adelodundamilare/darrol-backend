@@ -15,32 +15,26 @@ datasource db {
 
 // Define the User model
 model User {
-  id              Int            @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   name            String
-  email           String         @unique
-  phone           String?
+  email           String   @unique
   password        String
-  gender          EnumGender?
-  age             Int?
-  role            EnumRole       @default(USER)
-  isEmailVerified Boolean        @default(false)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  role            EnumRole @default(USER)
+  isEmailVerified Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
   Token           Token[]
-  hairStyle       EnumHairStyle?
-  familyMembers   FamilyMember[]
-  books           Book[]
-  events          Event[]
+  Book            Book[]
 }
 
 // Define the FamilyMember model
 model FamilyMember {
-  id        Int      @id @default(autoincrement())
-  name      String
-  createdAt DateTime @default(now()) // Added createdAt field
-  updatedAt DateTime @updatedAt // Added updatedAt field
-  user      User?    @relation(fields: [userId], references: [id]) // One-to-one relationship
-  userId    Int?     @unique
+  id          Int        @id @default(autoincrement())
+  name        String
+  createdAt   DateTime   @default(now()) // Added createdAt field
+  updatedAt   DateTime   @updatedAt // Added updatedAt field
+  BookOwner   BookOwner? @relation(fields: [bookOwnerId], references: [id])
+  bookOwnerId Int?
 }
 
 // Define the Gender enum
@@ -54,6 +48,7 @@ enum EnumGender {
 enum EnumHairStyle {
   LIGHT
   DARK
+  MEDIUM
 }
 
 model Token {
@@ -68,22 +63,50 @@ model Token {
 }
 
 model Event {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
   date        DateTime
-  createdBy   User?    @relation(fields: [createdById], references: [id])
   createdById Int?
+  BookOwner   BookOwner? @relation(fields: [bookOwnerId], references: [id])
+  bookOwnerId Int?
 }
 
 model Book {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
+  slug        String
   price       DateTime
   description String
-  createdAt   DateTime @default(now()) // Added createdAt field
-  updatedAt   DateTime @updatedAt // Added updatedAt field
-  User        User?    @relation(fields: [userId], references: [id])
+  imageUrl    String
+  theme       Theme      @relation(fields: [themeId], references: [id])
+  themeId     Int
+  createdAt   DateTime   @default(now()) // Added createdAt field
+  updatedAt   DateTime   @updatedAt // Added updatedAt field
+  User        User?      @relation(fields: [userId], references: [id])
   userId      Int?
+  BookOwner   BookOwner?
+  bookOwnerId Int
+}
+
+model BookOwner {
+  id            Int            @id @default(autoincrement())
+  gender        EnumGender?
+  glasses       Boolean?       @default(false)
+  age           Int?
+  hairStyle     EnumHairStyle?
+  familyMembers FamilyMember[]
+  book          Book           @relation(fields: [bookId], references: [id])
+  bookId        Int            @unique
+  events        Event[]
+}
+
+model Theme {
+  id            Int      @id @default(autoincrement())
+  name          String
+  coverImageUrl String
+  createdAt     DateTime @default(now()) // Added createdAt field
+  updatedAt     DateTime @updatedAt // Added updatedAt field
+  Book          Book[]
 }
 
 enum EnumRole {

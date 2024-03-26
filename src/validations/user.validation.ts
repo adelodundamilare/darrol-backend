@@ -1,4 +1,4 @@
-import { EnumRole } from '@/prisma/generated/client';
+import { EnumGender, EnumHairStyle, EnumRole } from '@/prisma/generated/client';
 import Joi from 'joi';
 import { password } from './custom.validation';
 
@@ -7,6 +7,10 @@ const createUser = {
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
     name: Joi.string().required(),
+    phone: Joi.string(),
+    gender: Joi.string().valid(EnumGender.MALE, EnumGender.FEMALE, EnumGender.OTHER),
+    hairStyle: Joi.string().valid(EnumHairStyle.DARK, EnumHairStyle.LIGHT),
+    age: Joi.number(),
     role: Joi.string().required().valid(EnumRole.USER, EnumRole.ADMIN)
   })
 };

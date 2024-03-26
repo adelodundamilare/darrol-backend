@@ -10,6 +10,7 @@ const envVarsSchema = Joi.object()
     PORT: Joi.number().default(3000),
     JWT_SECRET: Joi.string().required().description('JWT secret key'),
     BASE_URL: Joi.string().required().description('BASE URL key is required'),
+    FRONTEND_URL: Joi.string().required().description('FRONTEND URL key is required'),
     JWT_ACCESS_EXPIRATION_MINUTES: Joi.number()
       .default(30)
       .description('minutes after which access tokens expire'),

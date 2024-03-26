@@ -53,7 +53,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "@prisma/client": "^4.7.1",
+    "@prisma/client": "5.9.0-integration-engines-5-9-0-3-fix-5-8-0-timeout-9035a1b3236277185290a05f5f4ca9afd179d699.1",
     "@types/bcryptjs": "^2.4.2",
     "@types/nodemailer": "^6.4.7",
     "bcryptjs": "^2.4.3",
@@ -61,6 +61,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-jsdoc-swagger": "^1.8.0",
     "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.1",
     "http-status": "^1.5.3",

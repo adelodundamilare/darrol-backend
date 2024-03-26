@@ -54,7 +54,8 @@ const refreshAuth = async (refreshToken: string): Promise<AuthTokensResponse> =>
     const refreshTokenData = await tokenService.verifyToken(refreshToken, TokenType.REFRESH);
     const { userId } = refreshTokenData;
     await prisma.token.delete({ where: { id: refreshTokenData.id } });
-    return tokenService.generateAuthTokens({ id: userId });
+    const user = await userService.getUserById(userId);
+    return tokenService.generateAuthTokens(user as User);
   } catch (error) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate');
   }

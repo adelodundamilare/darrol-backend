@@ -1,48 +1,19 @@
-import { User, EnumRole, Prisma, EnumGender } from '@/prisma/generated/client';
+import { User, Prisma } from '@/prisma/generated/client';
 import httpStatus from 'http-status';
 import prisma from '../client';
 import ApiError from '../utils/ApiError';
 import { encryptPassword } from '../utils/encryption';
 
-/**
- * Create a user
- * @param {Object} userBody
- * @returns {Promise<User>}
- */
-const createUser = async (
-  email: string,
-  password: string,
-  name: string,
-  phone?: string,
-  gender?: EnumGender,
-  age?: number,
-  role: EnumRole = EnumRole.USER
-): Promise<User> => {
-  if (await getUserByEmail(email)) {
+const createUser = async (data: User): Promise<User> => {
+  if (await getUserByEmail(data.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
+  data.password = await encryptPassword(data.password);
   return prisma.user.create({
-    data: {
-      email,
-      name,
-      phone,
-      gender,
-      age,
-      password: await encryptPassword(password),
-      role
-    }
+    data
   });
 };
 
-/**
- * Query for users
- * @param {Object} filter - Prisma filter
- * @param {Object} options - Query options
- * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
- * @param {number} [options.limit] - Maximum number of results per page (default = 10)
- * @param {number} [options.page] - Current page (default = 1)
- * @returns {Promise<QueryResult>}
- */
 const queryUsers = async <Key extends keyof User>(
   filter: object,
   options: {
@@ -69,7 +40,7 @@ const queryUsers = async <Key extends keyof User>(
   const users = await prisma.user.findMany({
     where: filter,
     select: keys.reduce((obj, k) => ({ ...obj, [k]: true }), {}),
-    skip: page * limit,
+    skip: page == 1 ? 0 : (page - 1) * limit,
     take: limit,
     orderBy: sortBy ? { [sortBy]: sortType } : undefined
   });

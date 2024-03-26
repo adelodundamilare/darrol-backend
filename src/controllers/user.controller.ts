@@ -3,10 +3,11 @@ import pick from '../utils/pick';
 import ApiError from '../utils/ApiError';
 import catchAsync from '../utils/catchAsync';
 import { userService } from '../services';
+import { User } from '@/prisma/generated/client';
 
 const createUser = catchAsync(async (req, res) => {
-  const { email, password, name, role } = req.body;
-  const user = await userService.createUser(email, password, name, role);
+  const data: User = req.body;
+  const user = await userService.createUser(data);
   res.status(httpStatus.CREATED).send(user);
 });
 

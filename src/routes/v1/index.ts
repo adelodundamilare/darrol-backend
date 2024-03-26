@@ -2,6 +2,8 @@ import express from 'express';
 import authRoute from './auth.route';
 import userRoute from './user.route';
 import docsRoute from './docs.route';
+import bookRoute from './book.route';
+import themeRoute from './theme.route';
 import config from '../../config/config';
 
 const router = express.Router();
@@ -14,6 +16,14 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute
+  },
+  {
+    path: '/books',
+    route: bookRoute
+  },
+  {
+    path: '/themes',
+    route: themeRoute
   }
 ];
 
@@ -31,9 +41,9 @@ defaultRoutes.forEach((route) => {
 
 /* istanbul ignore next */
 // if (config.env === 'development') {
-  devRoutes.forEach((route) => {
-    router.use(route.path, route.route);
-  });
+devRoutes.forEach((route) => {
+  router.use(route.path, route.route);
+});
 // }
 
 export default router;

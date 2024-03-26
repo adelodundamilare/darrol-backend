@@ -7,3 +7,10 @@ export interface AuthTokensResponse {
   access: TokenResponse;
   refresh?: TokenResponse;
 }
+
+export interface CreateBookDto {
+  name: string;
+  description: string;
+  imageUrl: string;
+  amount: number;
+}
