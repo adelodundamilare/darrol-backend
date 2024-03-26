@@ -1,7 +1,7 @@
-import controller from '@/src/controllers/theme.controller';
-import auth from '@/src/middlewares/auth';
-import validate from '@/src/middlewares/validate';
-import validation from '@/src/validations/theme.validation';
+import controller from '../../controllers/theme.controller';
+import auth from '../../middlewares/auth';
+import validate from '../../middlewares/validate';
+import validation from '../../validations/theme.validation';
 import express from 'express';
 
 const router = express.Router();

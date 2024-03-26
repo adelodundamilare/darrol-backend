@@ -1,7 +1,7 @@
-import bookController from '@/src/controllers/book.controller';
-import auth from '@/src/middlewares/auth';
-import validate from '@/src/middlewares/validate';
-import bookValidation from '@/src/validations/book.validation';
+import bookController from '../../controllers/book.controller';
+import auth from '../../middlewares/auth';
+import validate from '../../middlewares/validate';
+import bookValidation from '../../validations/book.validation';
 import express from 'express';
 
 const router = express.Router();
