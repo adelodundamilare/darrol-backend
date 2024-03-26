@@ -1,11 +1,13 @@
 import Joi from 'joi';
 import { password } from './custom.validation';
+import { EnumGender, EnumHairStyle, EnumRole } from '@/prisma/generated/client';
 
 const register = {
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
-    name: Joi.string().required()
+    name: Joi.string().required(),
+    role: Joi.string().required().valid(EnumRole.USER, EnumRole.ADMIN)
   })
 };
 
