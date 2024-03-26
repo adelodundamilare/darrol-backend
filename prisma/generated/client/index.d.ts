@@ -39,10 +39,10 @@ export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
  */
 export type Book = $Result.DefaultSelection<Prisma.$BookPayload>
 /**
- * Model BookOwner
+ * Model BookAudience
  * 
  */
-export type BookOwner = $Result.DefaultSelection<Prisma.$BookOwnerPayload>
+export type BookAudience = $Result.DefaultSelection<Prisma.$BookAudiencePayload>
 /**
  * Model Theme
  * 
@@ -279,14 +279,14 @@ export class PrismaClient<
   get book(): Prisma.BookDelegate<ExtArgs>;
 
   /**
-   * `prisma.bookOwner`: Exposes CRUD operations for the **BookOwner** model.
+   * `prisma.bookAudience`: Exposes CRUD operations for the **BookAudience** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more BookOwners
-    * const bookOwners = await prisma.bookOwner.findMany()
+    * // Fetch zero or more BookAudiences
+    * const bookAudiences = await prisma.bookAudience.findMany()
     * ```
     */
-  get bookOwner(): Prisma.BookOwnerDelegate<ExtArgs>;
+  get bookAudience(): Prisma.BookAudienceDelegate<ExtArgs>;
 
   /**
    * `prisma.theme`: Exposes CRUD operations for the **Theme** model.
@@ -772,7 +772,7 @@ export namespace Prisma {
     Token: 'Token',
     Event: 'Event',
     Book: 'Book',
-    BookOwner: 'BookOwner',
+    BookAudience: 'BookAudience',
     Theme: 'Theme'
   };
 
@@ -790,7 +790,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'familyMember' | 'token' | 'event' | 'book' | 'bookOwner' | 'theme'
+      modelProps: 'user' | 'familyMember' | 'token' | 'event' | 'book' | 'bookAudience' | 'theme'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1124,69 +1124,69 @@ export namespace Prisma {
           }
         }
       }
-      BookOwner: {
-        payload: Prisma.$BookOwnerPayload<ExtArgs>
-        fields: Prisma.BookOwnerFieldRefs
+      BookAudience: {
+        payload: Prisma.$BookAudiencePayload<ExtArgs>
+        fields: Prisma.BookAudienceFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.BookOwnerFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload> | null
+            args: Prisma.BookAudienceFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.BookOwnerFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>
+            args: Prisma.BookAudienceFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>
           }
           findFirst: {
-            args: Prisma.BookOwnerFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload> | null
+            args: Prisma.BookAudienceFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.BookOwnerFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>
+            args: Prisma.BookAudienceFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>
           }
           findMany: {
-            args: Prisma.BookOwnerFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>[]
+            args: Prisma.BookAudienceFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>[]
           }
           create: {
-            args: Prisma.BookOwnerCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>
+            args: Prisma.BookAudienceCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>
           }
           createMany: {
-            args: Prisma.BookOwnerCreateManyArgs<ExtArgs>,
+            args: Prisma.BookAudienceCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.BookOwnerDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>
+            args: Prisma.BookAudienceDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>
           }
           update: {
-            args: Prisma.BookOwnerUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>
+            args: Prisma.BookAudienceUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>
           }
           deleteMany: {
-            args: Prisma.BookOwnerDeleteManyArgs<ExtArgs>,
+            args: Prisma.BookAudienceDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.BookOwnerUpdateManyArgs<ExtArgs>,
+            args: Prisma.BookAudienceUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.BookOwnerUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$BookOwnerPayload>
+            args: Prisma.BookAudienceUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BookAudiencePayload>
           }
           aggregate: {
-            args: Prisma.BookOwnerAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateBookOwner>
+            args: Prisma.BookAudienceAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBookAudience>
           }
           groupBy: {
-            args: Prisma.BookOwnerGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<BookOwnerGroupByOutputType>[]
+            args: Prisma.BookAudienceGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BookAudienceGroupByOutputType>[]
           }
           count: {
-            args: Prisma.BookOwnerCountArgs<ExtArgs>,
-            result: $Utils.Optional<BookOwnerCountAggregateOutputType> | number
+            args: Prisma.BookAudienceCountArgs<ExtArgs>,
+            result: $Utils.Optional<BookAudienceCountAggregateOutputType> | number
           }
         }
       }
@@ -1445,45 +1445,35 @@ export namespace Prisma {
 
 
   /**
-   * Count Type BookOwnerCountOutputType
+   * Count Type BookCountOutputType
    */
 
-  export type BookOwnerCountOutputType = {
-    familyMembers: number
-    events: number
+  export type BookCountOutputType = {
+    FamilyMember: number
   }
 
-  export type BookOwnerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    familyMembers?: boolean | BookOwnerCountOutputTypeCountFamilyMembersArgs
-    events?: boolean | BookOwnerCountOutputTypeCountEventsArgs
+  export type BookCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    FamilyMember?: boolean | BookCountOutputTypeCountFamilyMemberArgs
   }
 
   // Custom InputTypes
 
   /**
-   * BookOwnerCountOutputType without action
+   * BookCountOutputType without action
    */
-  export type BookOwnerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwnerCountOutputType
+     * Select specific fields to fetch from the BookCountOutputType
      */
-    select?: BookOwnerCountOutputTypeSelect<ExtArgs> | null
+    select?: BookCountOutputTypeSelect<ExtArgs> | null
   }
 
 
   /**
-   * BookOwnerCountOutputType without action
+   * BookCountOutputType without action
    */
-  export type BookOwnerCountOutputTypeCountFamilyMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookCountOutputTypeCountFamilyMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FamilyMemberWhereInput
-  }
-
-
-  /**
-   * BookOwnerCountOutputType without action
-   */
-  export type BookOwnerCountOutputTypeCountEventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EventWhereInput
   }
 
 
@@ -2574,12 +2564,12 @@ export namespace Prisma {
 
   export type FamilyMemberAvgAggregateOutputType = {
     id: number | null
-    bookOwnerId: number | null
+    bookId: number | null
   }
 
   export type FamilyMemberSumAggregateOutputType = {
     id: number | null
-    bookOwnerId: number | null
+    bookId: number | null
   }
 
   export type FamilyMemberMinAggregateOutputType = {
@@ -2587,7 +2577,7 @@ export namespace Prisma {
     name: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    bookOwnerId: number | null
+    bookId: number | null
   }
 
   export type FamilyMemberMaxAggregateOutputType = {
@@ -2595,7 +2585,7 @@ export namespace Prisma {
     name: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    bookOwnerId: number | null
+    bookId: number | null
   }
 
   export type FamilyMemberCountAggregateOutputType = {
@@ -2603,19 +2593,19 @@ export namespace Prisma {
     name: number
     createdAt: number
     updatedAt: number
-    bookOwnerId: number
+    bookId: number
     _all: number
   }
 
 
   export type FamilyMemberAvgAggregateInputType = {
     id?: true
-    bookOwnerId?: true
+    bookId?: true
   }
 
   export type FamilyMemberSumAggregateInputType = {
     id?: true
-    bookOwnerId?: true
+    bookId?: true
   }
 
   export type FamilyMemberMinAggregateInputType = {
@@ -2623,7 +2613,7 @@ export namespace Prisma {
     name?: true
     createdAt?: true
     updatedAt?: true
-    bookOwnerId?: true
+    bookId?: true
   }
 
   export type FamilyMemberMaxAggregateInputType = {
@@ -2631,7 +2621,7 @@ export namespace Prisma {
     name?: true
     createdAt?: true
     updatedAt?: true
-    bookOwnerId?: true
+    bookId?: true
   }
 
   export type FamilyMemberCountAggregateInputType = {
@@ -2639,7 +2629,7 @@ export namespace Prisma {
     name?: true
     createdAt?: true
     updatedAt?: true
-    bookOwnerId?: true
+    bookId?: true
     _all?: true
   }
 
@@ -2734,7 +2724,7 @@ export namespace Prisma {
     name: string
     createdAt: Date
     updatedAt: Date
-    bookOwnerId: number | null
+    bookId: number
     _count: FamilyMemberCountAggregateOutputType | null
     _avg: FamilyMemberAvgAggregateOutputType | null
     _sum: FamilyMemberSumAggregateOutputType | null
@@ -2761,8 +2751,8 @@ export namespace Prisma {
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    bookOwnerId?: boolean
-    BookOwner?: boolean | FamilyMember$BookOwnerArgs<ExtArgs>
+    bookId?: boolean
+    book?: boolean | BookDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["familyMember"]>
 
   export type FamilyMemberSelectScalar = {
@@ -2770,25 +2760,25 @@ export namespace Prisma {
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    bookOwnerId?: boolean
+    bookId?: boolean
   }
 
   export type FamilyMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    BookOwner?: boolean | FamilyMember$BookOwnerArgs<ExtArgs>
+    book?: boolean | BookDefaultArgs<ExtArgs>
   }
 
 
   export type $FamilyMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "FamilyMember"
     objects: {
-      BookOwner: Prisma.$BookOwnerPayload<ExtArgs> | null
+      book: Prisma.$BookPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       createdAt: Date
       updatedAt: Date
-      bookOwnerId: number | null
+      bookId: number
     }, ExtArgs["result"]["familyMember"]>
     composites: {}
   }
@@ -3154,7 +3144,7 @@ export namespace Prisma {
   export interface Prisma__FamilyMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    BookOwner<T extends FamilyMember$BookOwnerArgs<ExtArgs> = {}>(args?: Subset<T, FamilyMember$BookOwnerArgs<ExtArgs>>): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3188,7 +3178,7 @@ export namespace Prisma {
     readonly name: FieldRef<"FamilyMember", 'String'>
     readonly createdAt: FieldRef<"FamilyMember", 'DateTime'>
     readonly updatedAt: FieldRef<"FamilyMember", 'DateTime'>
-    readonly bookOwnerId: FieldRef<"FamilyMember", 'Int'>
+    readonly bookId: FieldRef<"FamilyMember", 'Int'>
   }
     
 
@@ -3497,22 +3487,6 @@ export namespace Prisma {
      * Filter which FamilyMembers to delete
      */
     where?: FamilyMemberWhereInput
-  }
-
-
-  /**
-   * FamilyMember.BookOwner
-   */
-  export type FamilyMember$BookOwnerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BookOwner
-     */
-    select?: BookOwnerSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BookOwnerInclude<ExtArgs> | null
-    where?: BookOwnerWhereInput
   }
 
 
@@ -4525,13 +4499,11 @@ export namespace Prisma {
   export type EventAvgAggregateOutputType = {
     id: number | null
     createdById: number | null
-    bookOwnerId: number | null
   }
 
   export type EventSumAggregateOutputType = {
     id: number | null
     createdById: number | null
-    bookOwnerId: number | null
   }
 
   export type EventMinAggregateOutputType = {
@@ -4539,7 +4511,6 @@ export namespace Prisma {
     name: string | null
     date: Date | null
     createdById: number | null
-    bookOwnerId: number | null
   }
 
   export type EventMaxAggregateOutputType = {
@@ -4547,7 +4518,6 @@ export namespace Prisma {
     name: string | null
     date: Date | null
     createdById: number | null
-    bookOwnerId: number | null
   }
 
   export type EventCountAggregateOutputType = {
@@ -4555,7 +4525,6 @@ export namespace Prisma {
     name: number
     date: number
     createdById: number
-    bookOwnerId: number
     _all: number
   }
 
@@ -4563,13 +4532,11 @@ export namespace Prisma {
   export type EventAvgAggregateInputType = {
     id?: true
     createdById?: true
-    bookOwnerId?: true
   }
 
   export type EventSumAggregateInputType = {
     id?: true
     createdById?: true
-    bookOwnerId?: true
   }
 
   export type EventMinAggregateInputType = {
@@ -4577,7 +4544,6 @@ export namespace Prisma {
     name?: true
     date?: true
     createdById?: true
-    bookOwnerId?: true
   }
 
   export type EventMaxAggregateInputType = {
@@ -4585,7 +4551,6 @@ export namespace Prisma {
     name?: true
     date?: true
     createdById?: true
-    bookOwnerId?: true
   }
 
   export type EventCountAggregateInputType = {
@@ -4593,7 +4558,6 @@ export namespace Prisma {
     name?: true
     date?: true
     createdById?: true
-    bookOwnerId?: true
     _all?: true
   }
 
@@ -4688,7 +4652,6 @@ export namespace Prisma {
     name: string
     date: Date
     createdById: number | null
-    bookOwnerId: number | null
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
     _sum: EventSumAggregateOutputType | null
@@ -4715,8 +4678,6 @@ export namespace Prisma {
     name?: boolean
     date?: boolean
     createdById?: boolean
-    bookOwnerId?: boolean
-    BookOwner?: boolean | Event$BookOwnerArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectScalar = {
@@ -4724,25 +4685,17 @@ export namespace Prisma {
     name?: boolean
     date?: boolean
     createdById?: boolean
-    bookOwnerId?: boolean
-  }
-
-  export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    BookOwner?: boolean | Event$BookOwnerArgs<ExtArgs>
   }
 
 
   export type $EventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Event"
-    objects: {
-      BookOwner: Prisma.$BookOwnerPayload<ExtArgs> | null
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       date: Date
       createdById: number | null
-      bookOwnerId: number | null
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -5108,7 +5061,6 @@ export namespace Prisma {
   export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    BookOwner<T extends Event$BookOwnerArgs<ExtArgs> = {}>(args?: Subset<T, Event$BookOwnerArgs<ExtArgs>>): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5142,7 +5094,6 @@ export namespace Prisma {
     readonly name: FieldRef<"Event", 'String'>
     readonly date: FieldRef<"Event", 'DateTime'>
     readonly createdById: FieldRef<"Event", 'Int'>
-    readonly bookOwnerId: FieldRef<"Event", 'Int'>
   }
     
 
@@ -5156,10 +5107,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Event
      */
     select?: EventSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
     /**
      * Filter, which Event to fetch.
      */
@@ -5176,10 +5123,6 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter, which Event to fetch.
      */
     where: EventWhereUniqueInput
@@ -5194,10 +5137,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Event
      */
     select?: EventSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
     /**
      * Filter, which Event to fetch.
      */
@@ -5244,10 +5183,6 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter, which Event to fetch.
      */
     where?: EventWhereInput
@@ -5293,10 +5228,6 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter, which Events to fetch.
      */
     where?: EventWhereInput
@@ -5337,10 +5268,6 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * The data needed to create a Event.
      */
     data: XOR<EventCreateInput, EventUncheckedCreateInput>
@@ -5367,10 +5294,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Event
      */
     select?: EventSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
     /**
      * The data needed to update a Event.
      */
@@ -5406,10 +5329,6 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * The filter to search for the Event to update in case it exists.
      */
     where: EventWhereUniqueInput
@@ -5433,10 +5352,6 @@ export namespace Prisma {
      */
     select?: EventSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter which Event to delete.
      */
     where: EventWhereUniqueInput
@@ -5455,22 +5370,6 @@ export namespace Prisma {
 
 
   /**
-   * Event.BookOwner
-   */
-  export type Event$BookOwnerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BookOwner
-     */
-    select?: BookOwnerSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BookOwnerInclude<ExtArgs> | null
-    where?: BookOwnerWhereInput
-  }
-
-
-  /**
    * Event without action
    */
   export type EventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5478,10 +5377,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Event
      */
     select?: EventSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
   }
 
 
@@ -5500,44 +5395,46 @@ export namespace Prisma {
 
   export type BookAvgAggregateOutputType = {
     id: number | null
+    price: Decimal | null
     themeId: number | null
     userId: number | null
-    bookOwnerId: number | null
+    bookAudienceId: number | null
   }
 
   export type BookSumAggregateOutputType = {
     id: number | null
+    price: Decimal | null
     themeId: number | null
     userId: number | null
-    bookOwnerId: number | null
+    bookAudienceId: number | null
   }
 
   export type BookMinAggregateOutputType = {
     id: number | null
     name: string | null
     slug: string | null
-    price: Date | null
+    price: Decimal | null
     description: string | null
     imageUrl: string | null
     themeId: number | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: number | null
-    bookOwnerId: number | null
+    bookAudienceId: number | null
   }
 
   export type BookMaxAggregateOutputType = {
     id: number | null
     name: string | null
     slug: string | null
-    price: Date | null
+    price: Decimal | null
     description: string | null
     imageUrl: string | null
     themeId: number | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: number | null
-    bookOwnerId: number | null
+    bookAudienceId: number | null
   }
 
   export type BookCountAggregateOutputType = {
@@ -5551,23 +5448,25 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     userId: number
-    bookOwnerId: number
+    bookAudienceId: number
     _all: number
   }
 
 
   export type BookAvgAggregateInputType = {
     id?: true
+    price?: true
     themeId?: true
     userId?: true
-    bookOwnerId?: true
+    bookAudienceId?: true
   }
 
   export type BookSumAggregateInputType = {
     id?: true
+    price?: true
     themeId?: true
     userId?: true
-    bookOwnerId?: true
+    bookAudienceId?: true
   }
 
   export type BookMinAggregateInputType = {
@@ -5581,7 +5480,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userId?: true
-    bookOwnerId?: true
+    bookAudienceId?: true
   }
 
   export type BookMaxAggregateInputType = {
@@ -5595,7 +5494,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userId?: true
-    bookOwnerId?: true
+    bookAudienceId?: true
   }
 
   export type BookCountAggregateInputType = {
@@ -5609,7 +5508,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     userId?: true
-    bookOwnerId?: true
+    bookAudienceId?: true
     _all?: true
   }
 
@@ -5703,14 +5602,14 @@ export namespace Prisma {
     id: number
     name: string
     slug: string
-    price: Date
+    price: Decimal
     description: string
     imageUrl: string
-    themeId: number
+    themeId: number | null
     createdAt: Date
     updatedAt: Date
-    userId: number | null
-    bookOwnerId: number
+    userId: number
+    bookAudienceId: number | null
     _count: BookCountAggregateOutputType | null
     _avg: BookAvgAggregateOutputType | null
     _sum: BookSumAggregateOutputType | null
@@ -5743,10 +5642,12 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
-    bookOwnerId?: boolean
-    theme?: boolean | ThemeDefaultArgs<ExtArgs>
-    User?: boolean | Book$UserArgs<ExtArgs>
-    BookOwner?: boolean | Book$BookOwnerArgs<ExtArgs>
+    bookAudienceId?: boolean
+    theme?: boolean | Book$themeArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    BookAudience?: boolean | Book$BookAudienceArgs<ExtArgs>
+    FamilyMember?: boolean | Book$FamilyMemberArgs<ExtArgs>
+    _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["book"]>
 
   export type BookSelectScalar = {
@@ -5760,35 +5661,38 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
-    bookOwnerId?: boolean
+    bookAudienceId?: boolean
   }
 
   export type BookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    theme?: boolean | ThemeDefaultArgs<ExtArgs>
-    User?: boolean | Book$UserArgs<ExtArgs>
-    BookOwner?: boolean | Book$BookOwnerArgs<ExtArgs>
+    theme?: boolean | Book$themeArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    BookAudience?: boolean | Book$BookAudienceArgs<ExtArgs>
+    FamilyMember?: boolean | Book$FamilyMemberArgs<ExtArgs>
+    _count?: boolean | BookCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
   export type $BookPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Book"
     objects: {
-      theme: Prisma.$ThemePayload<ExtArgs>
-      User: Prisma.$UserPayload<ExtArgs> | null
-      BookOwner: Prisma.$BookOwnerPayload<ExtArgs> | null
+      theme: Prisma.$ThemePayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
+      BookAudience: Prisma.$BookAudiencePayload<ExtArgs> | null
+      FamilyMember: Prisma.$FamilyMemberPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       slug: string
-      price: Date
+      price: Prisma.Decimal
       description: string
       imageUrl: string
-      themeId: number
+      themeId: number | null
       createdAt: Date
       updatedAt: Date
-      userId: number | null
-      bookOwnerId: number
+      userId: number
+      bookAudienceId: number | null
     }, ExtArgs["result"]["book"]>
     composites: {}
   }
@@ -6154,11 +6058,13 @@ export namespace Prisma {
   export interface Prisma__BookClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    theme<T extends ThemeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ThemeDefaultArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    theme<T extends Book$themeArgs<ExtArgs> = {}>(args?: Subset<T, Book$themeArgs<ExtArgs>>): Prisma__ThemeClient<$Result.GetResult<Prisma.$ThemePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
-    User<T extends Book$UserArgs<ExtArgs> = {}>(args?: Subset<T, Book$UserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    BookOwner<T extends Book$BookOwnerArgs<ExtArgs> = {}>(args?: Subset<T, Book$BookOwnerArgs<ExtArgs>>): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    BookAudience<T extends Book$BookAudienceArgs<ExtArgs> = {}>(args?: Subset<T, Book$BookAudienceArgs<ExtArgs>>): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    FamilyMember<T extends Book$FamilyMemberArgs<ExtArgs> = {}>(args?: Subset<T, Book$FamilyMemberArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FamilyMemberPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6191,14 +6097,14 @@ export namespace Prisma {
     readonly id: FieldRef<"Book", 'Int'>
     readonly name: FieldRef<"Book", 'String'>
     readonly slug: FieldRef<"Book", 'String'>
-    readonly price: FieldRef<"Book", 'DateTime'>
+    readonly price: FieldRef<"Book", 'Decimal'>
     readonly description: FieldRef<"Book", 'String'>
     readonly imageUrl: FieldRef<"Book", 'String'>
     readonly themeId: FieldRef<"Book", 'Int'>
     readonly createdAt: FieldRef<"Book", 'DateTime'>
     readonly updatedAt: FieldRef<"Book", 'DateTime'>
     readonly userId: FieldRef<"Book", 'Int'>
-    readonly bookOwnerId: FieldRef<"Book", 'Int'>
+    readonly bookAudienceId: FieldRef<"Book", 'Int'>
   }
     
 
@@ -6511,34 +6417,55 @@ export namespace Prisma {
 
 
   /**
-   * Book.User
+   * Book.theme
    */
-  export type Book$UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Book$themeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Theme
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ThemeSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
+    include?: ThemeInclude<ExtArgs> | null
+    where?: ThemeWhereInput
   }
 
 
   /**
-   * Book.BookOwner
+   * Book.BookAudience
    */
-  export type Book$BookOwnerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Book$BookAudienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
-    where?: BookOwnerWhereInput
+    include?: BookAudienceInclude<ExtArgs> | null
+    where?: BookAudienceWhereInput
+  }
+
+
+  /**
+   * Book.FamilyMember
+   */
+  export type Book$FamilyMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FamilyMember
+     */
+    select?: FamilyMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: FamilyMemberInclude<ExtArgs> | null
+    where?: FamilyMemberWhereInput
+    orderBy?: FamilyMemberOrderByWithRelationInput | FamilyMemberOrderByWithRelationInput[]
+    cursor?: FamilyMemberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FamilyMemberScalarFieldEnum | FamilyMemberScalarFieldEnum[]
   }
 
 
@@ -6559,39 +6486,30 @@ export namespace Prisma {
 
 
   /**
-   * Model BookOwner
+   * Model BookAudience
    */
 
-  export type AggregateBookOwner = {
-    _count: BookOwnerCountAggregateOutputType | null
-    _avg: BookOwnerAvgAggregateOutputType | null
-    _sum: BookOwnerSumAggregateOutputType | null
-    _min: BookOwnerMinAggregateOutputType | null
-    _max: BookOwnerMaxAggregateOutputType | null
+  export type AggregateBookAudience = {
+    _count: BookAudienceCountAggregateOutputType | null
+    _avg: BookAudienceAvgAggregateOutputType | null
+    _sum: BookAudienceSumAggregateOutputType | null
+    _min: BookAudienceMinAggregateOutputType | null
+    _max: BookAudienceMaxAggregateOutputType | null
   }
 
-  export type BookOwnerAvgAggregateOutputType = {
+  export type BookAudienceAvgAggregateOutputType = {
     id: number | null
     age: number | null
     bookId: number | null
   }
 
-  export type BookOwnerSumAggregateOutputType = {
+  export type BookAudienceSumAggregateOutputType = {
     id: number | null
     age: number | null
     bookId: number | null
   }
 
-  export type BookOwnerMinAggregateOutputType = {
-    id: number | null
-    gender: $Enums.EnumGender | null
-    glasses: boolean | null
-    age: number | null
-    hairStyle: $Enums.EnumHairStyle | null
-    bookId: number | null
-  }
-
-  export type BookOwnerMaxAggregateOutputType = {
+  export type BookAudienceMinAggregateOutputType = {
     id: number | null
     gender: $Enums.EnumGender | null
     glasses: boolean | null
@@ -6600,7 +6518,16 @@ export namespace Prisma {
     bookId: number | null
   }
 
-  export type BookOwnerCountAggregateOutputType = {
+  export type BookAudienceMaxAggregateOutputType = {
+    id: number | null
+    gender: $Enums.EnumGender | null
+    glasses: boolean | null
+    age: number | null
+    hairStyle: $Enums.EnumHairStyle | null
+    bookId: number | null
+  }
+
+  export type BookAudienceCountAggregateOutputType = {
     id: number
     gender: number
     glasses: number
@@ -6611,28 +6538,19 @@ export namespace Prisma {
   }
 
 
-  export type BookOwnerAvgAggregateInputType = {
+  export type BookAudienceAvgAggregateInputType = {
     id?: true
     age?: true
     bookId?: true
   }
 
-  export type BookOwnerSumAggregateInputType = {
+  export type BookAudienceSumAggregateInputType = {
     id?: true
     age?: true
     bookId?: true
   }
 
-  export type BookOwnerMinAggregateInputType = {
-    id?: true
-    gender?: true
-    glasses?: true
-    age?: true
-    hairStyle?: true
-    bookId?: true
-  }
-
-  export type BookOwnerMaxAggregateInputType = {
+  export type BookAudienceMinAggregateInputType = {
     id?: true
     gender?: true
     glasses?: true
@@ -6641,7 +6559,16 @@ export namespace Prisma {
     bookId?: true
   }
 
-  export type BookOwnerCountAggregateInputType = {
+  export type BookAudienceMaxAggregateInputType = {
+    id?: true
+    gender?: true
+    glasses?: true
+    age?: true
+    hairStyle?: true
+    bookId?: true
+  }
+
+  export type BookAudienceCountAggregateInputType = {
     id?: true
     gender?: true
     glasses?: true
@@ -6651,134 +6578,131 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type BookOwnerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which BookOwner to aggregate.
+     * Filter which BookAudience to aggregate.
      */
-    where?: BookOwnerWhereInput
+    where?: BookAudienceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BookOwners to fetch.
+     * Determine the order of BookAudiences to fetch.
      */
-    orderBy?: BookOwnerOrderByWithRelationInput | BookOwnerOrderByWithRelationInput[]
+    orderBy?: BookAudienceOrderByWithRelationInput | BookAudienceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: BookOwnerWhereUniqueInput
+    cursor?: BookAudienceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BookOwners from the position of the cursor.
+     * Take `±n` BookAudiences from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BookOwners.
+     * Skip the first `n` BookAudiences.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned BookOwners
+     * Count returned BookAudiences
     **/
-    _count?: true | BookOwnerCountAggregateInputType
+    _count?: true | BookAudienceCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: BookOwnerAvgAggregateInputType
+    _avg?: BookAudienceAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: BookOwnerSumAggregateInputType
+    _sum?: BookAudienceSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: BookOwnerMinAggregateInputType
+    _min?: BookAudienceMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: BookOwnerMaxAggregateInputType
+    _max?: BookAudienceMaxAggregateInputType
   }
 
-  export type GetBookOwnerAggregateType<T extends BookOwnerAggregateArgs> = {
-        [P in keyof T & keyof AggregateBookOwner]: P extends '_count' | 'count'
+  export type GetBookAudienceAggregateType<T extends BookAudienceAggregateArgs> = {
+        [P in keyof T & keyof AggregateBookAudience]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateBookOwner[P]>
-      : GetScalarType<T[P], AggregateBookOwner[P]>
+        : GetScalarType<T[P], AggregateBookAudience[P]>
+      : GetScalarType<T[P], AggregateBookAudience[P]>
   }
 
 
 
 
-  export type BookOwnerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BookOwnerWhereInput
-    orderBy?: BookOwnerOrderByWithAggregationInput | BookOwnerOrderByWithAggregationInput[]
-    by: BookOwnerScalarFieldEnum[] | BookOwnerScalarFieldEnum
-    having?: BookOwnerScalarWhereWithAggregatesInput
+  export type BookAudienceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookAudienceWhereInput
+    orderBy?: BookAudienceOrderByWithAggregationInput | BookAudienceOrderByWithAggregationInput[]
+    by: BookAudienceScalarFieldEnum[] | BookAudienceScalarFieldEnum
+    having?: BookAudienceScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: BookOwnerCountAggregateInputType | true
-    _avg?: BookOwnerAvgAggregateInputType
-    _sum?: BookOwnerSumAggregateInputType
-    _min?: BookOwnerMinAggregateInputType
-    _max?: BookOwnerMaxAggregateInputType
+    _count?: BookAudienceCountAggregateInputType | true
+    _avg?: BookAudienceAvgAggregateInputType
+    _sum?: BookAudienceSumAggregateInputType
+    _min?: BookAudienceMinAggregateInputType
+    _max?: BookAudienceMaxAggregateInputType
   }
 
-  export type BookOwnerGroupByOutputType = {
+  export type BookAudienceGroupByOutputType = {
     id: number
     gender: $Enums.EnumGender | null
     glasses: boolean | null
     age: number | null
     hairStyle: $Enums.EnumHairStyle | null
     bookId: number
-    _count: BookOwnerCountAggregateOutputType | null
-    _avg: BookOwnerAvgAggregateOutputType | null
-    _sum: BookOwnerSumAggregateOutputType | null
-    _min: BookOwnerMinAggregateOutputType | null
-    _max: BookOwnerMaxAggregateOutputType | null
+    _count: BookAudienceCountAggregateOutputType | null
+    _avg: BookAudienceAvgAggregateOutputType | null
+    _sum: BookAudienceSumAggregateOutputType | null
+    _min: BookAudienceMinAggregateOutputType | null
+    _max: BookAudienceMaxAggregateOutputType | null
   }
 
-  type GetBookOwnerGroupByPayload<T extends BookOwnerGroupByArgs> = Prisma.PrismaPromise<
+  type GetBookAudienceGroupByPayload<T extends BookAudienceGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<BookOwnerGroupByOutputType, T['by']> &
+      PickEnumerable<BookAudienceGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof BookOwnerGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof BookAudienceGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], BookOwnerGroupByOutputType[P]>
-            : GetScalarType<T[P], BookOwnerGroupByOutputType[P]>
+              : GetScalarType<T[P], BookAudienceGroupByOutputType[P]>
+            : GetScalarType<T[P], BookAudienceGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type BookOwnerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BookAudienceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     gender?: boolean
     glasses?: boolean
     age?: boolean
     hairStyle?: boolean
     bookId?: boolean
-    familyMembers?: boolean | BookOwner$familyMembersArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
-    events?: boolean | BookOwner$eventsArgs<ExtArgs>
-    _count?: boolean | BookOwnerCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bookOwner"]>
+  }, ExtArgs["result"]["bookAudience"]>
 
-  export type BookOwnerSelectScalar = {
+  export type BookAudienceSelectScalar = {
     id?: boolean
     gender?: boolean
     glasses?: boolean
@@ -6787,20 +6711,15 @@ export namespace Prisma {
     bookId?: boolean
   }
 
-  export type BookOwnerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    familyMembers?: boolean | BookOwner$familyMembersArgs<ExtArgs>
+  export type BookAudienceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     book?: boolean | BookDefaultArgs<ExtArgs>
-    events?: boolean | BookOwner$eventsArgs<ExtArgs>
-    _count?: boolean | BookOwnerCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $BookOwnerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "BookOwner"
+  export type $BookAudiencePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BookAudience"
     objects: {
-      familyMembers: Prisma.$FamilyMemberPayload<ExtArgs>[]
       book: Prisma.$BookPayload<ExtArgs>
-      events: Prisma.$EventPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6809,160 +6728,160 @@ export namespace Prisma {
       age: number | null
       hairStyle: $Enums.EnumHairStyle | null
       bookId: number
-    }, ExtArgs["result"]["bookOwner"]>
+    }, ExtArgs["result"]["bookAudience"]>
     composites: {}
   }
 
 
-  type BookOwnerGetPayload<S extends boolean | null | undefined | BookOwnerDefaultArgs> = $Result.GetResult<Prisma.$BookOwnerPayload, S>
+  type BookAudienceGetPayload<S extends boolean | null | undefined | BookAudienceDefaultArgs> = $Result.GetResult<Prisma.$BookAudiencePayload, S>
 
-  type BookOwnerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<BookOwnerFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: BookOwnerCountAggregateInputType | true
+  type BookAudienceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BookAudienceFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BookAudienceCountAggregateInputType | true
     }
 
-  export interface BookOwnerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BookOwner'], meta: { name: 'BookOwner' } }
+  export interface BookAudienceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BookAudience'], meta: { name: 'BookAudience' } }
     /**
-     * Find zero or one BookOwner that matches the filter.
-     * @param {BookOwnerFindUniqueArgs} args - Arguments to find a BookOwner
+     * Find zero or one BookAudience that matches the filter.
+     * @param {BookAudienceFindUniqueArgs} args - Arguments to find a BookAudience
      * @example
-     * // Get one BookOwner
-     * const bookOwner = await prisma.bookOwner.findUnique({
+     * // Get one BookAudience
+     * const bookAudience = await prisma.bookAudience.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends BookOwnerFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, BookOwnerFindUniqueArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends BookAudienceFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, BookAudienceFindUniqueArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one BookOwner that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one BookAudience that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {BookOwnerFindUniqueOrThrowArgs} args - Arguments to find a BookOwner
+     * @param {BookAudienceFindUniqueOrThrowArgs} args - Arguments to find a BookAudience
      * @example
-     * // Get one BookOwner
-     * const bookOwner = await prisma.bookOwner.findUniqueOrThrow({
+     * // Get one BookAudience
+     * const bookAudience = await prisma.bookAudience.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends BookOwnerFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BookOwnerFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends BookAudienceFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BookAudienceFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first BookOwner that matches the filter.
+     * Find the first BookAudience that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerFindFirstArgs} args - Arguments to find a BookOwner
+     * @param {BookAudienceFindFirstArgs} args - Arguments to find a BookAudience
      * @example
-     * // Get one BookOwner
-     * const bookOwner = await prisma.bookOwner.findFirst({
+     * // Get one BookAudience
+     * const bookAudience = await prisma.bookAudience.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends BookOwnerFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, BookOwnerFindFirstArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends BookAudienceFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, BookAudienceFindFirstArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first BookOwner that matches the filter or
+     * Find the first BookAudience that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerFindFirstOrThrowArgs} args - Arguments to find a BookOwner
+     * @param {BookAudienceFindFirstOrThrowArgs} args - Arguments to find a BookAudience
      * @example
-     * // Get one BookOwner
-     * const bookOwner = await prisma.bookOwner.findFirstOrThrow({
+     * // Get one BookAudience
+     * const bookAudience = await prisma.bookAudience.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends BookOwnerFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, BookOwnerFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends BookAudienceFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BookAudienceFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more BookOwners that matches the filter.
+     * Find zero or more BookAudiences that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {BookAudienceFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all BookOwners
-     * const bookOwners = await prisma.bookOwner.findMany()
+     * // Get all BookAudiences
+     * const bookAudiences = await prisma.bookAudience.findMany()
      * 
-     * // Get first 10 BookOwners
-     * const bookOwners = await prisma.bookOwner.findMany({ take: 10 })
+     * // Get first 10 BookAudiences
+     * const bookAudiences = await prisma.bookAudience.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const bookOwnerWithIdOnly = await prisma.bookOwner.findMany({ select: { id: true } })
+     * const bookAudienceWithIdOnly = await prisma.bookAudience.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends BookOwnerFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BookOwnerFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends BookAudienceFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BookAudienceFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a BookOwner.
-     * @param {BookOwnerCreateArgs} args - Arguments to create a BookOwner.
+     * Create a BookAudience.
+     * @param {BookAudienceCreateArgs} args - Arguments to create a BookAudience.
      * @example
-     * // Create one BookOwner
-     * const BookOwner = await prisma.bookOwner.create({
+     * // Create one BookAudience
+     * const BookAudience = await prisma.bookAudience.create({
      *   data: {
-     *     // ... data to create a BookOwner
+     *     // ... data to create a BookAudience
      *   }
      * })
      * 
     **/
-    create<T extends BookOwnerCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, BookOwnerCreateArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends BookAudienceCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, BookAudienceCreateArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many BookOwners.
-     *     @param {BookOwnerCreateManyArgs} args - Arguments to create many BookOwners.
+     * Create many BookAudiences.
+     *     @param {BookAudienceCreateManyArgs} args - Arguments to create many BookAudiences.
      *     @example
-     *     // Create many BookOwners
-     *     const bookOwner = await prisma.bookOwner.createMany({
+     *     // Create many BookAudiences
+     *     const bookAudience = await prisma.bookAudience.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends BookOwnerCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BookOwnerCreateManyArgs<ExtArgs>>
+    createMany<T extends BookAudienceCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BookAudienceCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a BookOwner.
-     * @param {BookOwnerDeleteArgs} args - Arguments to delete one BookOwner.
+     * Delete a BookAudience.
+     * @param {BookAudienceDeleteArgs} args - Arguments to delete one BookAudience.
      * @example
-     * // Delete one BookOwner
-     * const BookOwner = await prisma.bookOwner.delete({
+     * // Delete one BookAudience
+     * const BookAudience = await prisma.bookAudience.delete({
      *   where: {
-     *     // ... filter to delete one BookOwner
+     *     // ... filter to delete one BookAudience
      *   }
      * })
      * 
     **/
-    delete<T extends BookOwnerDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, BookOwnerDeleteArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends BookAudienceDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, BookAudienceDeleteArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one BookOwner.
-     * @param {BookOwnerUpdateArgs} args - Arguments to update one BookOwner.
+     * Update one BookAudience.
+     * @param {BookAudienceUpdateArgs} args - Arguments to update one BookAudience.
      * @example
-     * // Update one BookOwner
-     * const bookOwner = await prisma.bookOwner.update({
+     * // Update one BookAudience
+     * const bookAudience = await prisma.bookAudience.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6972,34 +6891,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends BookOwnerUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, BookOwnerUpdateArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends BookAudienceUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, BookAudienceUpdateArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more BookOwners.
-     * @param {BookOwnerDeleteManyArgs} args - Arguments to filter BookOwners to delete.
+     * Delete zero or more BookAudiences.
+     * @param {BookAudienceDeleteManyArgs} args - Arguments to filter BookAudiences to delete.
      * @example
-     * // Delete a few BookOwners
-     * const { count } = await prisma.bookOwner.deleteMany({
+     * // Delete a few BookAudiences
+     * const { count } = await prisma.bookAudience.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends BookOwnerDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, BookOwnerDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends BookAudienceDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BookAudienceDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more BookOwners.
+     * Update zero or more BookAudiences.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {BookAudienceUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many BookOwners
-     * const bookOwner = await prisma.bookOwner.updateMany({
+     * // Update many BookAudiences
+     * const bookAudience = await prisma.bookAudience.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7009,59 +6928,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends BookOwnerUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, BookOwnerUpdateManyArgs<ExtArgs>>
+    updateMany<T extends BookAudienceUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, BookAudienceUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one BookOwner.
-     * @param {BookOwnerUpsertArgs} args - Arguments to update or create a BookOwner.
+     * Create or update one BookAudience.
+     * @param {BookAudienceUpsertArgs} args - Arguments to update or create a BookAudience.
      * @example
-     * // Update or create a BookOwner
-     * const bookOwner = await prisma.bookOwner.upsert({
+     * // Update or create a BookAudience
+     * const bookAudience = await prisma.bookAudience.upsert({
      *   create: {
-     *     // ... data to create a BookOwner
+     *     // ... data to create a BookAudience
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the BookOwner we want to update
+     *     // ... the filter for the BookAudience we want to update
      *   }
      * })
     **/
-    upsert<T extends BookOwnerUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, BookOwnerUpsertArgs<ExtArgs>>
-    ): Prisma__BookOwnerClient<$Result.GetResult<Prisma.$BookOwnerPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends BookAudienceUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, BookAudienceUpsertArgs<ExtArgs>>
+    ): Prisma__BookAudienceClient<$Result.GetResult<Prisma.$BookAudiencePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of BookOwners.
+     * Count the number of BookAudiences.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerCountArgs} args - Arguments to filter BookOwners to count.
+     * @param {BookAudienceCountArgs} args - Arguments to filter BookAudiences to count.
      * @example
-     * // Count the number of BookOwners
-     * const count = await prisma.bookOwner.count({
+     * // Count the number of BookAudiences
+     * const count = await prisma.bookAudience.count({
      *   where: {
-     *     // ... the filter for the BookOwners we want to count
+     *     // ... the filter for the BookAudiences we want to count
      *   }
      * })
     **/
-    count<T extends BookOwnerCountArgs>(
-      args?: Subset<T, BookOwnerCountArgs>,
+    count<T extends BookAudienceCountArgs>(
+      args?: Subset<T, BookAudienceCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], BookOwnerCountAggregateOutputType>
+          : GetScalarType<T['select'], BookAudienceCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a BookOwner.
+     * Allows you to perform aggregations operations on a BookAudience.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {BookAudienceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7081,13 +7000,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends BookOwnerAggregateArgs>(args: Subset<T, BookOwnerAggregateArgs>): Prisma.PrismaPromise<GetBookOwnerAggregateType<T>>
+    aggregate<T extends BookAudienceAggregateArgs>(args: Subset<T, BookAudienceAggregateArgs>): Prisma.PrismaPromise<GetBookAudienceAggregateType<T>>
 
     /**
-     * Group by BookOwner.
+     * Group by BookAudience.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookOwnerGroupByArgs} args - Group by arguments.
+     * @param {BookAudienceGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7102,14 +7021,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends BookOwnerGroupByArgs,
+      T extends BookAudienceGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BookOwnerGroupByArgs['orderBy'] }
-        : { orderBy?: BookOwnerGroupByArgs['orderBy'] },
+        ? { orderBy: BookAudienceGroupByArgs['orderBy'] }
+        : { orderBy?: BookAudienceGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7158,27 +7077,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, BookOwnerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookOwnerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, BookAudienceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookAudienceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the BookOwner model
+   * Fields of the BookAudience model
    */
-  readonly fields: BookOwnerFieldRefs;
+  readonly fields: BookAudienceFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for BookOwner.
+   * The delegate class that acts as a "Promise-like" for BookAudience.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__BookOwnerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__BookAudienceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    familyMembers<T extends BookOwner$familyMembersArgs<ExtArgs> = {}>(args?: Subset<T, BookOwner$familyMembersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FamilyMemberPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     book<T extends BookDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookDefaultArgs<ExtArgs>>): Prisma__BookClient<$Result.GetResult<Prisma.$BookPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    events<T extends BookOwner$eventsArgs<ExtArgs> = {}>(args?: Subset<T, BookOwner$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7205,380 +7120,338 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the BookOwner model
+   * Fields of the BookAudience model
    */ 
-  interface BookOwnerFieldRefs {
-    readonly id: FieldRef<"BookOwner", 'Int'>
-    readonly gender: FieldRef<"BookOwner", 'EnumGender'>
-    readonly glasses: FieldRef<"BookOwner", 'Boolean'>
-    readonly age: FieldRef<"BookOwner", 'Int'>
-    readonly hairStyle: FieldRef<"BookOwner", 'EnumHairStyle'>
-    readonly bookId: FieldRef<"BookOwner", 'Int'>
+  interface BookAudienceFieldRefs {
+    readonly id: FieldRef<"BookAudience", 'Int'>
+    readonly gender: FieldRef<"BookAudience", 'EnumGender'>
+    readonly glasses: FieldRef<"BookAudience", 'Boolean'>
+    readonly age: FieldRef<"BookAudience", 'Int'>
+    readonly hairStyle: FieldRef<"BookAudience", 'EnumHairStyle'>
+    readonly bookId: FieldRef<"BookAudience", 'Int'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * BookOwner findUnique
+   * BookAudience findUnique
    */
-  export type BookOwnerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * Filter, which BookOwner to fetch.
+     * Filter, which BookAudience to fetch.
      */
-    where: BookOwnerWhereUniqueInput
+    where: BookAudienceWhereUniqueInput
   }
 
 
   /**
-   * BookOwner findUniqueOrThrow
+   * BookAudience findUniqueOrThrow
    */
-  export type BookOwnerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * Filter, which BookOwner to fetch.
+     * Filter, which BookAudience to fetch.
      */
-    where: BookOwnerWhereUniqueInput
+    where: BookAudienceWhereUniqueInput
   }
 
 
   /**
-   * BookOwner findFirst
+   * BookAudience findFirst
    */
-  export type BookOwnerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * Filter, which BookOwner to fetch.
+     * Filter, which BookAudience to fetch.
      */
-    where?: BookOwnerWhereInput
+    where?: BookAudienceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BookOwners to fetch.
+     * Determine the order of BookAudiences to fetch.
      */
-    orderBy?: BookOwnerOrderByWithRelationInput | BookOwnerOrderByWithRelationInput[]
+    orderBy?: BookAudienceOrderByWithRelationInput | BookAudienceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for BookOwners.
+     * Sets the position for searching for BookAudiences.
      */
-    cursor?: BookOwnerWhereUniqueInput
+    cursor?: BookAudienceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BookOwners from the position of the cursor.
+     * Take `±n` BookAudiences from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BookOwners.
+     * Skip the first `n` BookAudiences.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of BookOwners.
+     * Filter by unique combinations of BookAudiences.
      */
-    distinct?: BookOwnerScalarFieldEnum | BookOwnerScalarFieldEnum[]
+    distinct?: BookAudienceScalarFieldEnum | BookAudienceScalarFieldEnum[]
   }
 
 
   /**
-   * BookOwner findFirstOrThrow
+   * BookAudience findFirstOrThrow
    */
-  export type BookOwnerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * Filter, which BookOwner to fetch.
+     * Filter, which BookAudience to fetch.
      */
-    where?: BookOwnerWhereInput
+    where?: BookAudienceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BookOwners to fetch.
+     * Determine the order of BookAudiences to fetch.
      */
-    orderBy?: BookOwnerOrderByWithRelationInput | BookOwnerOrderByWithRelationInput[]
+    orderBy?: BookAudienceOrderByWithRelationInput | BookAudienceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for BookOwners.
+     * Sets the position for searching for BookAudiences.
      */
-    cursor?: BookOwnerWhereUniqueInput
+    cursor?: BookAudienceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BookOwners from the position of the cursor.
+     * Take `±n` BookAudiences from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BookOwners.
+     * Skip the first `n` BookAudiences.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of BookOwners.
+     * Filter by unique combinations of BookAudiences.
      */
-    distinct?: BookOwnerScalarFieldEnum | BookOwnerScalarFieldEnum[]
+    distinct?: BookAudienceScalarFieldEnum | BookAudienceScalarFieldEnum[]
   }
 
 
   /**
-   * BookOwner findMany
+   * BookAudience findMany
    */
-  export type BookOwnerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * Filter, which BookOwners to fetch.
+     * Filter, which BookAudiences to fetch.
      */
-    where?: BookOwnerWhereInput
+    where?: BookAudienceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of BookOwners to fetch.
+     * Determine the order of BookAudiences to fetch.
      */
-    orderBy?: BookOwnerOrderByWithRelationInput | BookOwnerOrderByWithRelationInput[]
+    orderBy?: BookAudienceOrderByWithRelationInput | BookAudienceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing BookOwners.
+     * Sets the position for listing BookAudiences.
      */
-    cursor?: BookOwnerWhereUniqueInput
+    cursor?: BookAudienceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` BookOwners from the position of the cursor.
+     * Take `±n` BookAudiences from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` BookOwners.
+     * Skip the first `n` BookAudiences.
      */
     skip?: number
-    distinct?: BookOwnerScalarFieldEnum | BookOwnerScalarFieldEnum[]
+    distinct?: BookAudienceScalarFieldEnum | BookAudienceScalarFieldEnum[]
   }
 
 
   /**
-   * BookOwner create
+   * BookAudience create
    */
-  export type BookOwnerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * The data needed to create a BookOwner.
+     * The data needed to create a BookAudience.
      */
-    data: XOR<BookOwnerCreateInput, BookOwnerUncheckedCreateInput>
+    data: XOR<BookAudienceCreateInput, BookAudienceUncheckedCreateInput>
   }
 
 
   /**
-   * BookOwner createMany
+   * BookAudience createMany
    */
-  export type BookOwnerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many BookOwners.
+     * The data used to create many BookAudiences.
      */
-    data: BookOwnerCreateManyInput | BookOwnerCreateManyInput[]
+    data: BookAudienceCreateManyInput | BookAudienceCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * BookOwner update
+   * BookAudience update
    */
-  export type BookOwnerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * The data needed to update a BookOwner.
+     * The data needed to update a BookAudience.
      */
-    data: XOR<BookOwnerUpdateInput, BookOwnerUncheckedUpdateInput>
+    data: XOR<BookAudienceUpdateInput, BookAudienceUncheckedUpdateInput>
     /**
-     * Choose, which BookOwner to update.
+     * Choose, which BookAudience to update.
      */
-    where: BookOwnerWhereUniqueInput
+    where: BookAudienceWhereUniqueInput
   }
 
 
   /**
-   * BookOwner updateMany
+   * BookAudience updateMany
    */
-  export type BookOwnerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update BookOwners.
+     * The data used to update BookAudiences.
      */
-    data: XOR<BookOwnerUpdateManyMutationInput, BookOwnerUncheckedUpdateManyInput>
+    data: XOR<BookAudienceUpdateManyMutationInput, BookAudienceUncheckedUpdateManyInput>
     /**
-     * Filter which BookOwners to update
+     * Filter which BookAudiences to update
      */
-    where?: BookOwnerWhereInput
+    where?: BookAudienceWhereInput
   }
 
 
   /**
-   * BookOwner upsert
+   * BookAudience upsert
    */
-  export type BookOwnerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * The filter to search for the BookOwner to update in case it exists.
+     * The filter to search for the BookAudience to update in case it exists.
      */
-    where: BookOwnerWhereUniqueInput
+    where: BookAudienceWhereUniqueInput
     /**
-     * In case the BookOwner found by the `where` argument doesn't exist, create a new BookOwner with this data.
+     * In case the BookAudience found by the `where` argument doesn't exist, create a new BookAudience with this data.
      */
-    create: XOR<BookOwnerCreateInput, BookOwnerUncheckedCreateInput>
+    create: XOR<BookAudienceCreateInput, BookAudienceUncheckedCreateInput>
     /**
-     * In case the BookOwner was found with the provided `where` argument, update it with this data.
+     * In case the BookAudience was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<BookOwnerUpdateInput, BookOwnerUncheckedUpdateInput>
+    update: XOR<BookAudienceUpdateInput, BookAudienceUncheckedUpdateInput>
   }
 
 
   /**
-   * BookOwner delete
+   * BookAudience delete
    */
-  export type BookOwnerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the BookOwner
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: BookOwnerSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
     /**
-     * Filter which BookOwner to delete.
+     * Filter which BookAudience to delete.
      */
-    where: BookOwnerWhereUniqueInput
+    where: BookAudienceWhereUniqueInput
   }
 
 
   /**
-   * BookOwner deleteMany
+   * BookAudience deleteMany
    */
-  export type BookOwnerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which BookOwners to delete
+     * Filter which BookAudiences to delete
      */
-    where?: BookOwnerWhereInput
+    where?: BookAudienceWhereInput
   }
 
 
   /**
-   * BookOwner.familyMembers
+   * BookAudience without action
    */
-  export type BookOwner$familyMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BookAudienceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the FamilyMember
+     * Select specific fields to fetch from the BookAudience
      */
-    select?: FamilyMemberSelect<ExtArgs> | null
+    select?: BookAudienceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: FamilyMemberInclude<ExtArgs> | null
-    where?: FamilyMemberWhereInput
-    orderBy?: FamilyMemberOrderByWithRelationInput | FamilyMemberOrderByWithRelationInput[]
-    cursor?: FamilyMemberWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FamilyMemberScalarFieldEnum | FamilyMemberScalarFieldEnum[]
-  }
-
-
-  /**
-   * BookOwner.events
-   */
-  export type BookOwner$eventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Event
-     */
-    select?: EventSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: EventInclude<ExtArgs> | null
-    where?: EventWhereInput
-    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
-    cursor?: EventWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
-  }
-
-
-  /**
-   * BookOwner without action
-   */
-  export type BookOwnerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BookOwner
-     */
-    select?: BookOwnerSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: BookOwnerInclude<ExtArgs> | null
+    include?: BookAudienceInclude<ExtArgs> | null
   }
 
 
@@ -8591,7 +8464,7 @@ export namespace Prisma {
     name: 'name',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    bookOwnerId: 'bookOwnerId'
+    bookId: 'bookId'
   };
 
   export type FamilyMemberScalarFieldEnum = (typeof FamilyMemberScalarFieldEnum)[keyof typeof FamilyMemberScalarFieldEnum]
@@ -8614,8 +8487,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     date: 'date',
-    createdById: 'createdById',
-    bookOwnerId: 'bookOwnerId'
+    createdById: 'createdById'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -8632,13 +8504,13 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userId: 'userId',
-    bookOwnerId: 'bookOwnerId'
+    bookAudienceId: 'bookAudienceId'
   };
 
   export type BookScalarFieldEnum = (typeof BookScalarFieldEnum)[keyof typeof BookScalarFieldEnum]
 
 
-  export const BookOwnerScalarFieldEnum: {
+  export const BookAudienceScalarFieldEnum: {
     id: 'id',
     gender: 'gender',
     glasses: 'glasses',
@@ -8647,7 +8519,7 @@ export namespace Prisma {
     bookId: 'bookId'
   };
 
-  export type BookOwnerScalarFieldEnum = (typeof BookOwnerScalarFieldEnum)[keyof typeof BookOwnerScalarFieldEnum]
+  export type BookAudienceScalarFieldEnum = (typeof BookAudienceScalarFieldEnum)[keyof typeof BookAudienceScalarFieldEnum]
 
 
   export const ThemeScalarFieldEnum: {
@@ -8764,6 +8636,20 @@ export namespace Prisma {
    * Reference to a field of type 'TokenType[]'
    */
   export type ListEnumTokenTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TokenType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -8895,8 +8781,8 @@ export namespace Prisma {
     name?: StringFilter<"FamilyMember"> | string
     createdAt?: DateTimeFilter<"FamilyMember"> | Date | string
     updatedAt?: DateTimeFilter<"FamilyMember"> | Date | string
-    bookOwnerId?: IntNullableFilter<"FamilyMember"> | number | null
-    BookOwner?: XOR<BookOwnerNullableRelationFilter, BookOwnerWhereInput> | null
+    bookId?: IntFilter<"FamilyMember"> | number
+    book?: XOR<BookRelationFilter, BookWhereInput>
   }
 
   export type FamilyMemberOrderByWithRelationInput = {
@@ -8904,8 +8790,8 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    bookOwnerId?: SortOrderInput | SortOrder
-    BookOwner?: BookOwnerOrderByWithRelationInput
+    bookId?: SortOrder
+    book?: BookOrderByWithRelationInput
   }
 
   export type FamilyMemberWhereUniqueInput = Prisma.AtLeast<{
@@ -8916,8 +8802,8 @@ export namespace Prisma {
     name?: StringFilter<"FamilyMember"> | string
     createdAt?: DateTimeFilter<"FamilyMember"> | Date | string
     updatedAt?: DateTimeFilter<"FamilyMember"> | Date | string
-    bookOwnerId?: IntNullableFilter<"FamilyMember"> | number | null
-    BookOwner?: XOR<BookOwnerNullableRelationFilter, BookOwnerWhereInput> | null
+    bookId?: IntFilter<"FamilyMember"> | number
+    book?: XOR<BookRelationFilter, BookWhereInput>
   }, "id">
 
   export type FamilyMemberOrderByWithAggregationInput = {
@@ -8925,7 +8811,7 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    bookOwnerId?: SortOrderInput | SortOrder
+    bookId?: SortOrder
     _count?: FamilyMemberCountOrderByAggregateInput
     _avg?: FamilyMemberAvgOrderByAggregateInput
     _max?: FamilyMemberMaxOrderByAggregateInput
@@ -8941,7 +8827,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"FamilyMember"> | string
     createdAt?: DateTimeWithAggregatesFilter<"FamilyMember"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FamilyMember"> | Date | string
-    bookOwnerId?: IntNullableWithAggregatesFilter<"FamilyMember"> | number | null
+    bookId?: IntWithAggregatesFilter<"FamilyMember"> | number
   }
 
   export type TokenWhereInput = {
@@ -9019,8 +8905,6 @@ export namespace Prisma {
     name?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
     createdById?: IntNullableFilter<"Event"> | number | null
-    bookOwnerId?: IntNullableFilter<"Event"> | number | null
-    BookOwner?: XOR<BookOwnerNullableRelationFilter, BookOwnerWhereInput> | null
   }
 
   export type EventOrderByWithRelationInput = {
@@ -9028,8 +8912,6 @@ export namespace Prisma {
     name?: SortOrder
     date?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    bookOwnerId?: SortOrderInput | SortOrder
-    BookOwner?: BookOwnerOrderByWithRelationInput
   }
 
   export type EventWhereUniqueInput = Prisma.AtLeast<{
@@ -9040,8 +8922,6 @@ export namespace Prisma {
     name?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
     createdById?: IntNullableFilter<"Event"> | number | null
-    bookOwnerId?: IntNullableFilter<"Event"> | number | null
-    BookOwner?: XOR<BookOwnerNullableRelationFilter, BookOwnerWhereInput> | null
   }, "id">
 
   export type EventOrderByWithAggregationInput = {
@@ -9049,7 +8929,6 @@ export namespace Prisma {
     name?: SortOrder
     date?: SortOrder
     createdById?: SortOrderInput | SortOrder
-    bookOwnerId?: SortOrderInput | SortOrder
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
@@ -9065,7 +8944,6 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Event"> | string
     date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     createdById?: IntNullableWithAggregatesFilter<"Event"> | number | null
-    bookOwnerId?: IntNullableWithAggregatesFilter<"Event"> | number | null
   }
 
   export type BookWhereInput = {
@@ -9075,17 +8953,18 @@ export namespace Prisma {
     id?: IntFilter<"Book"> | number
     name?: StringFilter<"Book"> | string
     slug?: StringFilter<"Book"> | string
-    price?: DateTimeFilter<"Book"> | Date | string
+    price?: DecimalFilter<"Book"> | Decimal | DecimalJsLike | number | string
     description?: StringFilter<"Book"> | string
     imageUrl?: StringFilter<"Book"> | string
-    themeId?: IntFilter<"Book"> | number
+    themeId?: IntNullableFilter<"Book"> | number | null
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeFilter<"Book"> | Date | string
-    userId?: IntNullableFilter<"Book"> | number | null
-    bookOwnerId?: IntFilter<"Book"> | number
-    theme?: XOR<ThemeRelationFilter, ThemeWhereInput>
-    User?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-    BookOwner?: XOR<BookOwnerNullableRelationFilter, BookOwnerWhereInput> | null
+    userId?: IntFilter<"Book"> | number
+    bookAudienceId?: IntNullableFilter<"Book"> | number | null
+    theme?: XOR<ThemeNullableRelationFilter, ThemeWhereInput> | null
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    BookAudience?: XOR<BookAudienceNullableRelationFilter, BookAudienceWhereInput> | null
+    FamilyMember?: FamilyMemberListRelationFilter
   }
 
   export type BookOrderByWithRelationInput = {
@@ -9095,14 +8974,15 @@ export namespace Prisma {
     price?: SortOrder
     description?: SortOrder
     imageUrl?: SortOrder
-    themeId?: SortOrder
+    themeId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrderInput | SortOrder
-    bookOwnerId?: SortOrder
+    userId?: SortOrder
+    bookAudienceId?: SortOrderInput | SortOrder
     theme?: ThemeOrderByWithRelationInput
-    User?: UserOrderByWithRelationInput
-    BookOwner?: BookOwnerOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+    BookAudience?: BookAudienceOrderByWithRelationInput
+    FamilyMember?: FamilyMemberOrderByRelationAggregateInput
   }
 
   export type BookWhereUniqueInput = Prisma.AtLeast<{
@@ -9112,17 +8992,18 @@ export namespace Prisma {
     NOT?: BookWhereInput | BookWhereInput[]
     name?: StringFilter<"Book"> | string
     slug?: StringFilter<"Book"> | string
-    price?: DateTimeFilter<"Book"> | Date | string
+    price?: DecimalFilter<"Book"> | Decimal | DecimalJsLike | number | string
     description?: StringFilter<"Book"> | string
     imageUrl?: StringFilter<"Book"> | string
-    themeId?: IntFilter<"Book"> | number
+    themeId?: IntNullableFilter<"Book"> | number | null
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeFilter<"Book"> | Date | string
-    userId?: IntNullableFilter<"Book"> | number | null
-    bookOwnerId?: IntFilter<"Book"> | number
-    theme?: XOR<ThemeRelationFilter, ThemeWhereInput>
-    User?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-    BookOwner?: XOR<BookOwnerNullableRelationFilter, BookOwnerWhereInput> | null
+    userId?: IntFilter<"Book"> | number
+    bookAudienceId?: IntNullableFilter<"Book"> | number | null
+    theme?: XOR<ThemeNullableRelationFilter, ThemeWhereInput> | null
+    user?: XOR<UserRelationFilter, UserWhereInput>
+    BookAudience?: XOR<BookAudienceNullableRelationFilter, BookAudienceWhereInput> | null
+    FamilyMember?: FamilyMemberListRelationFilter
   }, "id">
 
   export type BookOrderByWithAggregationInput = {
@@ -9132,11 +9013,11 @@ export namespace Prisma {
     price?: SortOrder
     description?: SortOrder
     imageUrl?: SortOrder
-    themeId?: SortOrder
+    themeId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userId?: SortOrderInput | SortOrder
-    bookOwnerId?: SortOrder
+    userId?: SortOrder
+    bookAudienceId?: SortOrderInput | SortOrder
     _count?: BookCountOrderByAggregateInput
     _avg?: BookAvgOrderByAggregateInput
     _max?: BookMaxOrderByAggregateInput
@@ -9151,82 +9032,76 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Book"> | number
     name?: StringWithAggregatesFilter<"Book"> | string
     slug?: StringWithAggregatesFilter<"Book"> | string
-    price?: DateTimeWithAggregatesFilter<"Book"> | Date | string
+    price?: DecimalWithAggregatesFilter<"Book"> | Decimal | DecimalJsLike | number | string
     description?: StringWithAggregatesFilter<"Book"> | string
     imageUrl?: StringWithAggregatesFilter<"Book"> | string
-    themeId?: IntWithAggregatesFilter<"Book"> | number
+    themeId?: IntNullableWithAggregatesFilter<"Book"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Book"> | Date | string
-    userId?: IntNullableWithAggregatesFilter<"Book"> | number | null
-    bookOwnerId?: IntWithAggregatesFilter<"Book"> | number
+    userId?: IntWithAggregatesFilter<"Book"> | number
+    bookAudienceId?: IntNullableWithAggregatesFilter<"Book"> | number | null
   }
 
-  export type BookOwnerWhereInput = {
-    AND?: BookOwnerWhereInput | BookOwnerWhereInput[]
-    OR?: BookOwnerWhereInput[]
-    NOT?: BookOwnerWhereInput | BookOwnerWhereInput[]
-    id?: IntFilter<"BookOwner"> | number
-    gender?: EnumEnumGenderNullableFilter<"BookOwner"> | $Enums.EnumGender | null
-    glasses?: BoolNullableFilter<"BookOwner"> | boolean | null
-    age?: IntNullableFilter<"BookOwner"> | number | null
-    hairStyle?: EnumEnumHairStyleNullableFilter<"BookOwner"> | $Enums.EnumHairStyle | null
-    bookId?: IntFilter<"BookOwner"> | number
-    familyMembers?: FamilyMemberListRelationFilter
+  export type BookAudienceWhereInput = {
+    AND?: BookAudienceWhereInput | BookAudienceWhereInput[]
+    OR?: BookAudienceWhereInput[]
+    NOT?: BookAudienceWhereInput | BookAudienceWhereInput[]
+    id?: IntFilter<"BookAudience"> | number
+    gender?: EnumEnumGenderNullableFilter<"BookAudience"> | $Enums.EnumGender | null
+    glasses?: BoolNullableFilter<"BookAudience"> | boolean | null
+    age?: IntNullableFilter<"BookAudience"> | number | null
+    hairStyle?: EnumEnumHairStyleNullableFilter<"BookAudience"> | $Enums.EnumHairStyle | null
+    bookId?: IntFilter<"BookAudience"> | number
     book?: XOR<BookRelationFilter, BookWhereInput>
-    events?: EventListRelationFilter
   }
 
-  export type BookOwnerOrderByWithRelationInput = {
+  export type BookAudienceOrderByWithRelationInput = {
     id?: SortOrder
     gender?: SortOrderInput | SortOrder
     glasses?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     hairStyle?: SortOrderInput | SortOrder
     bookId?: SortOrder
-    familyMembers?: FamilyMemberOrderByRelationAggregateInput
     book?: BookOrderByWithRelationInput
-    events?: EventOrderByRelationAggregateInput
   }
 
-  export type BookOwnerWhereUniqueInput = Prisma.AtLeast<{
+  export type BookAudienceWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     bookId?: number
-    AND?: BookOwnerWhereInput | BookOwnerWhereInput[]
-    OR?: BookOwnerWhereInput[]
-    NOT?: BookOwnerWhereInput | BookOwnerWhereInput[]
-    gender?: EnumEnumGenderNullableFilter<"BookOwner"> | $Enums.EnumGender | null
-    glasses?: BoolNullableFilter<"BookOwner"> | boolean | null
-    age?: IntNullableFilter<"BookOwner"> | number | null
-    hairStyle?: EnumEnumHairStyleNullableFilter<"BookOwner"> | $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberListRelationFilter
+    AND?: BookAudienceWhereInput | BookAudienceWhereInput[]
+    OR?: BookAudienceWhereInput[]
+    NOT?: BookAudienceWhereInput | BookAudienceWhereInput[]
+    gender?: EnumEnumGenderNullableFilter<"BookAudience"> | $Enums.EnumGender | null
+    glasses?: BoolNullableFilter<"BookAudience"> | boolean | null
+    age?: IntNullableFilter<"BookAudience"> | number | null
+    hairStyle?: EnumEnumHairStyleNullableFilter<"BookAudience"> | $Enums.EnumHairStyle | null
     book?: XOR<BookRelationFilter, BookWhereInput>
-    events?: EventListRelationFilter
   }, "id" | "bookId">
 
-  export type BookOwnerOrderByWithAggregationInput = {
+  export type BookAudienceOrderByWithAggregationInput = {
     id?: SortOrder
     gender?: SortOrderInput | SortOrder
     glasses?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     hairStyle?: SortOrderInput | SortOrder
     bookId?: SortOrder
-    _count?: BookOwnerCountOrderByAggregateInput
-    _avg?: BookOwnerAvgOrderByAggregateInput
-    _max?: BookOwnerMaxOrderByAggregateInput
-    _min?: BookOwnerMinOrderByAggregateInput
-    _sum?: BookOwnerSumOrderByAggregateInput
+    _count?: BookAudienceCountOrderByAggregateInput
+    _avg?: BookAudienceAvgOrderByAggregateInput
+    _max?: BookAudienceMaxOrderByAggregateInput
+    _min?: BookAudienceMinOrderByAggregateInput
+    _sum?: BookAudienceSumOrderByAggregateInput
   }
 
-  export type BookOwnerScalarWhereWithAggregatesInput = {
-    AND?: BookOwnerScalarWhereWithAggregatesInput | BookOwnerScalarWhereWithAggregatesInput[]
-    OR?: BookOwnerScalarWhereWithAggregatesInput[]
-    NOT?: BookOwnerScalarWhereWithAggregatesInput | BookOwnerScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"BookOwner"> | number
-    gender?: EnumEnumGenderNullableWithAggregatesFilter<"BookOwner"> | $Enums.EnumGender | null
-    glasses?: BoolNullableWithAggregatesFilter<"BookOwner"> | boolean | null
-    age?: IntNullableWithAggregatesFilter<"BookOwner"> | number | null
-    hairStyle?: EnumEnumHairStyleNullableWithAggregatesFilter<"BookOwner"> | $Enums.EnumHairStyle | null
-    bookId?: IntWithAggregatesFilter<"BookOwner"> | number
+  export type BookAudienceScalarWhereWithAggregatesInput = {
+    AND?: BookAudienceScalarWhereWithAggregatesInput | BookAudienceScalarWhereWithAggregatesInput[]
+    OR?: BookAudienceScalarWhereWithAggregatesInput[]
+    NOT?: BookAudienceScalarWhereWithAggregatesInput | BookAudienceScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BookAudience"> | number
+    gender?: EnumEnumGenderNullableWithAggregatesFilter<"BookAudience"> | $Enums.EnumGender | null
+    glasses?: BoolNullableWithAggregatesFilter<"BookAudience"> | boolean | null
+    age?: IntNullableWithAggregatesFilter<"BookAudience"> | number | null
+    hairStyle?: EnumEnumHairStyleNullableWithAggregatesFilter<"BookAudience"> | $Enums.EnumHairStyle | null
+    bookId?: IntWithAggregatesFilter<"BookAudience"> | number
   }
 
   export type ThemeWhereInput = {
@@ -9372,7 +9247,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    BookOwner?: BookOwnerCreateNestedOneWithoutFamilyMembersInput
+    book: BookCreateNestedOneWithoutFamilyMemberInput
   }
 
   export type FamilyMemberUncheckedCreateInput = {
@@ -9380,14 +9255,14 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId?: number | null
+    bookId: number
   }
 
   export type FamilyMemberUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    BookOwner?: BookOwnerUpdateOneWithoutFamilyMembersNestedInput
+    book?: BookUpdateOneRequiredWithoutFamilyMemberNestedInput
   }
 
   export type FamilyMemberUncheckedUpdateInput = {
@@ -9395,7 +9270,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: NullableIntFieldUpdateOperationsInput | number | null
+    bookId?: IntFieldUpdateOperationsInput | number
   }
 
   export type FamilyMemberCreateManyInput = {
@@ -9403,7 +9278,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId?: number | null
+    bookId: number
   }
 
   export type FamilyMemberUpdateManyMutationInput = {
@@ -9417,7 +9292,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: NullableIntFieldUpdateOperationsInput | number | null
+    bookId?: IntFieldUpdateOperationsInput | number
   }
 
   export type TokenCreateInput = {
@@ -9490,7 +9365,6 @@ export namespace Prisma {
     name: string
     date: Date | string
     createdById?: number | null
-    BookOwner?: BookOwnerCreateNestedOneWithoutEventsInput
   }
 
   export type EventUncheckedCreateInput = {
@@ -9498,14 +9372,12 @@ export namespace Prisma {
     name: string
     date: Date | string
     createdById?: number | null
-    bookOwnerId?: number | null
   }
 
   export type EventUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    BookOwner?: BookOwnerUpdateOneWithoutEventsNestedInput
   }
 
   export type EventUncheckedUpdateInput = {
@@ -9513,7 +9385,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type EventCreateManyInput = {
@@ -9521,7 +9392,6 @@ export namespace Prisma {
     name: string
     date: Date | string
     createdById?: number | null
-    bookOwnerId?: number | null
   }
 
   export type EventUpdateManyMutationInput = {
@@ -9535,149 +9405,144 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     createdById?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookCreateInput = {
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId: number
-    theme: ThemeCreateNestedOneWithoutBookInput
-    User?: UserCreateNestedOneWithoutBookInput
-    BookOwner?: BookOwnerCreateNestedOneWithoutBookInput
+    bookAudienceId?: number | null
+    theme?: ThemeCreateNestedOneWithoutBookInput
+    user: UserCreateNestedOneWithoutBookInput
+    BookAudience?: BookAudienceCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateInput = {
     id?: number
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
-    themeId: number
+    themeId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId?: number | null
-    bookOwnerId: number
-    BookOwner?: BookOwnerUncheckedCreateNestedOneWithoutBookInput
+    userId: number
+    bookAudienceId?: number | null
+    BookAudience?: BookAudienceUncheckedCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    theme?: ThemeUpdateOneRequiredWithoutBookNestedInput
-    User?: UserUpdateOneWithoutBookNestedInput
-    BookOwner?: BookOwnerUpdateOneWithoutBookNestedInput
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    theme?: ThemeUpdateOneWithoutBookNestedInput
+    user?: UserUpdateOneRequiredWithoutBookNestedInput
+    BookAudience?: BookAudienceUpdateOneWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    themeId?: IntFieldUpdateOperationsInput | number
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    BookOwner?: BookOwnerUncheckedUpdateOneWithoutBookNestedInput
+    userId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    BookAudience?: BookAudienceUncheckedUpdateOneWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookCreateManyInput = {
     id?: number
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
-    themeId: number
+    themeId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId?: number | null
-    bookOwnerId: number
+    userId: number
+    bookAudienceId?: number | null
   }
 
   export type BookUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    themeId?: IntFieldUpdateOperationsInput | number
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type BookOwnerCreateInput = {
+  export type BookAudienceCreateInput = {
     gender?: $Enums.EnumGender | null
     glasses?: boolean | null
     age?: number | null
     hairStyle?: $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberCreateNestedManyWithoutBookOwnerInput
-    book: BookCreateNestedOneWithoutBookOwnerInput
-    events?: EventCreateNestedManyWithoutBookOwnerInput
+    book: BookCreateNestedOneWithoutBookAudienceInput
   }
 
-  export type BookOwnerUncheckedCreateInput = {
+  export type BookAudienceUncheckedCreateInput = {
     id?: number
     gender?: $Enums.EnumGender | null
     glasses?: boolean | null
     age?: number | null
     hairStyle?: $Enums.EnumHairStyle | null
     bookId: number
-    familyMembers?: FamilyMemberUncheckedCreateNestedManyWithoutBookOwnerInput
-    events?: EventUncheckedCreateNestedManyWithoutBookOwnerInput
   }
 
-  export type BookOwnerUpdateInput = {
+  export type BookAudienceUpdateInput = {
     gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
     glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberUpdateManyWithoutBookOwnerNestedInput
-    book?: BookUpdateOneRequiredWithoutBookOwnerNestedInput
-    events?: EventUpdateManyWithoutBookOwnerNestedInput
+    book?: BookUpdateOneRequiredWithoutBookAudienceNestedInput
   }
 
-  export type BookOwnerUncheckedUpdateInput = {
+  export type BookAudienceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
     glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
     bookId?: IntFieldUpdateOperationsInput | number
-    familyMembers?: FamilyMemberUncheckedUpdateManyWithoutBookOwnerNestedInput
-    events?: EventUncheckedUpdateManyWithoutBookOwnerNestedInput
   }
 
-  export type BookOwnerCreateManyInput = {
+  export type BookAudienceCreateManyInput = {
     id?: number
     gender?: $Enums.EnumGender | null
     glasses?: boolean | null
@@ -9686,14 +9551,14 @@ export namespace Prisma {
     bookId: number
   }
 
-  export type BookOwnerUpdateManyMutationInput = {
+  export type BookAudienceUpdateManyMutationInput = {
     gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
     glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
   }
 
-  export type BookOwnerUncheckedUpdateManyInput = {
+  export type BookAudienceUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
     glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -9935,25 +9800,9 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type BookOwnerNullableRelationFilter = {
-    is?: BookOwnerWhereInput | null
-    isNot?: BookOwnerWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+  export type BookRelationFilter = {
+    is?: BookWhereInput
+    isNot?: BookWhereInput
   }
 
   export type FamilyMemberCountOrderByAggregateInput = {
@@ -9961,12 +9810,12 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    bookOwnerId?: SortOrder
+    bookId?: SortOrder
   }
 
   export type FamilyMemberAvgOrderByAggregateInput = {
     id?: SortOrder
-    bookOwnerId?: SortOrder
+    bookId?: SortOrder
   }
 
   export type FamilyMemberMaxOrderByAggregateInput = {
@@ -9974,7 +9823,7 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    bookOwnerId?: SortOrder
+    bookId?: SortOrder
   }
 
   export type FamilyMemberMinOrderByAggregateInput = {
@@ -9982,28 +9831,12 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    bookOwnerId?: SortOrder
+    bookId?: SortOrder
   }
 
   export type FamilyMemberSumOrderByAggregateInput = {
     id?: SortOrder
-    bookOwnerId?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    bookId?: SortOrder
   }
 
   export type EnumTokenTypeFilter<$PrismaModel = never> = {
@@ -10068,18 +9901,32 @@ export namespace Prisma {
     _max?: NestedEnumTokenTypeFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type EventCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
     createdById?: SortOrder
-    bookOwnerId?: SortOrder
   }
 
   export type EventAvgOrderByAggregateInput = {
     id?: SortOrder
     createdById?: SortOrder
-    bookOwnerId?: SortOrder
   }
 
   export type EventMaxOrderByAggregateInput = {
@@ -10087,7 +9934,6 @@ export namespace Prisma {
     name?: SortOrder
     date?: SortOrder
     createdById?: SortOrder
-    bookOwnerId?: SortOrder
   }
 
   export type EventMinOrderByAggregateInput = {
@@ -10095,23 +9941,58 @@ export namespace Prisma {
     name?: SortOrder
     date?: SortOrder
     createdById?: SortOrder
-    bookOwnerId?: SortOrder
   }
 
   export type EventSumOrderByAggregateInput = {
     id?: SortOrder
     createdById?: SortOrder
-    bookOwnerId?: SortOrder
   }
 
-  export type ThemeRelationFilter = {
-    is?: ThemeWhereInput
-    isNot?: ThemeWhereInput
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type UserNullableRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type ThemeNullableRelationFilter = {
+    is?: ThemeWhereInput | null
+    isNot?: ThemeWhereInput | null
+  }
+
+  export type BookAudienceNullableRelationFilter = {
+    is?: BookAudienceWhereInput | null
+    isNot?: BookAudienceWhereInput | null
+  }
+
+  export type FamilyMemberListRelationFilter = {
+    every?: FamilyMemberWhereInput
+    some?: FamilyMemberWhereInput
+    none?: FamilyMemberWhereInput
+  }
+
+  export type FamilyMemberOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type BookCountOrderByAggregateInput = {
@@ -10125,14 +10006,15 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
-    bookOwnerId?: SortOrder
+    bookAudienceId?: SortOrder
   }
 
   export type BookAvgOrderByAggregateInput = {
     id?: SortOrder
+    price?: SortOrder
     themeId?: SortOrder
     userId?: SortOrder
-    bookOwnerId?: SortOrder
+    bookAudienceId?: SortOrder
   }
 
   export type BookMaxOrderByAggregateInput = {
@@ -10146,7 +10028,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
-    bookOwnerId?: SortOrder
+    bookAudienceId?: SortOrder
   }
 
   export type BookMinOrderByAggregateInput = {
@@ -10160,14 +10042,31 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
-    bookOwnerId?: SortOrder
+    bookAudienceId?: SortOrder
   }
 
   export type BookSumOrderByAggregateInput = {
     id?: SortOrder
+    price?: SortOrder
     themeId?: SortOrder
     userId?: SortOrder
-    bookOwnerId?: SortOrder
+    bookAudienceId?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type EnumEnumGenderNullableFilter<$PrismaModel = never> = {
@@ -10189,32 +10088,7 @@ export namespace Prisma {
     not?: NestedEnumEnumHairStyleNullableFilter<$PrismaModel> | $Enums.EnumHairStyle | null
   }
 
-  export type FamilyMemberListRelationFilter = {
-    every?: FamilyMemberWhereInput
-    some?: FamilyMemberWhereInput
-    none?: FamilyMemberWhereInput
-  }
-
-  export type BookRelationFilter = {
-    is?: BookWhereInput
-    isNot?: BookWhereInput
-  }
-
-  export type EventListRelationFilter = {
-    every?: EventWhereInput
-    some?: EventWhereInput
-    none?: EventWhereInput
-  }
-
-  export type FamilyMemberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type EventOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type BookOwnerCountOrderByAggregateInput = {
+  export type BookAudienceCountOrderByAggregateInput = {
     id?: SortOrder
     gender?: SortOrder
     glasses?: SortOrder
@@ -10223,22 +10097,13 @@ export namespace Prisma {
     bookId?: SortOrder
   }
 
-  export type BookOwnerAvgOrderByAggregateInput = {
+  export type BookAudienceAvgOrderByAggregateInput = {
     id?: SortOrder
     age?: SortOrder
     bookId?: SortOrder
   }
 
-  export type BookOwnerMaxOrderByAggregateInput = {
-    id?: SortOrder
-    gender?: SortOrder
-    glasses?: SortOrder
-    age?: SortOrder
-    hairStyle?: SortOrder
-    bookId?: SortOrder
-  }
-
-  export type BookOwnerMinOrderByAggregateInput = {
+  export type BookAudienceMaxOrderByAggregateInput = {
     id?: SortOrder
     gender?: SortOrder
     glasses?: SortOrder
@@ -10247,7 +10112,16 @@ export namespace Prisma {
     bookId?: SortOrder
   }
 
-  export type BookOwnerSumOrderByAggregateInput = {
+  export type BookAudienceMinOrderByAggregateInput = {
+    id?: SortOrder
+    gender?: SortOrder
+    glasses?: SortOrder
+    age?: SortOrder
+    hairStyle?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type BookAudienceSumOrderByAggregateInput = {
     id?: SortOrder
     age?: SortOrder
     bookId?: SortOrder
@@ -10421,28 +10295,18 @@ export namespace Prisma {
     deleteMany?: BookScalarWhereInput | BookScalarWhereInput[]
   }
 
-  export type BookOwnerCreateNestedOneWithoutFamilyMembersInput = {
-    create?: XOR<BookOwnerCreateWithoutFamilyMembersInput, BookOwnerUncheckedCreateWithoutFamilyMembersInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutFamilyMembersInput
-    connect?: BookOwnerWhereUniqueInput
+  export type BookCreateNestedOneWithoutFamilyMemberInput = {
+    create?: XOR<BookCreateWithoutFamilyMemberInput, BookUncheckedCreateWithoutFamilyMemberInput>
+    connectOrCreate?: BookCreateOrConnectWithoutFamilyMemberInput
+    connect?: BookWhereUniqueInput
   }
 
-  export type BookOwnerUpdateOneWithoutFamilyMembersNestedInput = {
-    create?: XOR<BookOwnerCreateWithoutFamilyMembersInput, BookOwnerUncheckedCreateWithoutFamilyMembersInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutFamilyMembersInput
-    upsert?: BookOwnerUpsertWithoutFamilyMembersInput
-    disconnect?: BookOwnerWhereInput | boolean
-    delete?: BookOwnerWhereInput | boolean
-    connect?: BookOwnerWhereUniqueInput
-    update?: XOR<XOR<BookOwnerUpdateToOneWithWhereWithoutFamilyMembersInput, BookOwnerUpdateWithoutFamilyMembersInput>, BookOwnerUncheckedUpdateWithoutFamilyMembersInput>
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type BookUpdateOneRequiredWithoutFamilyMemberNestedInput = {
+    create?: XOR<BookCreateWithoutFamilyMemberInput, BookUncheckedCreateWithoutFamilyMemberInput>
+    connectOrCreate?: BookCreateOrConnectWithoutFamilyMemberInput
+    upsert?: BookUpsertWithoutFamilyMemberInput
+    connect?: BookWhereUniqueInput
+    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutFamilyMemberInput, BookUpdateWithoutFamilyMemberInput>, BookUncheckedUpdateWithoutFamilyMemberInput>
   }
 
   export type UserCreateNestedOneWithoutTokenInput = {
@@ -10463,20 +10327,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTokenInput, UserUpdateWithoutTokenInput>, UserUncheckedUpdateWithoutTokenInput>
   }
 
-  export type BookOwnerCreateNestedOneWithoutEventsInput = {
-    create?: XOR<BookOwnerCreateWithoutEventsInput, BookOwnerUncheckedCreateWithoutEventsInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutEventsInput
-    connect?: BookOwnerWhereUniqueInput
-  }
-
-  export type BookOwnerUpdateOneWithoutEventsNestedInput = {
-    create?: XOR<BookOwnerCreateWithoutEventsInput, BookOwnerUncheckedCreateWithoutEventsInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutEventsInput
-    upsert?: BookOwnerUpsertWithoutEventsInput
-    disconnect?: BookOwnerWhereInput | boolean
-    delete?: BookOwnerWhereInput | boolean
-    connect?: BookOwnerWhereUniqueInput
-    update?: XOR<XOR<BookOwnerUpdateToOneWithWhereWithoutEventsInput, BookOwnerUpdateWithoutEventsInput>, BookOwnerUncheckedUpdateWithoutEventsInput>
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type ThemeCreateNestedOneWithoutBookInput = {
@@ -10491,88 +10347,110 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type BookOwnerCreateNestedOneWithoutBookInput = {
-    create?: XOR<BookOwnerCreateWithoutBookInput, BookOwnerUncheckedCreateWithoutBookInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutBookInput
-    connect?: BookOwnerWhereUniqueInput
+  export type BookAudienceCreateNestedOneWithoutBookInput = {
+    create?: XOR<BookAudienceCreateWithoutBookInput, BookAudienceUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookAudienceCreateOrConnectWithoutBookInput
+    connect?: BookAudienceWhereUniqueInput
   }
 
-  export type BookOwnerUncheckedCreateNestedOneWithoutBookInput = {
-    create?: XOR<BookOwnerCreateWithoutBookInput, BookOwnerUncheckedCreateWithoutBookInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutBookInput
-    connect?: BookOwnerWhereUniqueInput
+  export type FamilyMemberCreateNestedManyWithoutBookInput = {
+    create?: XOR<FamilyMemberCreateWithoutBookInput, FamilyMemberUncheckedCreateWithoutBookInput> | FamilyMemberCreateWithoutBookInput[] | FamilyMemberUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookInput | FamilyMemberCreateOrConnectWithoutBookInput[]
+    createMany?: FamilyMemberCreateManyBookInputEnvelope
+    connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
   }
 
-  export type ThemeUpdateOneRequiredWithoutBookNestedInput = {
+  export type BookAudienceUncheckedCreateNestedOneWithoutBookInput = {
+    create?: XOR<BookAudienceCreateWithoutBookInput, BookAudienceUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookAudienceCreateOrConnectWithoutBookInput
+    connect?: BookAudienceWhereUniqueInput
+  }
+
+  export type FamilyMemberUncheckedCreateNestedManyWithoutBookInput = {
+    create?: XOR<FamilyMemberCreateWithoutBookInput, FamilyMemberUncheckedCreateWithoutBookInput> | FamilyMemberCreateWithoutBookInput[] | FamilyMemberUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookInput | FamilyMemberCreateOrConnectWithoutBookInput[]
+    createMany?: FamilyMemberCreateManyBookInputEnvelope
+    connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type ThemeUpdateOneWithoutBookNestedInput = {
     create?: XOR<ThemeCreateWithoutBookInput, ThemeUncheckedCreateWithoutBookInput>
     connectOrCreate?: ThemeCreateOrConnectWithoutBookInput
     upsert?: ThemeUpsertWithoutBookInput
+    disconnect?: ThemeWhereInput | boolean
+    delete?: ThemeWhereInput | boolean
     connect?: ThemeWhereUniqueInput
     update?: XOR<XOR<ThemeUpdateToOneWithWhereWithoutBookInput, ThemeUpdateWithoutBookInput>, ThemeUncheckedUpdateWithoutBookInput>
   }
 
-  export type UserUpdateOneWithoutBookNestedInput = {
+  export type UserUpdateOneRequiredWithoutBookNestedInput = {
     create?: XOR<UserCreateWithoutBookInput, UserUncheckedCreateWithoutBookInput>
     connectOrCreate?: UserCreateOrConnectWithoutBookInput
     upsert?: UserUpsertWithoutBookInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookInput, UserUpdateWithoutBookInput>, UserUncheckedUpdateWithoutBookInput>
   }
 
-  export type BookOwnerUpdateOneWithoutBookNestedInput = {
-    create?: XOR<BookOwnerCreateWithoutBookInput, BookOwnerUncheckedCreateWithoutBookInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutBookInput
-    upsert?: BookOwnerUpsertWithoutBookInput
-    disconnect?: BookOwnerWhereInput | boolean
-    delete?: BookOwnerWhereInput | boolean
-    connect?: BookOwnerWhereUniqueInput
-    update?: XOR<XOR<BookOwnerUpdateToOneWithWhereWithoutBookInput, BookOwnerUpdateWithoutBookInput>, BookOwnerUncheckedUpdateWithoutBookInput>
+  export type BookAudienceUpdateOneWithoutBookNestedInput = {
+    create?: XOR<BookAudienceCreateWithoutBookInput, BookAudienceUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookAudienceCreateOrConnectWithoutBookInput
+    upsert?: BookAudienceUpsertWithoutBookInput
+    disconnect?: BookAudienceWhereInput | boolean
+    delete?: BookAudienceWhereInput | boolean
+    connect?: BookAudienceWhereUniqueInput
+    update?: XOR<XOR<BookAudienceUpdateToOneWithWhereWithoutBookInput, BookAudienceUpdateWithoutBookInput>, BookAudienceUncheckedUpdateWithoutBookInput>
   }
 
-  export type BookOwnerUncheckedUpdateOneWithoutBookNestedInput = {
-    create?: XOR<BookOwnerCreateWithoutBookInput, BookOwnerUncheckedCreateWithoutBookInput>
-    connectOrCreate?: BookOwnerCreateOrConnectWithoutBookInput
-    upsert?: BookOwnerUpsertWithoutBookInput
-    disconnect?: BookOwnerWhereInput | boolean
-    delete?: BookOwnerWhereInput | boolean
-    connect?: BookOwnerWhereUniqueInput
-    update?: XOR<XOR<BookOwnerUpdateToOneWithWhereWithoutBookInput, BookOwnerUpdateWithoutBookInput>, BookOwnerUncheckedUpdateWithoutBookInput>
-  }
-
-  export type FamilyMemberCreateNestedManyWithoutBookOwnerInput = {
-    create?: XOR<FamilyMemberCreateWithoutBookOwnerInput, FamilyMemberUncheckedCreateWithoutBookOwnerInput> | FamilyMemberCreateWithoutBookOwnerInput[] | FamilyMemberUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookOwnerInput | FamilyMemberCreateOrConnectWithoutBookOwnerInput[]
-    createMany?: FamilyMemberCreateManyBookOwnerInputEnvelope
+  export type FamilyMemberUpdateManyWithoutBookNestedInput = {
+    create?: XOR<FamilyMemberCreateWithoutBookInput, FamilyMemberUncheckedCreateWithoutBookInput> | FamilyMemberCreateWithoutBookInput[] | FamilyMemberUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookInput | FamilyMemberCreateOrConnectWithoutBookInput[]
+    upsert?: FamilyMemberUpsertWithWhereUniqueWithoutBookInput | FamilyMemberUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: FamilyMemberCreateManyBookInputEnvelope
+    set?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    disconnect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    delete?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
     connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    update?: FamilyMemberUpdateWithWhereUniqueWithoutBookInput | FamilyMemberUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: FamilyMemberUpdateManyWithWhereWithoutBookInput | FamilyMemberUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: FamilyMemberScalarWhereInput | FamilyMemberScalarWhereInput[]
   }
 
-  export type BookCreateNestedOneWithoutBookOwnerInput = {
-    create?: XOR<BookCreateWithoutBookOwnerInput, BookUncheckedCreateWithoutBookOwnerInput>
-    connectOrCreate?: BookCreateOrConnectWithoutBookOwnerInput
+  export type BookAudienceUncheckedUpdateOneWithoutBookNestedInput = {
+    create?: XOR<BookAudienceCreateWithoutBookInput, BookAudienceUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookAudienceCreateOrConnectWithoutBookInput
+    upsert?: BookAudienceUpsertWithoutBookInput
+    disconnect?: BookAudienceWhereInput | boolean
+    delete?: BookAudienceWhereInput | boolean
+    connect?: BookAudienceWhereUniqueInput
+    update?: XOR<XOR<BookAudienceUpdateToOneWithWhereWithoutBookInput, BookAudienceUpdateWithoutBookInput>, BookAudienceUncheckedUpdateWithoutBookInput>
+  }
+
+  export type FamilyMemberUncheckedUpdateManyWithoutBookNestedInput = {
+    create?: XOR<FamilyMemberCreateWithoutBookInput, FamilyMemberUncheckedCreateWithoutBookInput> | FamilyMemberCreateWithoutBookInput[] | FamilyMemberUncheckedCreateWithoutBookInput[]
+    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookInput | FamilyMemberCreateOrConnectWithoutBookInput[]
+    upsert?: FamilyMemberUpsertWithWhereUniqueWithoutBookInput | FamilyMemberUpsertWithWhereUniqueWithoutBookInput[]
+    createMany?: FamilyMemberCreateManyBookInputEnvelope
+    set?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    disconnect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    delete?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
+    update?: FamilyMemberUpdateWithWhereUniqueWithoutBookInput | FamilyMemberUpdateWithWhereUniqueWithoutBookInput[]
+    updateMany?: FamilyMemberUpdateManyWithWhereWithoutBookInput | FamilyMemberUpdateManyWithWhereWithoutBookInput[]
+    deleteMany?: FamilyMemberScalarWhereInput | FamilyMemberScalarWhereInput[]
+  }
+
+  export type BookCreateNestedOneWithoutBookAudienceInput = {
+    create?: XOR<BookCreateWithoutBookAudienceInput, BookUncheckedCreateWithoutBookAudienceInput>
+    connectOrCreate?: BookCreateOrConnectWithoutBookAudienceInput
     connect?: BookWhereUniqueInput
-  }
-
-  export type EventCreateNestedManyWithoutBookOwnerInput = {
-    create?: XOR<EventCreateWithoutBookOwnerInput, EventUncheckedCreateWithoutBookOwnerInput> | EventCreateWithoutBookOwnerInput[] | EventUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: EventCreateOrConnectWithoutBookOwnerInput | EventCreateOrConnectWithoutBookOwnerInput[]
-    createMany?: EventCreateManyBookOwnerInputEnvelope
-    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
-  }
-
-  export type FamilyMemberUncheckedCreateNestedManyWithoutBookOwnerInput = {
-    create?: XOR<FamilyMemberCreateWithoutBookOwnerInput, FamilyMemberUncheckedCreateWithoutBookOwnerInput> | FamilyMemberCreateWithoutBookOwnerInput[] | FamilyMemberUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookOwnerInput | FamilyMemberCreateOrConnectWithoutBookOwnerInput[]
-    createMany?: FamilyMemberCreateManyBookOwnerInputEnvelope
-    connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-  }
-
-  export type EventUncheckedCreateNestedManyWithoutBookOwnerInput = {
-    create?: XOR<EventCreateWithoutBookOwnerInput, EventUncheckedCreateWithoutBookOwnerInput> | EventCreateWithoutBookOwnerInput[] | EventUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: EventCreateOrConnectWithoutBookOwnerInput | EventCreateOrConnectWithoutBookOwnerInput[]
-    createMany?: EventCreateManyBookOwnerInputEnvelope
-    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
   }
 
   export type NullableEnumEnumGenderFieldUpdateOperationsInput = {
@@ -10587,68 +10465,12 @@ export namespace Prisma {
     set?: $Enums.EnumHairStyle | null
   }
 
-  export type FamilyMemberUpdateManyWithoutBookOwnerNestedInput = {
-    create?: XOR<FamilyMemberCreateWithoutBookOwnerInput, FamilyMemberUncheckedCreateWithoutBookOwnerInput> | FamilyMemberCreateWithoutBookOwnerInput[] | FamilyMemberUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookOwnerInput | FamilyMemberCreateOrConnectWithoutBookOwnerInput[]
-    upsert?: FamilyMemberUpsertWithWhereUniqueWithoutBookOwnerInput | FamilyMemberUpsertWithWhereUniqueWithoutBookOwnerInput[]
-    createMany?: FamilyMemberCreateManyBookOwnerInputEnvelope
-    set?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    disconnect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    delete?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    update?: FamilyMemberUpdateWithWhereUniqueWithoutBookOwnerInput | FamilyMemberUpdateWithWhereUniqueWithoutBookOwnerInput[]
-    updateMany?: FamilyMemberUpdateManyWithWhereWithoutBookOwnerInput | FamilyMemberUpdateManyWithWhereWithoutBookOwnerInput[]
-    deleteMany?: FamilyMemberScalarWhereInput | FamilyMemberScalarWhereInput[]
-  }
-
-  export type BookUpdateOneRequiredWithoutBookOwnerNestedInput = {
-    create?: XOR<BookCreateWithoutBookOwnerInput, BookUncheckedCreateWithoutBookOwnerInput>
-    connectOrCreate?: BookCreateOrConnectWithoutBookOwnerInput
-    upsert?: BookUpsertWithoutBookOwnerInput
+  export type BookUpdateOneRequiredWithoutBookAudienceNestedInput = {
+    create?: XOR<BookCreateWithoutBookAudienceInput, BookUncheckedCreateWithoutBookAudienceInput>
+    connectOrCreate?: BookCreateOrConnectWithoutBookAudienceInput
+    upsert?: BookUpsertWithoutBookAudienceInput
     connect?: BookWhereUniqueInput
-    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutBookOwnerInput, BookUpdateWithoutBookOwnerInput>, BookUncheckedUpdateWithoutBookOwnerInput>
-  }
-
-  export type EventUpdateManyWithoutBookOwnerNestedInput = {
-    create?: XOR<EventCreateWithoutBookOwnerInput, EventUncheckedCreateWithoutBookOwnerInput> | EventCreateWithoutBookOwnerInput[] | EventUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: EventCreateOrConnectWithoutBookOwnerInput | EventCreateOrConnectWithoutBookOwnerInput[]
-    upsert?: EventUpsertWithWhereUniqueWithoutBookOwnerInput | EventUpsertWithWhereUniqueWithoutBookOwnerInput[]
-    createMany?: EventCreateManyBookOwnerInputEnvelope
-    set?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    disconnect?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    delete?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    update?: EventUpdateWithWhereUniqueWithoutBookOwnerInput | EventUpdateWithWhereUniqueWithoutBookOwnerInput[]
-    updateMany?: EventUpdateManyWithWhereWithoutBookOwnerInput | EventUpdateManyWithWhereWithoutBookOwnerInput[]
-    deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
-  }
-
-  export type FamilyMemberUncheckedUpdateManyWithoutBookOwnerNestedInput = {
-    create?: XOR<FamilyMemberCreateWithoutBookOwnerInput, FamilyMemberUncheckedCreateWithoutBookOwnerInput> | FamilyMemberCreateWithoutBookOwnerInput[] | FamilyMemberUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: FamilyMemberCreateOrConnectWithoutBookOwnerInput | FamilyMemberCreateOrConnectWithoutBookOwnerInput[]
-    upsert?: FamilyMemberUpsertWithWhereUniqueWithoutBookOwnerInput | FamilyMemberUpsertWithWhereUniqueWithoutBookOwnerInput[]
-    createMany?: FamilyMemberCreateManyBookOwnerInputEnvelope
-    set?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    disconnect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    delete?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    connect?: FamilyMemberWhereUniqueInput | FamilyMemberWhereUniqueInput[]
-    update?: FamilyMemberUpdateWithWhereUniqueWithoutBookOwnerInput | FamilyMemberUpdateWithWhereUniqueWithoutBookOwnerInput[]
-    updateMany?: FamilyMemberUpdateManyWithWhereWithoutBookOwnerInput | FamilyMemberUpdateManyWithWhereWithoutBookOwnerInput[]
-    deleteMany?: FamilyMemberScalarWhereInput | FamilyMemberScalarWhereInput[]
-  }
-
-  export type EventUncheckedUpdateManyWithoutBookOwnerNestedInput = {
-    create?: XOR<EventCreateWithoutBookOwnerInput, EventUncheckedCreateWithoutBookOwnerInput> | EventCreateWithoutBookOwnerInput[] | EventUncheckedCreateWithoutBookOwnerInput[]
-    connectOrCreate?: EventCreateOrConnectWithoutBookOwnerInput | EventCreateOrConnectWithoutBookOwnerInput[]
-    upsert?: EventUpsertWithWhereUniqueWithoutBookOwnerInput | EventUpsertWithWhereUniqueWithoutBookOwnerInput[]
-    createMany?: EventCreateManyBookOwnerInputEnvelope
-    set?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    disconnect?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    delete?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
-    update?: EventUpdateWithWhereUniqueWithoutBookOwnerInput | EventUpdateWithWhereUniqueWithoutBookOwnerInput[]
-    updateMany?: EventUpdateManyWithWhereWithoutBookOwnerInput | EventUpdateManyWithWhereWithoutBookOwnerInput[]
-    deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
+    update?: XOR<XOR<BookUpdateToOneWithWhereWithoutBookAudienceInput, BookUpdateWithoutBookAudienceInput>, BookUncheckedUpdateWithoutBookAudienceInput>
   }
 
   export type BookCreateNestedManyWithoutThemeInput = {
@@ -10817,6 +10639,23 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumTokenTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TokenType | EnumTokenTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTokenTypeFilter<$PrismaModel> | $Enums.TokenType
+  }
+
+  export type NestedEnumTokenTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TokenType | EnumTokenTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumTokenTypeWithAggregatesFilter<$PrismaModel> | $Enums.TokenType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTokenTypeFilter<$PrismaModel>
+    _max?: NestedEnumTokenTypeFilter<$PrismaModel>
+  }
+
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -10855,21 +10694,31 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumTokenTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.TokenType | EnumTokenTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumTokenTypeFilter<$PrismaModel> | $Enums.TokenType
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type NestedEnumTokenTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TokenType | EnumTokenTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumTokenTypeWithAggregatesFilter<$PrismaModel> | $Enums.TokenType
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTokenTypeFilter<$PrismaModel>
-    _max?: NestedEnumTokenTypeFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type NestedEnumEnumGenderNullableFilter<$PrismaModel = never> = {
@@ -10949,28 +10798,30 @@ export namespace Prisma {
   export type BookCreateWithoutUserInput = {
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId: number
-    theme: ThemeCreateNestedOneWithoutBookInput
-    BookOwner?: BookOwnerCreateNestedOneWithoutBookInput
+    bookAudienceId?: number | null
+    theme?: ThemeCreateNestedOneWithoutBookInput
+    BookAudience?: BookAudienceCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutUserInput = {
     id?: number
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
-    themeId: number
+    themeId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId: number
-    BookOwner?: BookOwnerUncheckedCreateNestedOneWithoutBookInput
+    bookAudienceId?: number | null
+    BookAudience?: BookAudienceUncheckedCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutUserInput = {
@@ -11035,68 +10886,88 @@ export namespace Prisma {
     id?: IntFilter<"Book"> | number
     name?: StringFilter<"Book"> | string
     slug?: StringFilter<"Book"> | string
-    price?: DateTimeFilter<"Book"> | Date | string
+    price?: DecimalFilter<"Book"> | Decimal | DecimalJsLike | number | string
     description?: StringFilter<"Book"> | string
     imageUrl?: StringFilter<"Book"> | string
-    themeId?: IntFilter<"Book"> | number
+    themeId?: IntNullableFilter<"Book"> | number | null
     createdAt?: DateTimeFilter<"Book"> | Date | string
     updatedAt?: DateTimeFilter<"Book"> | Date | string
-    userId?: IntNullableFilter<"Book"> | number | null
-    bookOwnerId?: IntFilter<"Book"> | number
+    userId?: IntFilter<"Book"> | number
+    bookAudienceId?: IntNullableFilter<"Book"> | number | null
   }
 
-  export type BookOwnerCreateWithoutFamilyMembersInput = {
-    gender?: $Enums.EnumGender | null
-    glasses?: boolean | null
-    age?: number | null
-    hairStyle?: $Enums.EnumHairStyle | null
-    book: BookCreateNestedOneWithoutBookOwnerInput
-    events?: EventCreateNestedManyWithoutBookOwnerInput
+  export type BookCreateWithoutFamilyMemberInput = {
+    name: string
+    slug: string
+    price: Decimal | DecimalJsLike | number | string
+    description: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bookAudienceId?: number | null
+    theme?: ThemeCreateNestedOneWithoutBookInput
+    user: UserCreateNestedOneWithoutBookInput
+    BookAudience?: BookAudienceCreateNestedOneWithoutBookInput
   }
 
-  export type BookOwnerUncheckedCreateWithoutFamilyMembersInput = {
+  export type BookUncheckedCreateWithoutFamilyMemberInput = {
     id?: number
-    gender?: $Enums.EnumGender | null
-    glasses?: boolean | null
-    age?: number | null
-    hairStyle?: $Enums.EnumHairStyle | null
-    bookId: number
-    events?: EventUncheckedCreateNestedManyWithoutBookOwnerInput
+    name: string
+    slug: string
+    price: Decimal | DecimalJsLike | number | string
+    description: string
+    imageUrl: string
+    themeId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: number
+    bookAudienceId?: number | null
+    BookAudience?: BookAudienceUncheckedCreateNestedOneWithoutBookInput
   }
 
-  export type BookOwnerCreateOrConnectWithoutFamilyMembersInput = {
-    where: BookOwnerWhereUniqueInput
-    create: XOR<BookOwnerCreateWithoutFamilyMembersInput, BookOwnerUncheckedCreateWithoutFamilyMembersInput>
+  export type BookCreateOrConnectWithoutFamilyMemberInput = {
+    where: BookWhereUniqueInput
+    create: XOR<BookCreateWithoutFamilyMemberInput, BookUncheckedCreateWithoutFamilyMemberInput>
   }
 
-  export type BookOwnerUpsertWithoutFamilyMembersInput = {
-    update: XOR<BookOwnerUpdateWithoutFamilyMembersInput, BookOwnerUncheckedUpdateWithoutFamilyMembersInput>
-    create: XOR<BookOwnerCreateWithoutFamilyMembersInput, BookOwnerUncheckedCreateWithoutFamilyMembersInput>
-    where?: BookOwnerWhereInput
+  export type BookUpsertWithoutFamilyMemberInput = {
+    update: XOR<BookUpdateWithoutFamilyMemberInput, BookUncheckedUpdateWithoutFamilyMemberInput>
+    create: XOR<BookCreateWithoutFamilyMemberInput, BookUncheckedCreateWithoutFamilyMemberInput>
+    where?: BookWhereInput
   }
 
-  export type BookOwnerUpdateToOneWithWhereWithoutFamilyMembersInput = {
-    where?: BookOwnerWhereInput
-    data: XOR<BookOwnerUpdateWithoutFamilyMembersInput, BookOwnerUncheckedUpdateWithoutFamilyMembersInput>
+  export type BookUpdateToOneWithWhereWithoutFamilyMemberInput = {
+    where?: BookWhereInput
+    data: XOR<BookUpdateWithoutFamilyMemberInput, BookUncheckedUpdateWithoutFamilyMemberInput>
   }
 
-  export type BookOwnerUpdateWithoutFamilyMembersInput = {
-    gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
-    glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    book?: BookUpdateOneRequiredWithoutBookOwnerNestedInput
-    events?: EventUpdateManyWithoutBookOwnerNestedInput
+  export type BookUpdateWithoutFamilyMemberInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    theme?: ThemeUpdateOneWithoutBookNestedInput
+    user?: UserUpdateOneRequiredWithoutBookNestedInput
+    BookAudience?: BookAudienceUpdateOneWithoutBookNestedInput
   }
 
-  export type BookOwnerUncheckedUpdateWithoutFamilyMembersInput = {
+  export type BookUncheckedUpdateWithoutFamilyMemberInput = {
     id?: IntFieldUpdateOperationsInput | number
-    gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
-    glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    bookId?: IntFieldUpdateOperationsInput | number
-    events?: EventUncheckedUpdateManyWithoutBookOwnerNestedInput
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    description?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    BookAudience?: BookAudienceUncheckedUpdateOneWithoutBookNestedInput
   }
 
   export type UserCreateWithoutTokenInput = {
@@ -11161,60 +11032,6 @@ export namespace Prisma {
     Book?: BookUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type BookOwnerCreateWithoutEventsInput = {
-    gender?: $Enums.EnumGender | null
-    glasses?: boolean | null
-    age?: number | null
-    hairStyle?: $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberCreateNestedManyWithoutBookOwnerInput
-    book: BookCreateNestedOneWithoutBookOwnerInput
-  }
-
-  export type BookOwnerUncheckedCreateWithoutEventsInput = {
-    id?: number
-    gender?: $Enums.EnumGender | null
-    glasses?: boolean | null
-    age?: number | null
-    hairStyle?: $Enums.EnumHairStyle | null
-    bookId: number
-    familyMembers?: FamilyMemberUncheckedCreateNestedManyWithoutBookOwnerInput
-  }
-
-  export type BookOwnerCreateOrConnectWithoutEventsInput = {
-    where: BookOwnerWhereUniqueInput
-    create: XOR<BookOwnerCreateWithoutEventsInput, BookOwnerUncheckedCreateWithoutEventsInput>
-  }
-
-  export type BookOwnerUpsertWithoutEventsInput = {
-    update: XOR<BookOwnerUpdateWithoutEventsInput, BookOwnerUncheckedUpdateWithoutEventsInput>
-    create: XOR<BookOwnerCreateWithoutEventsInput, BookOwnerUncheckedCreateWithoutEventsInput>
-    where?: BookOwnerWhereInput
-  }
-
-  export type BookOwnerUpdateToOneWithWhereWithoutEventsInput = {
-    where?: BookOwnerWhereInput
-    data: XOR<BookOwnerUpdateWithoutEventsInput, BookOwnerUncheckedUpdateWithoutEventsInput>
-  }
-
-  export type BookOwnerUpdateWithoutEventsInput = {
-    gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
-    glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberUpdateManyWithoutBookOwnerNestedInput
-    book?: BookUpdateOneRequiredWithoutBookOwnerNestedInput
-  }
-
-  export type BookOwnerUncheckedUpdateWithoutEventsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
-    glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    bookId?: IntFieldUpdateOperationsInput | number
-    familyMembers?: FamilyMemberUncheckedUpdateManyWithoutBookOwnerNestedInput
-  }
-
   export type ThemeCreateWithoutBookInput = {
     name: string
     coverImageUrl: string
@@ -11263,28 +11080,47 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutBookInput, UserUncheckedCreateWithoutBookInput>
   }
 
-  export type BookOwnerCreateWithoutBookInput = {
+  export type BookAudienceCreateWithoutBookInput = {
     gender?: $Enums.EnumGender | null
     glasses?: boolean | null
     age?: number | null
     hairStyle?: $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberCreateNestedManyWithoutBookOwnerInput
-    events?: EventCreateNestedManyWithoutBookOwnerInput
   }
 
-  export type BookOwnerUncheckedCreateWithoutBookInput = {
+  export type BookAudienceUncheckedCreateWithoutBookInput = {
     id?: number
     gender?: $Enums.EnumGender | null
     glasses?: boolean | null
     age?: number | null
     hairStyle?: $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberUncheckedCreateNestedManyWithoutBookOwnerInput
-    events?: EventUncheckedCreateNestedManyWithoutBookOwnerInput
   }
 
-  export type BookOwnerCreateOrConnectWithoutBookInput = {
-    where: BookOwnerWhereUniqueInput
-    create: XOR<BookOwnerCreateWithoutBookInput, BookOwnerUncheckedCreateWithoutBookInput>
+  export type BookAudienceCreateOrConnectWithoutBookInput = {
+    where: BookAudienceWhereUniqueInput
+    create: XOR<BookAudienceCreateWithoutBookInput, BookAudienceUncheckedCreateWithoutBookInput>
+  }
+
+  export type FamilyMemberCreateWithoutBookInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FamilyMemberUncheckedCreateWithoutBookInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FamilyMemberCreateOrConnectWithoutBookInput = {
+    where: FamilyMemberWhereUniqueInput
+    create: XOR<FamilyMemberCreateWithoutBookInput, FamilyMemberUncheckedCreateWithoutBookInput>
+  }
+
+  export type FamilyMemberCreateManyBookInputEnvelope = {
+    data: FamilyMemberCreateManyBookInput | FamilyMemberCreateManyBookInput[]
+    skipDuplicates?: boolean
   }
 
   export type ThemeUpsertWithoutBookInput = {
@@ -11347,128 +11183,46 @@ export namespace Prisma {
     Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type BookOwnerUpsertWithoutBookInput = {
-    update: XOR<BookOwnerUpdateWithoutBookInput, BookOwnerUncheckedUpdateWithoutBookInput>
-    create: XOR<BookOwnerCreateWithoutBookInput, BookOwnerUncheckedCreateWithoutBookInput>
-    where?: BookOwnerWhereInput
+  export type BookAudienceUpsertWithoutBookInput = {
+    update: XOR<BookAudienceUpdateWithoutBookInput, BookAudienceUncheckedUpdateWithoutBookInput>
+    create: XOR<BookAudienceCreateWithoutBookInput, BookAudienceUncheckedCreateWithoutBookInput>
+    where?: BookAudienceWhereInput
   }
 
-  export type BookOwnerUpdateToOneWithWhereWithoutBookInput = {
-    where?: BookOwnerWhereInput
-    data: XOR<BookOwnerUpdateWithoutBookInput, BookOwnerUncheckedUpdateWithoutBookInput>
+  export type BookAudienceUpdateToOneWithWhereWithoutBookInput = {
+    where?: BookAudienceWhereInput
+    data: XOR<BookAudienceUpdateWithoutBookInput, BookAudienceUncheckedUpdateWithoutBookInput>
   }
 
-  export type BookOwnerUpdateWithoutBookInput = {
+  export type BookAudienceUpdateWithoutBookInput = {
     gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
     glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberUpdateManyWithoutBookOwnerNestedInput
-    events?: EventUpdateManyWithoutBookOwnerNestedInput
   }
 
-  export type BookOwnerUncheckedUpdateWithoutBookInput = {
+  export type BookAudienceUncheckedUpdateWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     gender?: NullableEnumEnumGenderFieldUpdateOperationsInput | $Enums.EnumGender | null
     glasses?: NullableBoolFieldUpdateOperationsInput | boolean | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     hairStyle?: NullableEnumEnumHairStyleFieldUpdateOperationsInput | $Enums.EnumHairStyle | null
-    familyMembers?: FamilyMemberUncheckedUpdateManyWithoutBookOwnerNestedInput
-    events?: EventUncheckedUpdateManyWithoutBookOwnerNestedInput
   }
 
-  export type FamilyMemberCreateWithoutBookOwnerInput = {
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FamilyMemberUncheckedCreateWithoutBookOwnerInput = {
-    id?: number
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type FamilyMemberCreateOrConnectWithoutBookOwnerInput = {
+  export type FamilyMemberUpsertWithWhereUniqueWithoutBookInput = {
     where: FamilyMemberWhereUniqueInput
-    create: XOR<FamilyMemberCreateWithoutBookOwnerInput, FamilyMemberUncheckedCreateWithoutBookOwnerInput>
+    update: XOR<FamilyMemberUpdateWithoutBookInput, FamilyMemberUncheckedUpdateWithoutBookInput>
+    create: XOR<FamilyMemberCreateWithoutBookInput, FamilyMemberUncheckedCreateWithoutBookInput>
   }
 
-  export type FamilyMemberCreateManyBookOwnerInputEnvelope = {
-    data: FamilyMemberCreateManyBookOwnerInput | FamilyMemberCreateManyBookOwnerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type BookCreateWithoutBookOwnerInput = {
-    name: string
-    slug: string
-    price: Date | string
-    description: string
-    imageUrl: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    bookOwnerId: number
-    theme: ThemeCreateNestedOneWithoutBookInput
-    User?: UserCreateNestedOneWithoutBookInput
-  }
-
-  export type BookUncheckedCreateWithoutBookOwnerInput = {
-    id?: number
-    name: string
-    slug: string
-    price: Date | string
-    description: string
-    imageUrl: string
-    themeId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userId?: number | null
-    bookOwnerId: number
-  }
-
-  export type BookCreateOrConnectWithoutBookOwnerInput = {
-    where: BookWhereUniqueInput
-    create: XOR<BookCreateWithoutBookOwnerInput, BookUncheckedCreateWithoutBookOwnerInput>
-  }
-
-  export type EventCreateWithoutBookOwnerInput = {
-    name: string
-    date: Date | string
-    createdById?: number | null
-  }
-
-  export type EventUncheckedCreateWithoutBookOwnerInput = {
-    id?: number
-    name: string
-    date: Date | string
-    createdById?: number | null
-  }
-
-  export type EventCreateOrConnectWithoutBookOwnerInput = {
-    where: EventWhereUniqueInput
-    create: XOR<EventCreateWithoutBookOwnerInput, EventUncheckedCreateWithoutBookOwnerInput>
-  }
-
-  export type EventCreateManyBookOwnerInputEnvelope = {
-    data: EventCreateManyBookOwnerInput | EventCreateManyBookOwnerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FamilyMemberUpsertWithWhereUniqueWithoutBookOwnerInput = {
+  export type FamilyMemberUpdateWithWhereUniqueWithoutBookInput = {
     where: FamilyMemberWhereUniqueInput
-    update: XOR<FamilyMemberUpdateWithoutBookOwnerInput, FamilyMemberUncheckedUpdateWithoutBookOwnerInput>
-    create: XOR<FamilyMemberCreateWithoutBookOwnerInput, FamilyMemberUncheckedCreateWithoutBookOwnerInput>
+    data: XOR<FamilyMemberUpdateWithoutBookInput, FamilyMemberUncheckedUpdateWithoutBookInput>
   }
 
-  export type FamilyMemberUpdateWithWhereUniqueWithoutBookOwnerInput = {
-    where: FamilyMemberWhereUniqueInput
-    data: XOR<FamilyMemberUpdateWithoutBookOwnerInput, FamilyMemberUncheckedUpdateWithoutBookOwnerInput>
-  }
-
-  export type FamilyMemberUpdateManyWithWhereWithoutBookOwnerInput = {
+  export type FamilyMemberUpdateManyWithWhereWithoutBookInput = {
     where: FamilyMemberScalarWhereInput
-    data: XOR<FamilyMemberUpdateManyMutationInput, FamilyMemberUncheckedUpdateManyWithoutBookOwnerInput>
+    data: XOR<FamilyMemberUpdateManyMutationInput, FamilyMemberUncheckedUpdateManyWithoutBookInput>
   }
 
   export type FamilyMemberScalarWhereInput = {
@@ -11479,99 +11233,110 @@ export namespace Prisma {
     name?: StringFilter<"FamilyMember"> | string
     createdAt?: DateTimeFilter<"FamilyMember"> | Date | string
     updatedAt?: DateTimeFilter<"FamilyMember"> | Date | string
-    bookOwnerId?: IntNullableFilter<"FamilyMember"> | number | null
+    bookId?: IntFilter<"FamilyMember"> | number
   }
 
-  export type BookUpsertWithoutBookOwnerInput = {
-    update: XOR<BookUpdateWithoutBookOwnerInput, BookUncheckedUpdateWithoutBookOwnerInput>
-    create: XOR<BookCreateWithoutBookOwnerInput, BookUncheckedCreateWithoutBookOwnerInput>
+  export type BookCreateWithoutBookAudienceInput = {
+    name: string
+    slug: string
+    price: Decimal | DecimalJsLike | number | string
+    description: string
+    imageUrl: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bookAudienceId?: number | null
+    theme?: ThemeCreateNestedOneWithoutBookInput
+    user: UserCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberCreateNestedManyWithoutBookInput
+  }
+
+  export type BookUncheckedCreateWithoutBookAudienceInput = {
+    id?: number
+    name: string
+    slug: string
+    price: Decimal | DecimalJsLike | number | string
+    description: string
+    imageUrl: string
+    themeId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: number
+    bookAudienceId?: number | null
+    FamilyMember?: FamilyMemberUncheckedCreateNestedManyWithoutBookInput
+  }
+
+  export type BookCreateOrConnectWithoutBookAudienceInput = {
+    where: BookWhereUniqueInput
+    create: XOR<BookCreateWithoutBookAudienceInput, BookUncheckedCreateWithoutBookAudienceInput>
+  }
+
+  export type BookUpsertWithoutBookAudienceInput = {
+    update: XOR<BookUpdateWithoutBookAudienceInput, BookUncheckedUpdateWithoutBookAudienceInput>
+    create: XOR<BookCreateWithoutBookAudienceInput, BookUncheckedCreateWithoutBookAudienceInput>
     where?: BookWhereInput
   }
 
-  export type BookUpdateToOneWithWhereWithoutBookOwnerInput = {
+  export type BookUpdateToOneWithWhereWithoutBookAudienceInput = {
     where?: BookWhereInput
-    data: XOR<BookUpdateWithoutBookOwnerInput, BookUncheckedUpdateWithoutBookOwnerInput>
+    data: XOR<BookUpdateWithoutBookAudienceInput, BookUncheckedUpdateWithoutBookAudienceInput>
   }
 
-  export type BookUpdateWithoutBookOwnerInput = {
+  export type BookUpdateWithoutBookAudienceInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    theme?: ThemeUpdateOneRequiredWithoutBookNestedInput
-    User?: UserUpdateOneWithoutBookNestedInput
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    theme?: ThemeUpdateOneWithoutBookNestedInput
+    user?: UserUpdateOneRequiredWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUpdateManyWithoutBookNestedInput
   }
 
-  export type BookUncheckedUpdateWithoutBookOwnerInput = {
+  export type BookUncheckedUpdateWithoutBookAudienceInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    themeId?: IntFieldUpdateOperationsInput | number
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type EventUpsertWithWhereUniqueWithoutBookOwnerInput = {
-    where: EventWhereUniqueInput
-    update: XOR<EventUpdateWithoutBookOwnerInput, EventUncheckedUpdateWithoutBookOwnerInput>
-    create: XOR<EventCreateWithoutBookOwnerInput, EventUncheckedCreateWithoutBookOwnerInput>
-  }
-
-  export type EventUpdateWithWhereUniqueWithoutBookOwnerInput = {
-    where: EventWhereUniqueInput
-    data: XOR<EventUpdateWithoutBookOwnerInput, EventUncheckedUpdateWithoutBookOwnerInput>
-  }
-
-  export type EventUpdateManyWithWhereWithoutBookOwnerInput = {
-    where: EventScalarWhereInput
-    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyWithoutBookOwnerInput>
-  }
-
-  export type EventScalarWhereInput = {
-    AND?: EventScalarWhereInput | EventScalarWhereInput[]
-    OR?: EventScalarWhereInput[]
-    NOT?: EventScalarWhereInput | EventScalarWhereInput[]
-    id?: IntFilter<"Event"> | number
-    name?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    createdById?: IntNullableFilter<"Event"> | number | null
-    bookOwnerId?: IntNullableFilter<"Event"> | number | null
+    userId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    FamilyMember?: FamilyMemberUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookCreateWithoutThemeInput = {
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId: number
-    User?: UserCreateNestedOneWithoutBookInput
-    BookOwner?: BookOwnerCreateNestedOneWithoutBookInput
+    bookAudienceId?: number | null
+    user: UserCreateNestedOneWithoutBookInput
+    BookAudience?: BookAudienceCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberCreateNestedManyWithoutBookInput
   }
 
   export type BookUncheckedCreateWithoutThemeInput = {
     id?: number
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId?: number | null
-    bookOwnerId: number
-    BookOwner?: BookOwnerUncheckedCreateNestedOneWithoutBookInput
+    userId: number
+    bookAudienceId?: number | null
+    BookAudience?: BookAudienceUncheckedCreateNestedOneWithoutBookInput
+    FamilyMember?: FamilyMemberUncheckedCreateNestedManyWithoutBookInput
   }
 
   export type BookCreateOrConnectWithoutThemeInput = {
@@ -11613,13 +11378,13 @@ export namespace Prisma {
     id?: number
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
-    themeId: number
+    themeId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookOwnerId: number
+    bookAudienceId?: number | null
   }
 
   export type TokenUpdateWithoutUserInput = {
@@ -11651,148 +11416,125 @@ export namespace Prisma {
   export type BookUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    theme?: ThemeUpdateOneRequiredWithoutBookNestedInput
-    BookOwner?: BookOwnerUpdateOneWithoutBookNestedInput
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    theme?: ThemeUpdateOneWithoutBookNestedInput
+    BookAudience?: BookAudienceUpdateOneWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    themeId?: IntFieldUpdateOperationsInput | number
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    BookOwner?: BookOwnerUncheckedUpdateOneWithoutBookNestedInput
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    BookAudience?: BookAudienceUncheckedUpdateOneWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    themeId?: IntFieldUpdateOperationsInput | number
+    themeId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type FamilyMemberCreateManyBookOwnerInput = {
+  export type FamilyMemberCreateManyBookInput = {
     id?: number
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type EventCreateManyBookOwnerInput = {
-    id?: number
-    name: string
-    date: Date | string
-    createdById?: number | null
-  }
-
-  export type FamilyMemberUpdateWithoutBookOwnerInput = {
+  export type FamilyMemberUpdateWithoutBookInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FamilyMemberUncheckedUpdateWithoutBookOwnerInput = {
+  export type FamilyMemberUncheckedUpdateWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FamilyMemberUncheckedUpdateManyWithoutBookOwnerInput = {
+  export type FamilyMemberUncheckedUpdateManyWithoutBookInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EventUpdateWithoutBookOwnerInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type EventUncheckedUpdateWithoutBookOwnerInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type EventUncheckedUpdateManyWithoutBookOwnerInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type BookCreateManyThemeInput = {
     id?: number
     name: string
     slug: string
-    price: Date | string
+    price: Decimal | DecimalJsLike | number | string
     description: string
     imageUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    userId?: number | null
-    bookOwnerId: number
+    userId: number
+    bookAudienceId?: number | null
   }
 
   export type BookUpdateWithoutThemeInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    User?: UserUpdateOneWithoutBookNestedInput
-    BookOwner?: BookOwnerUpdateOneWithoutBookNestedInput
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    user?: UserUpdateOneRequiredWithoutBookNestedInput
+    BookAudience?: BookAudienceUpdateOneWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateWithoutThemeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
-    BookOwner?: BookOwnerUncheckedUpdateOneWithoutBookNestedInput
+    userId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
+    BookAudience?: BookAudienceUncheckedUpdateOneWithoutBookNestedInput
+    FamilyMember?: FamilyMemberUncheckedUpdateManyWithoutBookNestedInput
   }
 
   export type BookUncheckedUpdateManyWithoutThemeInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    price?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     description?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    bookOwnerId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    bookAudienceId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 
@@ -11805,9 +11547,9 @@ export namespace Prisma {
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use BookOwnerCountOutputTypeDefaultArgs instead
+     * @deprecated Use BookCountOutputTypeDefaultArgs instead
      */
-    export type BookOwnerCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookOwnerCountOutputTypeDefaultArgs<ExtArgs>
+    export type BookCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ThemeCountOutputTypeDefaultArgs instead
      */
@@ -11833,9 +11575,9 @@ export namespace Prisma {
      */
     export type BookArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use BookOwnerDefaultArgs instead
+     * @deprecated Use BookAudienceDefaultArgs instead
      */
-    export type BookOwnerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookOwnerDefaultArgs<ExtArgs>
+    export type BookAudienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookAudienceDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ThemeDefaultArgs instead
      */

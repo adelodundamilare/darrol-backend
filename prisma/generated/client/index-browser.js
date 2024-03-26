@@ -123,7 +123,7 @@ exports.Prisma.FamilyMemberScalarFieldEnum = {
   name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  bookOwnerId: 'bookOwnerId'
+  bookId: 'bookId'
 };
 
 exports.Prisma.TokenScalarFieldEnum = {
@@ -140,8 +140,7 @@ exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   name: 'name',
   date: 'date',
-  createdById: 'createdById',
-  bookOwnerId: 'bookOwnerId'
+  createdById: 'createdById'
 };
 
 exports.Prisma.BookScalarFieldEnum = {
@@ -155,10 +154,10 @@ exports.Prisma.BookScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId',
-  bookOwnerId: 'bookOwnerId'
+  bookAudienceId: 'bookAudienceId'
 };
 
-exports.Prisma.BookOwnerScalarFieldEnum = {
+exports.Prisma.BookAudienceScalarFieldEnum = {
   id: 'id',
   gender: 'gender',
   glasses: 'glasses',
@@ -219,7 +218,7 @@ exports.Prisma.ModelName = {
   Token: 'Token',
   Event: 'Event',
   Book: 'Book',
-  BookOwner: 'BookOwner',
+  BookAudience: 'BookAudience',
   Theme: 'Theme'
 };
 

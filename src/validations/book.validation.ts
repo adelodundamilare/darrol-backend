@@ -3,16 +3,16 @@ import Joi from 'joi';
 const createBook = {
   body: Joi.object().keys({
     name: Joi.string().required(),
-    amount: Joi.string().required(),
+    price: Joi.number().required(),
     description: Joi.string().required(),
-    imageUrl: Joi.string().required()
+    imageUrl: Joi.string()
   })
 };
 
 const getBooks = {
   query: Joi.object().keys({
     name: Joi.string(),
-    amount: Joi.string(),
+    price: Joi.number(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer()

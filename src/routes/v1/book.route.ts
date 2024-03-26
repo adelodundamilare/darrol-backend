@@ -8,8 +8,8 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageUsers'), validate(bookValidation.createBook), bookController.createBook)
-  .get(auth('getUsers'), validate(bookValidation.getBooks), bookController.getBooks);
+  .post(auth(), validate(bookValidation.createBook), bookController.createBook)
+  .get(auth(), validate(bookValidation.getBooks), bookController.getBooks);
 
 export default router;
 
@@ -35,11 +35,6 @@ export default router;
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - name
- *               - price
- *               - description
- *               - imageUrl
  *             example:
  *               name: Scooby Doo
  *               price: 2400
@@ -48,16 +43,6 @@ export default router;
  *     responses:
  *       "201":
  *         description: Created
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/User'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
  *
  *   get:
  *     summary: Get all books
@@ -92,6 +77,5 @@ export default router;
  *         description: Page number
  *     responses:
  *       "200":
- *       "401":
- *       "403":
+ *         description: Created
  */

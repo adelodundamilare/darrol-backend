@@ -12,5 +12,5 @@ export interface CreateBookDto {
   name: string;
   description: string;
   imageUrl: string;
-  amount: number;
+  price: number;
 }

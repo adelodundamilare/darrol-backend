@@ -29,12 +29,12 @@ model User {
 
 // Define the FamilyMember model
 model FamilyMember {
-  id          Int        @id @default(autoincrement())
-  name        String
-  createdAt   DateTime   @default(now()) // Added createdAt field
-  updatedAt   DateTime   @updatedAt // Added updatedAt field
-  BookOwner   BookOwner? @relation(fields: [bookOwnerId], references: [id])
-  bookOwnerId Int?
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now()) // Added createdAt field
+  updatedAt DateTime @updatedAt // Added updatedAt field
+  book      Book     @relation(fields: [bookId], references: [id])
+  bookId    Int
 }
 
 // Define the Gender enum
@@ -63,41 +63,38 @@ model Token {
 }
 
 model Event {
-  id          Int        @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   date        DateTime
   createdById Int?
-  BookOwner   BookOwner? @relation(fields: [bookOwnerId], references: [id])
-  bookOwnerId Int?
 }
 
 model Book {
-  id          Int        @id @default(autoincrement())
-  name        String
-  slug        String
-  price       DateTime
-  description String
-  imageUrl    String
-  theme       Theme      @relation(fields: [themeId], references: [id])
-  themeId     Int
-  createdAt   DateTime   @default(now()) // Added createdAt field
-  updatedAt   DateTime   @updatedAt // Added updatedAt field
-  User        User?      @relation(fields: [userId], references: [id])
-  userId      Int?
-  BookOwner   BookOwner?
-  bookOwnerId Int
+  id             Int            @id @default(autoincrement())
+  name           String
+  slug           String
+  price          Decimal
+  description    String
+  imageUrl       String
+  theme          Theme?         @relation(fields: [themeId], references: [id])
+  themeId        Int?
+  createdAt      DateTime       @default(now()) // Added createdAt field
+  updatedAt      DateTime       @updatedAt // Added updatedAt field
+  user           User           @relation(fields: [userId], references: [id])
+  userId         Int
+  BookAudience   BookAudience?
+  bookAudienceId Int?
+  FamilyMember   FamilyMember[]
 }
 
-model BookOwner {
-  id            Int            @id @default(autoincrement())
-  gender        EnumGender?
-  glasses       Boolean?       @default(false)
-  age           Int?
-  hairStyle     EnumHairStyle?
-  familyMembers FamilyMember[]
-  book          Book           @relation(fields: [bookId], references: [id])
-  bookId        Int            @unique
-  events        Event[]
+model BookAudience {
+  id        Int            @id @default(autoincrement())
+  gender    EnumGender?
+  glasses   Boolean?       @default(false)
+  age       Int?
+  hairStyle EnumHairStyle?
+  book      Book           @relation(fields: [bookId], references: [id])
+  bookId    Int            @unique
 }
 
 model Theme {

@@ -1,16 +1,17 @@
-import { Book, Prisma } from '@/prisma/generated/client';
+import { Book, Prisma, User } from '@/prisma/generated/client';
 import ApiError from '../utils/ApiError';
 import prisma from '../client';
 import httpStatus from 'http-status';
+import { CreateBookDto } from '../types/response';
 
-const createBook = async (book: Book): Promise<Book> => {
-  if (await getBookByName(book.name)) {
+const createBook = async (book: CreateBookDto, user: User): Promise<Book> => {
+  const oldBook = await getBookByName(book.name);
+  if (oldBook) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Book with name already exist');
   }
-  book.slug = _createSlug(book.name);
 
   return prisma.book.create({
-    data: book
+    data: { ...book, slug: _createSlug(book.name), user: { connect: { id: user.id } } }
   });
 };
 
