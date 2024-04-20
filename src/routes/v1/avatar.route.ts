@@ -1,7 +1,7 @@
-import avatarValidation from '@/src/validations/avatar.validation';
+import avatarValidation from '../../validations/avatar.validation';
 import validate from '../../middlewares/validate';
 import express from 'express';
-import avatarController from '@/src/controllers/avatar.controller';
+import avatarController from '../../controllers/avatar.controller';
 
 const router = express.Router();
 
