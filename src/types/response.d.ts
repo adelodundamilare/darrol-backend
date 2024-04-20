@@ -14,3 +14,12 @@ export interface CreateBookDto {
   imageUrl: string;
   price: number;
 }
+
+export interface CreateAvatarDto {
+  gender: string;
+  skinColor: string;
+  hairColor: string;
+  hairStyle: string;
+  eyeColor: string;
+  glasses: boolean;
+}

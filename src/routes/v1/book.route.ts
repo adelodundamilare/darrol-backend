@@ -79,3 +79,64 @@ export default router;
  *       "200":
  *         description: Created
  */
+
+/**
+ * @swagger
+ * /books/{id}:
+ *   get:
+ *     summary: Get a book
+ *     description: Any logged in user can fetch a book.
+ *     tags: [Books]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       "200":
+ *         description: OK
+ *
+ *   patch:
+ *     summary: Update a theme
+ *     description: Only admins can update a theme.
+ *     tags: [Themes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             example:
+ *               name: new theme name
+ *               coverImageUrl: https://new-nice-dog-pic.jpg
+ *     responses:
+ *       "200":
+ *         description: OK
+ *
+ *   delete:
+ *     summary: Delete a theme
+ *     description: Only admins can delete a theme.
+ *     tags: [Themes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       "200":
+ *         description: No content
+ */
