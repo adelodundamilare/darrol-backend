@@ -39,7 +39,7 @@ export default class OpenAiService {
     prompt += ' Image should feature only one human head, two legs and two arms.';
     prompt += ' Image background color: #141122';
     prompt +=
-      ' Important note, no extra data besides this, no color wheel; image would be used for kids book';
+      ' Important note: just a single kid, no variant, no extra data, no color wheel and with colorful dark background; image would be used for kids book';
 
     const response = await openai.images.generate({
       model: 'dall-e-3',
