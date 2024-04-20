@@ -13,7 +13,7 @@ const sampleImagePath = path.join(rootDirectory, 'assets', 'img', 'sample.png');
 export default class OpenAiService {
   static async generateImage(data: CreateAvatarDto): Promise<string> {
     let prompt =
-      'Generate a fully captured 2D image of an handsome or beautiful human putting on colorful wears and with lively gestures or pose. ';
+      'Generate a fully captured 2D image of a single handsome or beautiful kid between age range 4 to 10 putting on colorful wears and with lively gestures or pose. ';
     prompt += ' Image should be at the center with plenty white spaces around it. ';
     prompt += ' Image should capture the human head, full body and footwear.';
     prompt += ' Other characteristics include: ';
@@ -38,6 +38,8 @@ export default class OpenAiService {
     }
     prompt += ' Image should feature only one human head, two legs and two arms.';
     prompt += ' Image background color: #141122';
+    prompt +=
+      ' Important note, no extra data besides this, no color wheel; image would be used for kids book';
 
     const response = await openai.images.generate({
       model: 'dall-e-3',
