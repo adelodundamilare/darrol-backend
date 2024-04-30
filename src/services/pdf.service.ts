@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import path from 'path';
+import config from '../config/config';
 
 async function generatePDFfromHTML(htmlContent: string, outputPath: string): Promise<string> {
   // let timeInMil: any = new Date();
@@ -16,7 +17,11 @@ async function generatePDFfromHTML(htmlContent: string, outputPath: string): Pro
 
   await page.pdf({ path: outputPath, format: 'A5', printBackground: true }); // Set landscape option to true
   await browser.close();
-  return `file://${path.resolve(outputPath)}`;
+
+  const relativePath = path.relative(path.resolve(__dirname, '../'), outputPath);
+  const baseUrl = config.baseUrl;
+  return `${baseUrl}/${relativePath}`;
+  // return `file://${path.resolve(outputPath)}`;
 }
 
 export default {

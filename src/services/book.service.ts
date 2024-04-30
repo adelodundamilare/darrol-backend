@@ -15,8 +15,8 @@ const generateBook = async (book: BookCreateDto) => {
   // convert book to pdf
   const sections = res.split(Constants.SectionSeparator);
 
-  // sections.map((x) => console.log(x, 'yo!'));
-  // console.log({ len: sections.length });
+  sections.map((x) => console.log(x, 'yo!'));
+  console.log({ len: sections.length });
 
   const templateHtml = fs.readFileSync(path.join(process.cwd(), 'html/index.hbs'), 'utf8');
   const template = handlebars.compile(templateHtml);

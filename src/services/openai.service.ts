@@ -85,28 +85,29 @@ export default class OpenAiService {
 
   static async generateAIBook(book: BookCreateDto): Promise<string> {
     try {
-      let prompt = `write a fun 6000 words story of a kid`;
-      prompt += ' divide into chapters';
+      let prompt = `write a fun 6000 words story of a kid\n`;
+      prompt += ' divide into chapters\n';
       // prompt += ' format properly and output should come out as html';
-      prompt += ` format properly and separate each chapter with ${Constants.SectionSeparator}`;
-      prompt += ' the chapter title should be wrapped around the h1 tag';
-      prompt += ' wrap each chapter title with an h2 tag and a class name called chapter-title';
-      prompt += ' wrap each paragraph a p tag and a class name called chapter-paragraph.';
-      prompt += ' other important information to be taken into consideration include: ';
-      prompt += ` protagonist age: ${book.age} `;
-      prompt += ` protagonist name: ${book.firstName} `;
-      prompt += ` protagonist family member: ${book.familyMembers} `;
-      prompt += ` protagonist family member: ${book.familyMembers} `;
-      prompt += ` protagonist gender: ${book.gender} `;
-      prompt += ` protagonist race and skin color: ${book.skinColor} `;
-      prompt += ` protagonist hair style: ${book.skinColor} `;
-      prompt += ` protagonist hair color: ${book.hairColor} `;
-      prompt += ` protagonist eye color: ${book.eyeColor} `;
-      prompt += ` protagonist ${book.glasses ? 'uses' : 'does not use'} glasses `;
-      prompt += ` some personal events: ${book.personalEvents}, it's very important you write one or more chapters about these events. `;
-      prompt += ` some personal message: ${book.personalMsg}, it's very important you write one or more chapters about these events. `;
+      prompt += ` format properly and separate each chapter with ${Constants.SectionSeparator}\n`;
+      prompt += ' the chapter title should be wrapped around the h1 tag\n';
+      prompt += ' wrap each chapter title with an h2 tag and a class name called chapter-title\n';
+      prompt += ' wrap each paragraph a p tag and a class name called chapter-paragraph.\n';
+      prompt += ' other important information to be taken into consideration include: \n';
+      prompt += ` protagonist age: ${book.age} \n`;
+      prompt += ` protagonist name: ${book.firstName} \n`;
+      prompt += ` protagonist family member: ${book.familyMembers} \n`;
+      prompt += ` protagonist family member: ${book.familyMembers} \n`;
+      prompt += ` protagonist gender: ${book.gender} \n`;
+      prompt += ` protagonist race and skin color: ${book.skinColor} \n`;
+      prompt += ` protagonist hair style: ${book.skinColor} \n`;
+      prompt += ` protagonist hair color: ${book.hairColor} \n`;
+      prompt += ` protagonist eye color: ${book.eyeColor} \n`;
+      prompt += ` protagonist ${book.glasses ? 'uses' : 'does not use'} glasses \n`;
+      prompt += ` some personal events: ${book.personalEvents}, it's very important you write one or more chapters about these events. \n`;
+      prompt += ` some personal message: ${book.personalMsg}, it's very important you write one or more chapters about these events. \n`;
 
       // theme: string;
+      console.log({ prompt });
 
       const message: ChatCompletionMessageParam[] = [
         {
