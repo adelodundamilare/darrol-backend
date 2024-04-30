@@ -12,12 +12,12 @@ async function generatePDFfromHTML(htmlContent: string, outputPath: string): Pro
 
   // const imagePath = ;
   // console.log({ imagePath });
-  await page.evaluate(() => {
-    // document.body.style.backgroundColor = 'lightblue'; // Set background color
-    document.body.style.backgroundImage = `url("${path.resolve(
-      'html/assets/images/section-bg.jpg'
-    )}")`;
-  });
+  // await page.evaluate(() => {
+  //   // document.body.style.backgroundColor = 'lightblue'; // Set background color
+  //   document.body.style.backgroundImage = `url("${path.resolve(
+  //     'html/assets/images/section-bg.jpg'
+  //   )}")`;
+  // });
 
   await page.setContent(htmlContent, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
 
