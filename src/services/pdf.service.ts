@@ -24,7 +24,7 @@ async function generatePDFfromHTML(htmlContent: string, outputPath: string): Pro
   const cssPath = path.resolve('html/assets/style.css');
   await page.addStyleTag({ path: cssPath });
 
-  await page.pdf({ path: outputPath, format: 'A5', printBackground: true }); // Set landscape option to true
+  await page.pdf({ path: outputPath, format: 'A4', landscape: true, printBackground: true }); // Set landscape option to true
   await browser.close();
 
   // const relativePath = path.relative(path.resolve(__dirname, '../'), outputPath);
