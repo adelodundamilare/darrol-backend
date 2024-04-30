@@ -10,6 +10,13 @@ async function generatePDFfromHTML(htmlContent: string, outputPath: string): Pro
   const page = await browser.newPage();
   // await page.setViewport({ width: 1200, height: 800 }); // Set viewport to a landscape aspect ratio
 
+  const imagePath = path.resolve('html/assets/images/section-bg.jpg');
+  console.log({ imagePath });
+  await page.evaluate(() => {
+    // document.body.style.backgroundColor = 'lightblue'; // Set background color
+    document.body.style.backgroundImage = `url("${imagePath}")`;
+  });
+
   await page.setContent(htmlContent, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
 
   const cssPath = path.resolve('html/assets/style.css');
