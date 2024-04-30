@@ -3,16 +3,14 @@ import ApiError from '../utils/ApiError';
 import prisma from '../client';
 import httpStatus from 'http-status';
 import { CreateBookDto } from '../types/response';
+import OpenAiService from './openai.service';
 
-const createBook = async (book: CreateBookDto, user: User): Promise<Book> => {
-  const oldBook = await getBookByName(book.name);
-  if (oldBook) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Book with name already exist');
-  }
+const generateBook = async () => {
+  // generate book
+  const res = await OpenAiService.generateAIBook();
+  // convert book to pdf
 
-  return prisma.book.create({
-    data: { ...book, slug: _createSlug(book.name), user: { connect: { id: user.id } } }
-  });
+  return res;
 };
 
 const updateBookById = async (
@@ -82,7 +80,7 @@ function _createSlug(name: string): string {
 }
 
 export default {
-  createBook,
+  generateBook,
   queryBooks,
   getBookById,
   updateBookById

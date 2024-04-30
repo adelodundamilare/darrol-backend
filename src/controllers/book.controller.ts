@@ -1,15 +1,28 @@
 import httpStatus from 'http-status';
 import catchAsync from '../utils/catchAsync';
 import bookService from '../services/book.service';
+import pdfService from '../services/pdf.service';
 import pick from '../utils/pick';
 import { Book, User } from '@/prisma/generated/client';
 import { CreateBookDto } from '../types/response';
+
+
+const generateBook = catchAsync(async (req, res) => {
+  try {
+    // const aiBook = await bookService.generateBook();
+    const pdf = await pdfService.generatePDFfromHTML('aiBook', 'ai-story-book.pdf')
+    res.send({ success: true, message: 'Book generated successfully', data: pdf });
+  } catch (error: any) {
+    console.log({ error });
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ success: false, message: error.message });
+  }
+});
 
 const createBook = catchAsync(async (req, res) => {
   try {
     const data: CreateBookDto = req.body;
     const user = req.user;
-    const book = await bookService.createBook(data, user as User);
+    const book = null;
     res
       .status(httpStatus.CREATED)
       .send({ success: true, message: 'Book created successfully', data: book });
@@ -33,5 +46,6 @@ const getBooks = catchAsync(async (req, res) => {
 
 export default {
   createBook,
-  getBooks
+  getBooks,
+  generateBook
 };

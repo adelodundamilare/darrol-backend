@@ -8,7 +8,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth(), validate(bookValidation.createBook), bookController.createBook)
+  .post(bookController.generateBook)
   .get(auth(), validate(bookValidation.getBooks), bookController.getBooks);
 
 export default router;
@@ -25,7 +25,7 @@ export default router;
  * /books:
  *   post:
  *     summary: Create a book
- *     description: Only admins can create books.
+ *     description: Any user can create books.
  *     tags: [Books]
  *     security:
  *       - bearerAuth: []
@@ -37,9 +37,6 @@ export default router;
  *             type: object
  *             example:
  *               name: Scooby Doo
- *               price: 2400
- *               description: A book about Scooby doo
- *               imageUrl: https://nice-dog-pic.jpg
  *     responses:
  *       "201":
  *         description: Created

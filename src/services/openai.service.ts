@@ -2,6 +2,7 @@ import OpenAI from 'openai';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CreateAvatarDto } from '../types/response';
+import { ChatCompletionMessageParam } from 'openai/resources';
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_OPENAI_API_KEY
@@ -75,6 +76,33 @@ export default class OpenAiService {
       fs.writeFileSync(filePath, imageData);
 
       return filePath;
+    } catch (error) {
+      console.error('Error loading image from URL:', error);
+      throw error;
+    }
+  }
+
+  static async generateAIBook(): Promise<string> {
+    try {
+      let prompt = 'write a fun 1000 words story of a kid between age 4 - 9';
+      prompt += ' divide into chapters';
+      // prompt += ' format properly and output should come out as html';
+      prompt += ' format properly and separate each chapter with ============';
+      prompt += ' the chapter title should be wrapped around the h1 tag';
+
+      const message: ChatCompletionMessageParam[] = [
+        {
+          role: 'system',
+          content: prompt
+        }
+      ];
+
+      const res = await openai.chat.completions.create({
+        model: 'gpt-3.5-turbo-0125',
+        messages: message
+      });
+
+      return res.choices[0].message.content || '--';
     } catch (error) {
       console.error('Error loading image from URL:', error);
       throw error;
