@@ -23,12 +23,12 @@ async function generatePDFfromHTML(htmlContent: string, outputPath: string): Pro
   const page = await browser.newPage();
   // await page.setViewport({ width: 1200, height: 800 }); // Set viewport to a landscape aspect ratio
 
-  await page.setContent(html, { waitUntil: 'load' });
+  await page.setContent(html, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
 
   const cssPath = path.resolve('html/assets/style.css');
   await page.addStyleTag({ path: cssPath });
 
-  await page.pdf({ path: outputPath, format: 'A5' }); // Set landscape option to true
+  await page.pdf({ path: outputPath, format: 'A5', printBackground: true }); // Set landscape option to true
   await browser.close();
   return `file://${path.resolve(outputPath)}`;
 }
