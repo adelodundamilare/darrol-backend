@@ -8,7 +8,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(bookController.generateBook)
+  .post(validate(bookValidation.generateBook), bookController.generateBook)
   .get(auth(), validate(bookValidation.getBooks), bookController.getBooks);
 
 export default router;
@@ -36,7 +36,19 @@ export default router;
  *           schema:
  *             type: object
  *             example:
- *               name: Scooby Doo
+ *               firstName: John Doe
+ *               age: 7
+ *               gender: girl | boy
+ *               skinColor: light | medium | dark
+ *               hairStyle: very short bald | short straight | short curly | medium length straight | medium length curly | long straight | long curly
+ *               hairColor: blonde | brown | dark | red
+ *               eyeColor: blue | green | brown
+ *               glasses: true | false
+ *               theme: any theme
+ *               personalMsg: your message
+ *               familyMembers: Jane Doe, Helen Smith, Jacob Doe, Jane Doe
+ *               personalEvents: personal events
+ *
  *     responses:
  *       "201":
  *         description: Created

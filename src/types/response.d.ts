@@ -23,3 +23,18 @@ export interface CreateAvatarDto {
   eyeColor: string;
   glasses: boolean;
 }
+
+export interface BookCreateDto {
+  firstName: string;
+  age: number;
+  gender: string;
+  skinColor: string;
+  hairStyle: string;
+  hairColor: string;
+  eyeColor: string;
+  glasses: boolean;
+  theme: string;
+  personalMsg: string;
+  familyMembers: string;
+  personalEvents: string;
+}

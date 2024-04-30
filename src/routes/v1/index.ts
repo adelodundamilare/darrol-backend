@@ -8,10 +8,10 @@ import avatarRoute from './avatar.route';
 const router = express.Router();
 
 const defaultRoutes = [
-  {
-    path: '/auth',
-    route: authRoute
-  },
+  // {
+  //   path: '/auth',
+  //   route: authRoute
+  // },
   {
     path: '/avatars',
     route: avatarRoute

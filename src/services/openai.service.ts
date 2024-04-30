@@ -1,8 +1,9 @@
 import OpenAI from 'openai';
 import * as fs from 'fs';
 import * as path from 'path';
-import { CreateAvatarDto } from '../types/response';
+import { BookCreateDto, CreateAvatarDto } from '../types/response';
 import { ChatCompletionMessageParam } from 'openai/resources';
+import Constants from '../utils/constants';
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_OPENAI_API_KEY
@@ -82,13 +83,30 @@ export default class OpenAiService {
     }
   }
 
-  static async generateAIBook(): Promise<string> {
+  static async generateAIBook(book: BookCreateDto): Promise<string> {
     try {
-      let prompt = 'write a fun 1000 words story of a kid between age 4 - 9';
+      let prompt = `write a fun 6000 words story of a kid`;
       prompt += ' divide into chapters';
       // prompt += ' format properly and output should come out as html';
-      prompt += ' format properly and separate each chapter with ============';
+      prompt += ` format properly and separate each chapter with ${Constants.SectionSeparator}`;
       prompt += ' the chapter title should be wrapped around the h1 tag';
+      prompt += ' wrap each chapter title with an h2 tag and a class name called chapter-title';
+      prompt += ' wrap each paragraph a p tag and a class name called chapter-paragraph.';
+      prompt += ' other important information to be taken into consideration include: ';
+      prompt += ` protagonist age: ${book.age} `;
+      prompt += ` protagonist name: ${book.firstName} `;
+      prompt += ` protagonist family member: ${book.familyMembers} `;
+      prompt += ` protagonist family member: ${book.familyMembers} `;
+      prompt += ` protagonist gender: ${book.gender} `;
+      prompt += ` protagonist race and skin color: ${book.skinColor} `;
+      prompt += ` protagonist hair style: ${book.skinColor} `;
+      prompt += ` protagonist hair color: ${book.hairColor} `;
+      prompt += ` protagonist eye color: ${book.eyeColor} `;
+      prompt += ` protagonist ${book.glasses ? 'uses' : 'does not use'} glasses `;
+      prompt += ` some personal events: ${book.personalEvents}, it's very important you write one or more chapters about these events. `;
+      prompt += ` some personal message: ${book.personalMsg}, it's very important you write one or more chapters about these events. `;
+
+      // theme: string;
 
       const message: ChatCompletionMessageParam[] = [
         {

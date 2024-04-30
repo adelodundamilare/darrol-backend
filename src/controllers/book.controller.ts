@@ -4,13 +4,13 @@ import bookService from '../services/book.service';
 import pdfService from '../services/pdf.service';
 import pick from '../utils/pick';
 import { Book, User } from '@/prisma/generated/client';
-import { CreateBookDto } from '../types/response';
-
+import { BookCreateDto, CreateBookDto } from '../types/response';
 
 const generateBook = catchAsync(async (req, res) => {
   try {
-    // const aiBook = await bookService.generateBook();
-    const pdf = await pdfService.generatePDFfromHTML('aiBook', 'ai-story-book.pdf')
+    const body: BookCreateDto = req.body;
+    const aiBook = await bookService.generateBook(body);
+    const pdf = await pdfService.generatePDFfromHTML(aiBook, 'ai-story-book.pdf');
     res.send({ success: true, message: 'Book generated successfully', data: pdf });
   } catch (error: any) {
     console.log({ error });
