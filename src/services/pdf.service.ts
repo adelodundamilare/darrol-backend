@@ -18,9 +18,11 @@ async function generatePDFfromHTML(htmlContent: string, outputPath: string): Pro
   await page.pdf({ path: outputPath, format: 'A5', printBackground: true }); // Set landscape option to true
   await browser.close();
 
-  const relativePath = path.relative(path.resolve(__dirname, '../'), outputPath);
+  // const relativePath = path.relative(path.resolve(__dirname, '../'), outputPath);
   const baseUrl = config.baseUrl;
-  return `${baseUrl}/${relativePath}`;
+  // Return the relative path to the saved file
+  // const relativePath = path.relative(__dirname, outputPath); // Get the relative path
+  return `${baseUrl}/${path.basename(outputPath)}`;
   // return `file://${path.resolve(outputPath)}`;
 }
 

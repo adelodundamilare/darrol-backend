@@ -89,6 +89,7 @@ export default class OpenAiService {
       prompt += ' divide into chapters\n';
       // prompt += ' format properly and output should come out as html';
       prompt += ` format properly and separate each chapter with ${Constants.SectionSeparator}\n`;
+      prompt += ' each chapter should be wrapped around a section tag with class name chapter\n';
       prompt += ' the chapter title should be wrapped around the h1 tag\n';
       prompt += ' wrap each chapter title with an h2 tag and a class name called chapter-title\n';
       prompt += ' wrap each paragraph a p tag and a class name called chapter-paragraph.\n';
@@ -105,6 +106,7 @@ export default class OpenAiService {
       prompt += ` protagonist ${book.glasses ? 'uses' : 'does not use'} glasses \n`;
       prompt += ` some personal events: ${book.personalEvents}, it's very important you write one or more chapters about these events. \n`;
       prompt += ` some personal message: ${book.personalMsg}, it's very important you write one or more chapters about these events. \n`;
+      prompt += ' please remove doctype and any head tag from result \n';
 
       // theme: string;
       console.log({ prompt });

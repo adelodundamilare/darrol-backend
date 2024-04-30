@@ -33,7 +33,7 @@ p {
   margin-bottom: 21px;
 }
 
-section {
+@page {
   width: 100%;
   height: 85vh;
   padding: 50px;
