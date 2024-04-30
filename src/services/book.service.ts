@@ -2,21 +2,27 @@ import { Book, Prisma, User } from '@/prisma/generated/client';
 import ApiError from '../utils/ApiError';
 import prisma from '../client';
 import httpStatus from 'http-status';
-import { BookCreateDto, CreateBookDto } from '../types/response';
+import { BookCreateDto } from '../types/response';
 import OpenAiService from './openai.service';
 import * as fs from 'fs';
 import handlebars from 'handlebars';
 import path from 'path';
-import Constants from '../utils/constants';
+import * as cheerio from 'cheerio';
 
 const generateBook = async (book: BookCreateDto) => {
   // generate book
   const res = await OpenAiService.generateAIBook(book);
-  // convert book to pdf
-  const sections = res.split(Constants.SectionSeparator);
 
-  sections.map((x) => console.log(x, 'yo!'));
-  console.log({ len: sections.length });
+  // convert book to pdf
+  const $ = cheerio.load(res);
+  const sections: any[] = [];
+  $('section.chapter').each((index, element) => {
+    sections.push($(element).html());
+  });
+  // const sections = res.split(Constants.SectionSeparator);
+
+  // sections.map((x) => console.log(x, 'yo!'));
+  console.log({ sections, len: sections.length });
 
   const templateHtml = fs.readFileSync(path.join(process.cwd(), 'html/index.hbs'), 'utf8');
   const template = handlebars.compile(templateHtml);

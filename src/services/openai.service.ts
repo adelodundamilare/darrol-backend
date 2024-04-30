@@ -91,6 +91,8 @@ export default class OpenAiService {
       prompt += ` format properly and separate each chapter with ${Constants.SectionSeparator}\n`;
       prompt += ' each chapter should be wrapped around a section tag with class name chapter\n';
       prompt += ' the chapter title should be wrapped around the h1 tag\n';
+      prompt += ' please add the first chapter which should be the introduction chapter  tag\n';
+      prompt += ' all add the last chapter which should be the conclusion chapter  tag\n';
       prompt += ' wrap each chapter title with an h2 tag and a class name called chapter-title\n';
       prompt += ' wrap each paragraph a p tag and a class name called chapter-paragraph.\n';
       prompt += ' other important information to be taken into consideration include: \n';
