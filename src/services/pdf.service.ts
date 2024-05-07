@@ -1,36 +1,66 @@
 import puppeteer from 'puppeteer';
 import path from 'path';
+import { PDFDocument } from 'pdf-lib';
+import fs from 'fs/promises';
+//
 import config from '../config/config';
 
-async function generatePDFfromHTML(htmlContent: string, outputPath: string): Promise<string> {
+async function generatePDFfromHTML(htmlContents: string[], outputPath: string): Promise<string> {
   // let timeInMil: any = new Date();
   // timeInMil = timeInMil.getTime();
 
-  const browser = await puppeteer.launch({});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  // await page.setViewport({ width: 1200, height: 800 }); // Set viewport to a landscape aspect ratio
+  const pdfDoc = await PDFDocument.create();
 
-  // const imagePath = ;
-  // console.log({ imagePath });
-  // await page.evaluate(() => {
-  //   // document.body.style.backgroundColor = 'lightblue'; // Set background color
-  //   document.body.style.backgroundImage = `url("${path.resolve(
-  //     'html/assets/images/section-bg.jpg'
-  //   )}")`;
-  // });
+  // for (let i = 0; i < htmlContents.length; i++) {
+  //   const url = htmlContents[i];
+  //   const cssPath = path.resolve('html/assets/style.css');
+  //   await page.addStyleTag({ path: cssPath });
+  //   await page.goto(url, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
+  //   const pdfBytes = await page.pdf({
+  //     format: 'A4',
+  //     printBackground: true,
+  //     margin: { top: '0px', left: '0px', right: '0px', bottom: '0px' }
+  //   });
+  //   const extPdfDoc = await PDFDocument.load(pdfBytes);
+  //   const copiedPages = await pdfDoc.copyPages(extPdfDoc, [0]);
+  //   copiedPages.forEach((page) => pdfDoc.addPage(page));
+  // }
 
-  await page.setContent(htmlContent, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
+  // const mergedPdfBytes = await pdfDoc.save();
+  // await fs.writeFile('merged.pdf', mergedPdfBytes);
+  // await browser.close();
 
-  const cssPath = path.resolve('html/assets/style.css');
-  await page.addStyleTag({ path: cssPath });
+  for (const item of htmlContents) {
+    // console.log({ item });
+    // await page.goto(url, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
+    await page.setContent(item, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
+    const cssPath = path.resolve('html/assets/style.css');
+    await page.addStyleTag({ path: cssPath });
+    const pdfBytes = await page.pdf({
+      width: '850px',
+      height: '850px',
+      printBackground: true
+    });
+    const extPdfDoc = await PDFDocument.load(pdfBytes);
+    const copiedPages = await pdfDoc.copyPages(extPdfDoc, [0]);
+    copiedPages.forEach((page) => pdfDoc.addPage(page));
+  }
 
-  await page.pdf({ path: outputPath, format: 'A4', landscape: true, printBackground: true }); // Set landscape option to true
+  const mergedPdfBytes = await pdfDoc.save();
+  await fs.writeFile(outputPath, mergedPdfBytes);
   await browser.close();
+  console.log('Merged PDF created successfully');
 
-  // const relativePath = path.relative(path.resolve(__dirname, '../'), outputPath);
+  // await page.setContent(htmlContent, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
+
+  // const cssPath = path.resolve('html/assets/style.css');
+  // await page.addStyleTag({ path: cssPath });
+  // await page.pdf({ path: outputPath, format: 'A4', printBackground: true }); // Set landscape option to true
+  // await browser.close();
+
   const baseUrl = config.baseUrl;
-  // Return the relative path to the saved file
-  // const relativePath = path.relative(__dirname, outputPath); // Get the relative path
   return `${baseUrl}/${path.basename(outputPath)}`;
   // return `file://${path.resolve(outputPath)}`;
 }

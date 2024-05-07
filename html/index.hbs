@@ -12,20 +12,15 @@
     />
     <link rel="stylesheet" href="assets/style.css" />
   </head>
-  <body>
-	{{#each sections}}
-    <section>
+  {{#if isEven}}
+  <body class="section-even">
+  {{else}}
+  <body class="section-odd">
+  {{/if}}
+  <section>
       <article>
-		{{{this}}}
-        {{!-- <h3>Artist Kitty</h3>
-        <p>
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts. Separated they
-          live in Bookmarksgrove right at the coast of the Semantics, a large
-          language ocean.
-        </p> --}}
+        {{{ content }}}
       </article>
     </section>
-    {{/each}}
   </body>
 </html>
