@@ -21,7 +21,10 @@ const generateBook = {
     eyeColor: Joi.string().valid('blue', 'green', 'brown').required(),
     glasses: Joi.boolean().default(false),
     theme: Joi.string().required(),
-    personalMsg: Joi.string().required(),
+    personalMsg: Joi.string()
+      .required()
+      .regex(/^(\S+\s+){0,39}\S+$/)
+      .error(new Error('Personal message must contain exactly 40 words.')),
     familyMembers: Joi.string().required(),
     personalEvents: Joi.string().required()
 
