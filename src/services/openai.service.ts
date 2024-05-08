@@ -56,6 +56,22 @@ export default class OpenAiService {
     return response.data[0].url ?? '';
   }
 
+  static async generateImageFromSummary(summary: string): Promise<string> {
+    let prompt = `Generate a fully captured colorful 2D image that summarizes and properly depicts this: ${summary} `;
+
+    const response = await openai.images.generate({
+      model: 'dall-e-3',
+      prompt: prompt,
+      n: 1,
+      quality: 'hd',
+      // size: '1024x1792'
+      size: '1024x1024'
+      // style: 'natural'
+      // response_format: 'b64_json'
+    });
+    return response.data[0].url ?? '';
+  }
+
   static async reGenerateImage(imagePath: string): Promise<string> {
     const img = await this.loadImageFromUrl(imagePath);
 

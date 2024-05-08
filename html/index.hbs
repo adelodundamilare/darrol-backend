@@ -12,13 +12,14 @@
     />
     <link rel="stylesheet" href="assets/style.css" />
   </head>
-  {{#if isEven}}
-  <body class="section-even">
+
+  <body class="{{#if isEven}}section-even{{else}}section-odd{{/if}}">
+  {{#if isImage}}
+    <img class="section-image" src="{{content}}" />
   {{else}}
-  <body class="section-odd">
+    <article>
+      {{{ content }}}
+    </article>
   {{/if}}
-      <article>
-        {{{ content }}}
-      </article>
-  </body>
+</body>
 </html>
