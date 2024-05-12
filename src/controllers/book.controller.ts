@@ -14,13 +14,17 @@ const generateBook = catchAsync(async (req, res) => {
 
     const [aiBook, bookCover] = await Promise.all([
       bookService.generateBook(aiBookPlain, body),
-      bookService.generateBookCover(book_title)
+      bookService.generateBookCover(book_title, body)
     ]);
+
+    // console.log({ bookCover });
 
     const [pdf, cover] = await Promise.all([
       pdfService.generatePDFfromHTML(aiBook, 'src/public/ai-story-book.pdf'),
       pdfService.generatePDFCoverFromHTML(bookCover, 'src/public/ai-story-book-cover.pdf')
     ]);
+
+    console.log('>>>>>>>>>>>> success::: generateBook controller');
 
     res.send({ success: true, message: 'Book generated successfully', data: { book: pdf, cover } });
   } catch (error: any) {

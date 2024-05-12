@@ -13,7 +13,20 @@
     <link rel="stylesheet" href="assets/style.css" />
   </head>
 
+{{#if isImage}}
+<body>
+{{else}}
   <body class="{{#if hasSpecialBg}}section-even{{else}}section-odd{{/if}}">
+  {{/if}}
+
+  {{#if isImage}}
+    <img class="section-image" src="{{{content}}}" />
+  {{else}}
+    <article>
+      {{{ content }}}
+    </article>
+  {{/if}}
+
   {{#if isCoverPage}}
   <div class="cover-page section-even">
     <p>this book is specially generated for {{name}}</p>
@@ -22,14 +35,6 @@
       <img src="https://whispery.netlify.app/static/media/logo.53095dda6180d158c0fb.png" alt="Logo" />
     </div>
   </div>
-  {{/if}}
-
-  {{#if isImage}}
-    <img class="section-image" src="{{content}}" />
-  {{else}}
-    <article>
-      {{{ content }}}
-    </article>
   {{/if}}
 </body>
 </html>

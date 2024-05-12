@@ -56,7 +56,8 @@ export default class OpenAiService {
   }
 
   static async generateImageFromSummary(summary: string): Promise<string> {
-    let prompt = `Generate a fully captured colorful 2D image that summarizes and properly depicts this: ${summary} \n`;
+    let prompt = `Generate a fully captured colorful 3D image that summarizes and properly depicts this: ${summary} \n`;
+    prompt += ' with very minimal or no text';
 
     const response = await openai.images.generate({
       model: 'dall-e-3',
@@ -72,9 +73,8 @@ export default class OpenAiService {
   }
 
   static async generateCoverPageImage(summary: string): Promise<string> {
-    let prompt = `Generate a fully captured colorful 2D image that summarizes and properly depicts this: ${summary} `;
-    prompt +=
-      ' and with a nice playful kid font, print the book title and strategically place it at the center of the image';
+    let prompt = `Generate a fully captured colorful 3D image that summarizes this topic: ${summary} `;
+    // prompt += ` and with a nice playful kid font, write the text ${summary} and strategically place it at the right-center of the image`;
 
     const response = await openai.images.generate({
       model: 'dall-e-3',

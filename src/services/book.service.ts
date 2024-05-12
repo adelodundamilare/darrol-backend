@@ -36,7 +36,6 @@ const generateBook = async (bookPlain: string, book: BookCreateDto): Promise<str
   const chapterSections = _getSectionsFromChapters(chapters);
   const chapterSectionsWithImage = await _addSectionImage(chapterSections);
 
-  // const coverPageImageUrl = await OpenAiService.generateCoverPageImage(book_title);
   const firstPage = `<section class="special-chapter"><p class="chapter-paragraph">${personalMessage}</p></section>`;
   const lastPage = `<section class="special-chapter">${_computeLastPage(book.firstName)}</section>`;
   const sections = [firstPage, ...chapterSectionsWithImage.flat(), lastPage];
@@ -55,6 +54,7 @@ const generateBook = async (bookPlain: string, book: BookCreateDto): Promise<str
     return htmlContent;
   });
 
+  console.log('>>>>>>>>>>>> success::: generateBook');
   // const html = template({
   //   sections: sections
   // });
@@ -62,17 +62,39 @@ const generateBook = async (bookPlain: string, book: BookCreateDto): Promise<str
   return htmlSections;
 };
 
-const generateBookCover = async (bookPlain: string): Promise<string> => {
+const generateBookCover = async (bookPlain: string, book: BookCreateDto): Promise<string> => {
   const templateHtml = fs.readFileSync(path.join(process.cwd(), 'html/index.hbs'), 'utf8');
   const template = handlebars.compile(templateHtml);
+  const regexPattern = /<h1[^>]*>([^<]+)<\/h1>/;
+  const match = bookPlain.match(regexPattern);
+  let textContent = bookPlain;
+  if (match && match.length > 1) {
+    textContent = match[1];
+  }
+  // let imageUrl = await OpenAiService.generateImageFromSummary(textContent);
+  let imageUrl = await OpenAiService.generateCoverPageImage(textContent);
+  imageUrl = decodeEntities(imageUrl);
+
+  // console.log({ textContent, imageUrl });
 
   const htmlContent = template({
-    content: bookPlain,
+    content: imageUrl,
     isCoverPage: true,
-    isImage: true
+    isImage: true,
+    name: book.firstName
   });
 
+  console.log('>>>>>>>>>>>> success::: generateBookCover');
+
   return htmlContent;
+};
+
+const decodeEntities = (str: string): string => {
+  return str
+    .replace(/&#x([\da-fA-F]+);/g, function (match, hex) {
+      return String.fromCharCode(parseInt(hex, 16));
+    })
+    .replace(/&amp;/g, '&');
 };
 
 const findBookTitle = (rawHtml: string): string => {
@@ -115,20 +137,34 @@ const _getSectionsFromChapters = (chapters: string[]): string[][] => {
 const _addSectionImage = async (chapterSections: string[][]): Promise<string[][]> => {
   let res = [];
 
-  for (const item of chapterSections) {
-    const combinedSection = item.join('\n');
-    const imageUrl = await OpenAiService.generateImageFromSummary(combinedSection);
-    item.shift(); // remove first item from section and replace with generated image
-    res.push([imageUrl, ...item]);
-  }
   // for (const item of chapterSections) {
+  //   const combinedSection = item.join('\n');
+  //   const imageUrl = await OpenAiService.generateImageFromSummary(combinedSection);
+  //   item.shift(); // remove first item from section and replace with generated image
+  //   res.push([imageUrl, ...item]);
+  // }
+  // for (const item of chapterSections) {
+  //   let resInner = [];
   //   for (const page of item) {
   //     // const combinedSection = item.join('\n');
   //     const imageUrl = await OpenAiService.generateImageFromSummary(page);
-  //     res.push([imageUrl, page]);
+  //     resInner.push([imageUrl, page]);
   //   }
+  //   res.push(resInner)
   //   // item.shift(); // remove first item from section and replace with generated image
   // }
+
+  for (const item of chapterSections) {
+    for (const page of item) {
+      if (page.includes('<h2 class="chapter-title">')) {
+        continue;
+      }
+      const imageUrl = await OpenAiService.generateImageFromSummary(page);
+      res.push([page, imageUrl]);
+    }
+  }
+
+  console.log('>>>>>>>>>>>> success: _addSectionImage:: add image to all section');
 
   return res;
 };
