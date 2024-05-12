@@ -8,10 +8,9 @@ import * as fs from 'fs';
 import handlebars from 'handlebars';
 import path from 'path';
 
-const generateBook = async (book: BookCreateDto): Promise<any[]> => {
+const generateBook = async (bookPlain: string, book: BookCreateDto): Promise<string[]> => {
   // generate book
   const personalMessage = book.personalMsg;
-  const res = await OpenAiService.generateAIBook(book);
   // const res =
   //   '<section class="chapter">\n' +
   //   '    <h1>Introduction</h1>\n' +
@@ -33,23 +32,26 @@ const generateBook = async (book: BookCreateDto): Promise<any[]> => {
   //   '    <p class="chapter-paragraph">Donning a shimmering mask adorned with intricate designs, John mingled with the other guests, each one more fantastical than the last. There were fairies flitting about, elves dancing merrily, and creatures of myth and legend swirling in a mesmerizing dance of magic and wonder.</p>\n' +
   //   '</section>\n';
 
-  const chapters = _getChapters(res);
+  const chapters = _getChapters(bookPlain);
   const chapterSections = _getSectionsFromChapters(chapters);
   const chapterSectionsWithImage = await _addSectionImage(chapterSections);
 
-  const firstPage = `<section class="chapter"><p class="chapter-paragraph">${personalMessage}</p></section>`;
-  const sections = [firstPage, ...chapterSectionsWithImage.flat()];
+  // const coverPageImageUrl = await OpenAiService.generateCoverPageImage(book_title);
+  const firstPage = `<section class="special-chapter"><p class="chapter-paragraph">${personalMessage}</p></section>`;
+  const lastPage = `<section class="special-chapter">${_computeLastPage(book.firstName)}</section>`;
+  const sections = [firstPage, ...chapterSectionsWithImage.flat(), lastPage];
 
   const templateHtml = fs.readFileSync(path.join(process.cwd(), 'html/index.hbs'), 'utf8');
   const template = handlebars.compile(templateHtml);
 
   const htmlSections = sections.map((x, index) => {
     const htmlContent = template({
-      isEven: index % 2 === 0,
+      hasSpecialBg: x.startsWith('<section class="special-chapter">'),
       content: x,
-      isImage: x.startsWith('https')
+      isImage: x.startsWith('https'),
+      // isCoverPage: x == coverPageImageUrl,
+      name: book.firstName
     });
-    // fs.writeFileSync(`page_${index}.html`, htmlContent);
     return htmlContent;
   });
 
@@ -60,9 +62,39 @@ const generateBook = async (book: BookCreateDto): Promise<any[]> => {
   return htmlSections;
 };
 
+const generateBookCover = async (bookPlain: string): Promise<string> => {
+  const templateHtml = fs.readFileSync(path.join(process.cwd(), 'html/index.hbs'), 'utf8');
+  const template = handlebars.compile(templateHtml);
+
+  const htmlContent = template({
+    content: bookPlain,
+    isCoverPage: true,
+    isImage: true
+  });
+
+  return htmlContent;
+};
+
+const findBookTitle = (rawHtml: string): string => {
+  const sectionRegex = /<h1 class="our-book-title">([\s\S]*?)<\/h1>/g;
+  const res = rawHtml.match(sectionRegex);
+  if (res && res.length > 0) {
+    return res[0];
+  }
+  return '';
+};
+
 const _getChapters = (rawHtml: string): string[] => {
   const sectionRegex = /<section class="chapter">([\s\S]*?)<\/section>/g;
   return rawHtml.match(sectionRegex) ?? [];
+};
+
+const _computeLastPage = (name: string): string => {
+  return `<h1>Het Einde</h1>
+  <p class="chapter-paragraph">Jouw magische avontuur zit erop, ${name}! Hopelijk heb je veel leesplezier gehad en genoten van alle spannende avonturen.</p>
+  <p class="chapter-paragraph">Bewaar dit boek als een schat, deze is met veel liefde speciaal voor jou gemaakt. </p>
+  <p class="chapter-paragraph">Magische groet, team Whispery</p>
+  `;
 };
 
 const _getSectionsFromChapters = (chapters: string[]): string[][] => {
@@ -89,6 +121,14 @@ const _addSectionImage = async (chapterSections: string[][]): Promise<string[][]
     item.shift(); // remove first item from section and replace with generated image
     res.push([imageUrl, ...item]);
   }
+  // for (const item of chapterSections) {
+  //   for (const page of item) {
+  //     // const combinedSection = item.join('\n');
+  //     const imageUrl = await OpenAiService.generateImageFromSummary(page);
+  //     res.push([imageUrl, page]);
+  //   }
+  //   // item.shift(); // remove first item from section and replace with generated image
+  // }
 
   return res;
 };
@@ -163,5 +203,7 @@ export default {
   generateBook,
   queryBooks,
   getBookById,
-  updateBookById
+  updateBookById,
+  findBookTitle,
+  generateBookCover
 };

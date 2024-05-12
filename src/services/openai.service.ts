@@ -10,7 +10,6 @@ const openai = new OpenAI({
 });
 
 const rootDirectory = process.cwd();
-const sampleImagePath = path.join(rootDirectory, 'assets', 'img', 'sample.png');
 
 export default class OpenAiService {
   static async generateImage(data: CreateAvatarDto): Promise<string> {
@@ -57,7 +56,25 @@ export default class OpenAiService {
   }
 
   static async generateImageFromSummary(summary: string): Promise<string> {
+    let prompt = `Generate a fully captured colorful 2D image that summarizes and properly depicts this: ${summary} \n`;
+
+    const response = await openai.images.generate({
+      model: 'dall-e-3',
+      prompt: prompt,
+      n: 1,
+      quality: 'hd',
+      // size: '1024x1792'
+      size: '1024x1024'
+      // style: 'natural'
+      // response_format: 'b64_json'
+    });
+    return response.data[0].url ?? '';
+  }
+
+  static async generateCoverPageImage(summary: string): Promise<string> {
     let prompt = `Generate a fully captured colorful 2D image that summarizes and properly depicts this: ${summary} `;
+    prompt +=
+      ' and with a nice playful kid font, print the book title and strategically place it at the center of the image';
 
     const response = await openai.images.generate({
       model: 'dall-e-3',
@@ -101,14 +118,14 @@ export default class OpenAiService {
 
   static async generateAIBook(book: BookCreateDto): Promise<string> {
     try {
-      let prompt = `write a fun 6000 words story of a kid\n`;
+      let prompt = `write a fun 1000 words story of a kid\n`; //originally 6000
       prompt += ' divide into chapters\n';
       // prompt += ' format properly and output should come out as html';
       prompt += ` format properly and separate each chapter with ${Constants.SectionSeparator}\n`;
       prompt += ' each chapter should be wrapped around a section tag with class name chapter\n';
       prompt += ' the chapter title should be wrapped around the h1 tag\n';
       prompt += ' please add the first chapter which should be the introduction chapter  tag\n';
-      prompt += ' all add the last chapter which should be the conclusion chapter  tag\n';
+      prompt += ' also, add the last chapter which should be the conclusion chapter  tag\n';
       prompt += ' wrap each chapter title with an h2 tag and a class name called chapter-title\n';
       prompt += ' wrap each paragraph a p tag and a class name called chapter-paragraph.\n';
       prompt += ' other important information to be taken into consideration include: \n';
@@ -125,9 +142,11 @@ export default class OpenAiService {
       prompt += ` some personal events: ${book.personalEvents}, it's very important you write one or more chapters about these events. \n`;
       prompt += ` some personal message: ${book.personalMsg}, it's very important you write one or more chapters about these events. \n`;
       prompt += ' please remove doctype and any head tag from result \n';
+      prompt +=
+        ' now summarize and give the book a concise title, should be in an h1 tag with the class our-book-title \n';
 
       // theme: string;
-      console.log({ prompt });
+      // console.log({ prompt });
 
       const message: ChatCompletionMessageParam[] = [
         {

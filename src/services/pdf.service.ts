@@ -15,8 +15,8 @@ async function generatePDFfromHTML(htmlContents: string[], outputPath: string): 
     const cssPath = path.resolve('html/assets/style.css');
     await page.addStyleTag({ path: cssPath });
     const pdfBytes = await page.pdf({
-      width: '850px',
-      height: '850px',
+      width: '200mm',
+      height: '200mm',
       printBackground: true
     });
     const extPdfDoc = await PDFDocument.load(pdfBytes);
@@ -34,6 +34,32 @@ async function generatePDFfromHTML(htmlContents: string[], outputPath: string): 
   // return `file://${path.resolve(outputPath)}`;
 }
 
+async function generatePDFCoverFromHTML(htmlContent: string, outputPath: string): Promise<string> {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const pdfDoc = await PDFDocument.create();
+
+  await page.setContent(htmlContent, { waitUntil: ['load', 'networkidle0', 'domcontentloaded'] });
+  const cssPath = path.resolve('html/assets/style.css');
+  await page.addStyleTag({ path: cssPath });
+  const pdfBytes = await page.pdf({
+    width: '445.5mm',
+    height: '236.0mm',
+    printBackground: true
+  });
+  const extPdfDoc = await PDFDocument.load(pdfBytes);
+  const copiedPages = await pdfDoc.copyPages(extPdfDoc, [0]);
+  copiedPages.forEach((page) => pdfDoc.addPage(page));
+
+  const mergedPdfBytes = await pdfDoc.save();
+  await fs.writeFile(outputPath, mergedPdfBytes);
+  await browser.close();
+
+  const baseUrl = config.baseUrl;
+  return `${baseUrl}/${path.basename(outputPath)}`;
+}
+
 export default {
-  generatePDFfromHTML
+  generatePDFfromHTML,
+  generatePDFCoverFromHTML
 };
