@@ -21,6 +21,7 @@ export interface CreateAvatarDto {
   hairColor: string;
   hairStyle: string;
   eyeColor: string;
+  theme: string;
   glasses: boolean;
 }
 

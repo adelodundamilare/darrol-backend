@@ -2,7 +2,7 @@ import { Book, Prisma, User } from '@/prisma/generated/client';
 import ApiError from '../utils/ApiError';
 import prisma from '../client';
 import httpStatus from 'http-status';
-import { BookCreateDto } from '../types/response';
+import { BookCreateDto, CreateAvatarDto } from '../types/response';
 import OpenAiService from './openai.service';
 import * as fs from 'fs';
 import handlebars from 'handlebars';
@@ -34,10 +34,10 @@ const generateBook = async (bookPlain: string, book: BookCreateDto): Promise<str
 
   const chapters = _getChapters(bookPlain);
   const chapterSections = _getSectionsFromChapters(chapters);
-  const chapterSectionsWithImage = await _addSectionImage(chapterSections);
+  const chapterSectionsWithImage = await _addSectionImage(chapterSections, book);
 
   const firstPage = `<section class="special-chapter"><p class="chapter-paragraph">${personalMessage}</p></section>`;
-  const lastPage = `<section class="special-chapter">${_computeLastPage(book.firstName)}</section>`;
+  const lastPage = `<section class="last-chapter"></section>`;
   const sections = [firstPage, ...chapterSectionsWithImage.flat(), lastPage];
 
   const templateHtml = fs.readFileSync(path.join(process.cwd(), 'html/index.hbs'), 'utf8');
@@ -45,10 +45,12 @@ const generateBook = async (bookPlain: string, book: BookCreateDto): Promise<str
 
   const htmlSections = sections.map((x, index) => {
     const htmlContent = template({
-      hasSpecialBg: x.startsWith('<section class="special-chapter">'),
+      hasSpecialBg:
+        x.startsWith('<section class="special-chapter">') ||
+        x.startsWith('<section class="last-chapter">'),
       content: x,
       isImage: x.startsWith('https'),
-      // isCoverPage: x == coverPageImageUrl,
+      isLastPage: x.startsWith('<section class="last-chapter"></section>'),
       name: book.firstName
     });
     return htmlContent;
@@ -72,7 +74,7 @@ const generateBookCover = async (bookPlain: string, book: BookCreateDto): Promis
     textContent = match[1];
   }
   // let imageUrl = await OpenAiService.generateImageFromSummary(textContent);
-  let imageUrl = await OpenAiService.generateCoverPageImage(textContent);
+  let imageUrl = await OpenAiService.generateImageFromSummary(textContent, book);
   imageUrl = decodeEntities(imageUrl);
 
   // console.log({ textContent, imageUrl });
@@ -81,6 +83,7 @@ const generateBookCover = async (bookPlain: string, book: BookCreateDto): Promis
     content: imageUrl,
     isCoverPage: true,
     isImage: true,
+    title: textContent,
     name: book.firstName
   });
 
@@ -134,7 +137,10 @@ const _getSectionsFromChapters = (chapters: string[]): string[][] => {
   return sectionsArray;
 };
 
-const _addSectionImage = async (chapterSections: string[][]): Promise<string[][]> => {
+const _addSectionImage = async (
+  chapterSections: string[][],
+  book: BookCreateDto
+): Promise<string[][]> => {
   let res = [];
 
   // for (const item of chapterSections) {
@@ -156,10 +162,11 @@ const _addSectionImage = async (chapterSections: string[][]): Promise<string[][]
 
   for (const item of chapterSections) {
     for (const page of item) {
-      if (page.includes('<h2 class="chapter-title">')) {
+      if (page.includes('class="chapter-title"')) {
+        console.log(`filter this::: ${page}`);
         continue;
       }
-      const imageUrl = await OpenAiService.generateImageFromSummary(page);
+      const imageUrl = await OpenAiService.generateImageFromSummary(page, book);
       res.push([page, imageUrl]);
     }
   }

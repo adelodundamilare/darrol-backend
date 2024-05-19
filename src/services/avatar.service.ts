@@ -4,11 +4,11 @@ import { CreateAvatarDto } from '../types/response';
 import OpenAiService from './openai.service';
 
 const createAvatar = async (avatar: CreateAvatarDto): Promise<any> => {
-  if (!avatar) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Avatar data');
-  }
-  const response = await OpenAiService.generateImage(avatar);
-  return response;
+  // if (!avatar) {
+  //   throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Avatar data');
+  // }
+  // const response = await OpenAiService.generateImage(avatar);
+  // return response;
 };
 
 const regenerateAvatar = async (imageUrl: string): Promise<any> => {

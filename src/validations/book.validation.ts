@@ -20,7 +20,26 @@ const generateBook = {
     hairColor: Joi.string().valid('blonde', 'brown', 'dark', 'red').required(),
     eyeColor: Joi.string().valid('blue', 'green', 'brown').required(),
     glasses: Joi.boolean().default(false),
-    theme: Joi.string().required(),
+    theme: Joi.string()
+      .valid(
+        'wild west',
+        'magic school',
+        'candy world',
+        'castles',
+        'robot world',
+        'dinosaur',
+        'circus',
+        'dragon world',
+        'fantasy land',
+        'island',
+        'space',
+        'underwater',
+        'amusement park',
+        'zoo',
+        'safari',
+        'jungle'
+      )
+      .required(),
     personalMsg: Joi.string()
       .required()
       .regex(/^(\S+\s+){0,39}\S+$/)
