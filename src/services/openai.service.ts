@@ -1,9 +1,10 @@
 import OpenAI from 'openai';
 import * as fs from 'fs';
 import * as path from 'path';
-import { BookCreateDto, CreateAvatarDto } from '../types/response';
+import { BookCreateDto } from '../types/response';
 import { ChatCompletionMessageParam } from 'openai/resources';
 import Constants from '../utils/constants';
+import axios from 'axios';
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_OPENAI_API_KEY
@@ -74,31 +75,33 @@ export default class OpenAiService {
   //   return response.data[0].url ?? '';
   // }
 
-  static async generateImageFromSummary(summary: string, data: BookCreateDto): Promise<string> {
-    let prompt = `Generate a fully captured colorful 3D image Pixar-like that summarizes and properly depicts this: ${summary} \n`;
-    prompt += ' important! no text please, only colorful image or picture';
-    prompt += ` important! theme should be ${data.theme}`;
-    prompt +=
-      " It's very important that: there Is no text in the images, there are no family members in the images, only the child itself; other characters may be present (for example, monkeys in the jungle theme and fish in the underwater theme ett). But not the family members themselves, as we do not know their physical characteristics.";
-    // prompt +=
-    //   " It's very important that these are continuously in the same style (Pixar-like) and that the character (the child) consistently looks exactly the same based on the physical characteristics of the child, and that there: - Is no text in the images - Are no family members in the images, only the child itself. Other characters may be present (for example, monkeys in the jungle theme and fish in the underwater theme). But not the family members themselves, as we do not know their physical characteristics.";
-    prompt += ' for context, kindly find below the characteristics of the child';
+  static async generateImage(prompt: string): Promise<string> {
+    // const res = axios.post('https://api.stability.ai/v2beta/stable-image/generate/core', {
+    //   headers: {
+    //     Authorization: `Bearer ${process.env.STABILITY_AI_KEY}`
+    //   }
+    // });
 
-    prompt += ` First name: ${data.firstName}\n`;
-    prompt += ` Age: ${data.age}\n`;
-    prompt += ` Skin color: ${data.skinColor}\n`;
-    prompt += ` Hair color: ${data.hairColor}\n`;
-    prompt += ` Eye color: ${data.eyeColor}\n`;
-    prompt += ` Theme: ${data.theme}\n`;
-    // prompt += ` Family members: ${data.familyMembers}\n`;
-    prompt += ` Personal message: ${data.personalMsg}\n`;
-    prompt += ` Personal events: ${data.personalEvents}\n`;
-    if (data.glasses) {
-      prompt += ` Has glasses: ${data.glasses ? 'yes' : 'no'}`;
-    }
-    prompt += `Use a style that is: Vibrant and eye-catching, Whimsical and fantastical, Realistic and detailed, Stylized and graphic, Watercolor and dreamy`;
-    prompt += `Incorporate elements that reflect: The character's personality and traits, The theme and setting, The story's tone and mood, The character's relationships and interactions, The character's growth and development`;
+    const formData = {
+      prompt: prompt,
+      output_format: 'png'
+    };
 
+    const res = await axios.postForm(
+      `https://api.stability.ai/v2beta/stable-image/generate/core`,
+      axios.toFormData(formData, new FormData()),
+      {
+        // validateStatus: undefined,
+        // responseType: 'arraybuffer',
+        headers: {
+          // Authorization: `Bearer ${process.env.STABILITY_AI_KEY}`,
+          Authorization: `Bearer sk-VJ8ETeZGFE8gj4fD8AYVJJ9VQTRS9nwSDxVzr5u3zz4rnJ7I`,
+          Accept: 'application/json'
+        }
+      }
+    );
+    // console.log({ res: res.data });
+    return `data:image/png;base64,${res?.data?.image}`; //res.data.seed
     const response = await openai.images.generate({
       model: 'dall-e-3',
       prompt: prompt,
@@ -127,33 +130,6 @@ export default class OpenAiService {
       // response_format: 'b64_json'
     });
     return response.data[0].url ?? '';
-  }
-
-  static async reGenerateImage(imagePath: string): Promise<string> {
-    const img = await this.loadImageFromUrl(imagePath);
-
-    const response = await openai.images.createVariation({
-      model: 'dall-e-2',
-      image: fs.createReadStream(img),
-      n: 1,
-      size: '1024x1024'
-    });
-    return response.data[0].url ?? '';
-  }
-
-  static async loadImageFromUrl(url: string) {
-    try {
-      const response = await fetch(url);
-      const buffer = await response.arrayBuffer();
-      const imageData = Buffer.from(buffer);
-      const filePath = path.join(rootDirectory, 'assets', 'img', 'regenerated.png');
-      fs.writeFileSync(filePath, imageData);
-
-      return filePath;
-    } catch (error) {
-      console.error('Error loading image from URL:', error);
-      throw error;
-    }
   }
 
   static async generateAIBook(book: BookCreateDto): Promise<string> {
@@ -204,4 +180,63 @@ export default class OpenAiService {
       throw error;
     }
   }
+
+  // could be made to return only a prompt sef
+  static async generateMainCharacter(book: BookCreateDto): Promise<string> {
+    try {
+      const { firstName, age, gender, skinColor, hairStyle, hairColor, eyeColor, glasses, theme } =
+        book;
+
+      let prompt = `Using a fully captured colorful 3D image Pixar-like theme, create a 'single-person' detailed illustration of a full character named ${firstName}.
+
+      This character is ${age} years old, ${gender}, and has ${skinColor} skin.
+
+      They have ${hairStyle} hair that is ${hairColor}, and their eye color is ${eyeColor}.
+
+      They ${glasses ? 'wear' : 'do not wear'} glasses.
+
+      The character is set in a ${theme} environment.
+
+      The image should be highly detailed and realistic, the character should be captured from head to foot.
+
+      ${firstName} is often dressed in comfortable, practical clothes: a well-worn pair of jeans, a soft t-shirt with a faded print of their favorite cartoon character, and a pair of sturdy sneakers.
+
+      The character should be consistent and detailed based on the above description.`;
+
+      const response = await openai.images.generate({
+        model: 'dall-e-3',
+        prompt: prompt,
+        n: 1,
+        quality: 'hd',
+        size: '1024x1024'
+        // size: '1024x1792'
+        // style: 'natural'
+      });
+      console.log(response.data[0], '>>>>>>>>>>>> main character');
+      return response.data[0].url ?? '';
+    } catch (error) {
+      console.error('Error generating main character');
+      throw error;
+    }
+  }
+
+  static mainCharacterPrompt = (book: BookCreateDto) => {
+    const { firstName, age, gender, skinColor, hairStyle, hairColor, eyeColor, glasses, theme } =
+      book;
+    return `Using a fully captured colorful 3D image Pixar-like theme, create a 'single-person' detailed illustration of a full character named ${firstName}.
+
+    This character is ${age} years old, ${gender}, and has ${skinColor} skin.
+
+    They have ${hairStyle} hair that is ${hairColor}, and their eye color is ${eyeColor}.
+
+    They ${glasses ? 'wear' : 'do not wear'} glasses.
+
+    The character is set in a ${theme} environment.
+
+    The image should be highly detailed and realistic, the character should be captured from head to foot.
+
+    ${firstName} is often dressed in comfortable, practical clothes: a well-worn pair of jeans, a soft t-shirt with a faded print of their favorite cartoon character, and a pair of sturdy sneakers.
+
+    The character should be consistent and detailed based on the above description.`;
+  };
 }

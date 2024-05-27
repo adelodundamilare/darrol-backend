@@ -35,6 +35,7 @@ async function generatePDFfromHTML(htmlContents: string[], outputPath: string): 
 }
 
 async function generatePDFCoverFromHTML(htmlContent: string, outputPath: string): Promise<string> {
+  // const browser = await puppeteer.launch({ headless: false });
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   // const pdfDoc = await PDFDocument.create();
@@ -56,7 +57,7 @@ async function generatePDFCoverFromHTML(htmlContent: string, outputPath: string)
 
   // const mergedPdfBytes = await pdfDoc.save();
   // await fs.writeFile(outputPath, mergedPdfBytes);
-  await browser.close();
+  // await browser.close();
   console.log('>>>>>>>>>>>> success::: generatePDFCoverFromHTML');
 
   const baseUrl = config.baseUrl;

@@ -11,15 +11,6 @@ const createAvatar = async (avatar: CreateAvatarDto): Promise<any> => {
   // return response;
 };
 
-const regenerateAvatar = async (imageUrl: string): Promise<any> => {
-  if (!imageUrl) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Image Url');
-  }
-  const response = await OpenAiService.reGenerateImage(imageUrl);
-  return response;
-};
-
 export default {
-  createAvatar,
-  regenerateAvatar
+  createAvatar
 };

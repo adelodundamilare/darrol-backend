@@ -56,6 +56,7 @@
     "@prisma/client": "5.9.0-integration-engines-5-9-0-3-fix-5-8-0-timeout-9035a1b3236277185290a05f5f4ca9afd179d699.1",
     "@types/bcryptjs": "^2.4.2",
     "@types/nodemailer": "^6.4.7",
+    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
